@@ -324,6 +324,13 @@ textarea {
     font-size: 48px;
 }
 
+.clip-video video,
+.clip-video img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 .clip-info {
     padding: 15px;
 }
@@ -466,6 +473,45 @@ textarea {
     display: block;
 }
 
+.upload-box {
+    background: #121620;
+    border: 1px dashed #465268;
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 25px;
+}
+
+.upload-box h3 {
+    margin-bottom: 8px;
+}
+
+.upload-box p {
+    color: #9099aa;
+    margin-bottom: 18px;
+    line-height: 1.5;
+}
+
+.upload-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.file-input {
+    padding: 10px;
+    cursor: pointer;
+}
+
+#uploadedClips {
+    margin-top: 25px;
+}
+
+.empty-clips {
+    color: #858e9e;
+    padding: 20px 0;
+}
+
 footer {
     background: #11151f;
     border-top: 1px solid #252b38;
@@ -492,7 +538,8 @@ footer {
         grid-template-columns: 1fr;
     }
 
-    .form-grid {
+    .form-grid,
+    .upload-fields {
         grid-template-columns: 1fr;
     }
 
@@ -534,8 +581,6 @@ footer {
 <main>
 
 
-<!-- HOME -->
-
 <section class="hero" id="home">
 
 <h1>Find Your <span>Gaming Squad</span></h1>
@@ -570,8 +615,6 @@ Search complete — matching players are shown below.
 
 </section>
 
-
-<!-- GAMES -->
 
 <section id="games">
 
@@ -637,8 +680,6 @@ Search complete — matching players are shown below.
 
 </section>
 
-
-<!-- FIND PLAYERS -->
 
 <section id="players">
 
@@ -819,8 +860,6 @@ View Profile
 </section>
 
 
-<!-- CREATE PROFILE -->
-
 <section id="create-profile">
 
 <div class="section-heading">
@@ -947,6 +986,7 @@ Platform
 <option value="PC">PC</option>
 <option value="Nintendo">Nintendo</option>
 <option value="Mobile">Mobile</option>
+
 </select>
 
 </div>
@@ -1026,8 +1066,6 @@ id="createdProfile"
 </section>
 
 
-<!-- CLIPS -->
-
 <section id="clips">
 
 <div class="section-heading">
@@ -1041,7 +1079,88 @@ groups and forums.
 
 </div>
 
+
+<div class="upload-box">
+
+<h3>📤 Upload a Clip or Screenshot</h3>
+
+<p>
+Choose a video or image from your device.
+You can give it a title and select the game.
+This demo displays the upload on this page.
+</p>
+
+
+<div class="upload-fields">
+
+<input
+id="clipTitle"
+type="text"
+placeholder="Clip title"
+>
+
+
+<select id="clipGame">
+
+<option value="Call of Duty">Call of Duty</option>
+<option value="Fortnite">Fortnite</option>
+<option value="Minecraft">Minecraft</option>
+<option value="Apex Legends">Apex Legends</option>
+<option value="EA Sports FC">EA Sports FC</option>
+<option value="GTA">GTA</option>
+<option value="Valorant">Valorant</option>
+
+</select>
+
+</div>
+
+
+<input
+id="clipFile"
+class="file-input"
+type="file"
+accept="video/*,image/*"
+>
+
+
+br>
+
+<button
+class="button"
+id="uploadClipButton"
+type="button"
+>
+Add Clip
+</button>
+
+
+<div
+class="notice"
+id="uploadNotice"
+>
+Your clip has been added below.
+</div>
+
+</div>
+
+
+<div
+class="clips"
+id="uploadedClips"
+>
+
+<div class="empty-clips" id="emptyClips">
+No clips uploaded yet. Be the first!
+</div>
+
+</div>
+
+
+<br>
+
+
 <div class="clips">
+
 
 <div class="clip">
 
@@ -1054,6 +1173,7 @@ groups and forums.
 
 </div>
 
+
 <div class="clip">
 
 <div class="clip-video">▶️</div>
@@ -1064,6 +1184,7 @@ groups and forums.
 </div>
 
 </div>
+
 
 <div class="clip">
 
@@ -1080,8 +1201,6 @@ groups and forums.
 
 </section>
 
-
-<!-- HISTORY -->
 
 <section id="history">
 
@@ -1126,8 +1245,6 @@ See whether you've played with another player before.
 </section>
 
 
-<!-- GROUPS -->
-
 <section id="forums">
 
 <div class="section-heading">
@@ -1167,8 +1284,6 @@ No pressure. Just looking for people to have fun with.
 
 </section>
 
-
-<!-- REPUTATION -->
 
 <section id="reputation">
 
@@ -1305,9 +1420,13 @@ styleMatch &&
 platformMatch &&
 skillMatch
 ) {
+
 player.style.display = "";
+
 } else {
+
 player.style.display = "none";
+
 }
 
 });
@@ -1335,9 +1454,13 @@ search === "" ||
 name.includes(search) ||
 game.includes(search)
 ) {
+
 player.style.display = "";
+
 } else {
+
 player.style.display = "none";
+
 }
 
 });
@@ -1358,7 +1481,9 @@ behavior: "smooth"
 searchInput.addEventListener("keydown", function(event) {
 
 if (event.key === "Enter") {
+
 searchButton.click();
+
 }
 
 });
@@ -1606,36 +1731,28 @@ document.getElementById("createProfileButton");
 createProfileButton.addEventListener("click", function() {
 
 const gamerName =
-document.getElementById("gamerName")
-.value.trim();
+document.getElementById("gamerName").value.trim();
 
 const region =
-document.getElementById("region")
-.value;
+document.getElementById("region").value;
 
 const game =
-document.getElementById("profileGame")
-.value;
+document.getElementById("profileGame").value;
 
 const style =
-document.getElementById("playStyle")
-.value;
+document.getElementById("playStyle").value;
 
 const platform =
-document.getElementById("platform")
-.value;
+document.getElementById("platform").value;
 
 const skill =
-document.getElementById("skillLevel")
-.value;
+document.getElementById("skillLevel").value;
 
 const lookingFor =
-document.getElementById("lookingFor")
-.value.trim();
+document.getElementById("lookingFor").value.trim();
 
 const bio =
-document.getElementById("bio")
-.value.trim();
+document.getElementById("bio").value.trim();
 
 
 if (gamerName === "") {
@@ -1737,6 +1854,149 @@ behavior: "smooth"
 });
 
 
+/* CLIP UPLOAD */
+
+const uploadClipButton =
+document.getElementById("uploadClipButton");
+
+const clipFile =
+document.getElementById("clipFile");
+
+const clipTitle =
+document.getElementById("clipTitle");
+
+const clipGame =
+document.getElementById("clipGame");
+
+const uploadedClips =
+document.getElementById("uploadedClips");
+
+const emptyClips =
+document.getElementById("emptyClips");
+
+const uploadNotice =
+document.getElementById("uploadNotice");
+
+
+uploadClipButton.addEventListener("click", function() {
+
+const file =
+clipFile.files[0];
+
+const title =
+clipTitle.value.trim();
+
+const game =
+clipGame.value;
+
+
+if (!file) {
+
+alert("Please choose a video or image first.");
+
+return;
+
+}
+
+
+if (title === "") {
+
+alert("Please give your clip a title.");
+
+return;
+
+}
+
+
+if (emptyClips) {
+
+emptyClips.style.display = "none";
+
+}
+
+
+const fileURL =
+URL.createObjectURL(file);
+
+const clip =
+document.createElement("div");
+
+clip.className = "clip";
+
+
+let mediaHTML = "";
+
+
+if (file.type.startsWith("video/")) {
+
+mediaHTML = `
+
+<video
+src="${fileURL}"
+controls
+playsinline
+>
+</video>
+
+`;
+
+} else {
+
+mediaHTML = `
+
+<img
+src="${fileURL}"
+alt="${escapeHTML(title)}"
+>
+
+`;
+
+}
+
+
+clip.innerHTML = `
+
+<div class="clip-video">
+
+${mediaHTML}
+
+</div>
+
+<div class="clip-info">
+
+<strong>
+${escapeHTML(title)}
+</strong>
+
+<p>
+${escapeHTML(game)} • Your Profile
+</p>
+
+</div>
+
+`;
+
+
+uploadedClips.prepend(clip);
+
+
+uploadNotice.style.display = "block";
+
+
+clipTitle.value = "";
+
+clipFile.value = "";
+
+
+setTimeout(function() {
+
+uploadNotice.style.display = "none";
+
+}, 3000);
+
+});
+
+
 /* REPORT */
 
 document
@@ -1750,7 +2010,7 @@ document
 });
 
 
-/* SAFELY DISPLAY USER TEXT */
+/* PROTECT USER TEXT */
 
 function escapeHTML(text) {
 
