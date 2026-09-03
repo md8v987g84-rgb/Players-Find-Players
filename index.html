@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Players Find Players</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b0d12;
+    color: white;
+}
+
+header {
+    background: #11151f;
+    border-bottom: 1px solid #252b38;
+    padding: 18px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: bold;
+    color: #61dafb;
+}
+
+nav {
+    display: flex;
+    gap: 18px;
+}
+
+nav a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #61dafb;
+}
+
+.hero {
+    max-width: 1100px;
+    margin: auto;
+    padding: 65px 20px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    color: #61dafb;
+}
+
+.hero p {
+    color: #aab1c0;
+    max-width: 650px;
+    margin: auto;
+    line-height: 1.6;
+}
+
+.search-box {
+    max-width: 650px;
+    margin: 30px auto 0;
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #343b4a;
+    background: #171b25;
+    color: white;
+    font-size: 16px;
+}
+
+.button {
+    background: #61dafb;
+    color: #071018;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #42c7eb;
+}
+
+section {
+    max-width: 1100px;
+    margin: auto;
+    padding: 35px 20px;
+}
+
+.section-title {
+    margin-bottom: 20px;
+}
+
+.section-title h2 {
+    font-size: 27px;
+}
+
+.section-title p {
+    color: #929aaa;
+    margin-top: 7px;
+}
+
+.games {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 15px;
+}
+
+.game {
+    background: #151922;
+    border: 1px solid #272e3b;
+    padding: 25px 15px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.game:hover {
+    border-color: #61dafb;
+    transform: translateY(-3px);
+}
+
+.game-icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.game p {
+    color: #9ca4b5;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.players {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+}
+
+.player {
+    background: #151922;
+    border: 1px solid #272e3b;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.player-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #61dafb, #7567ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.player h3 {
+    font-size: 17px;
+}
+
+.player small {
+    color: #8991a1;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 15px 0;
+}
+
+.tag {
+    background: #202633;
+    color: #b9c2d3;
+    padding: 6px 9px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.reputation {
+    color: #ffd166;
+    margin-bottom: 15px;
+}
+
+.clip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.clip {
+    background: #151922;
+    border: 1px solid #272e3b;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.clip-image {
+    height: 145px;
+    background: linear-gradient(135deg, #252b45, #10131c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+}
+
+.clip-info {
+    padding: 15px;
+}
+
+.clip-info p {
+    color: #9099aa;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.history {
+    background: #151922;
+    border: 1px solid #272e3b;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.history-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 17px;
+    border-bottom: 1px solid #252b36;
+    gap: 10px;
+}
+
+.history-row:last-child {
+    border-bottom: none;
+}
+
+.history-row span {
+    color: #a1a9b9;
+    font-size: 14px;
+}
+
+.forums {
+    display: grid;
+    gap: 12px;
+}
+
+.forum {
+    background: #151922;
+    border: 1px solid #272e3b;
+    border-radius: 10px;
+    padding: 18px;
+}
+
+.forum h3 {
+    margin-bottom: 6px;
+}
+
+.forum p {
+    color: #9099aa;
+    font-size: 13px;
+}
+
+.report {
+    background: #17151a;
+    border: 1px solid #4a3038;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.report h3 {
+    color: #ff758f;
+    margin-bottom: 10px;
+}
+
+.report p {
+    color: #a9a1aa;
+    line-height: 1.5;
+}
+
+footer {
+    margin-top: 50px;
+    padding: 35px 20px;
+    background: #11151f;
+    text-align: center;
+    color: #777f90;
+    font-size: 13px;
+}
+
+@media(max-width: 650px) {
+
+    .header-inner {
+        flex-direction: column;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .history-row {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-inner">
+
+<div class="logo">
+🎮 Players Find Players
+</div>
+
+<nav>
+<a href="#games">Games</a>
+<a href="#players">Players</a>
+<a href="#clips">Clips</a>
+<a href="#forums">Forums</a>
+<a href="#reputation">Reputation</a>
+</nav>
+
+</div>
+
+</header>
+
+
+<main>
+
+<section class="hero">
+
+<h1>Find Your <span>Gaming Squad</span></h1>
+
+<p>
+Whether you're a competitive player, casual gamer,
+achievement hunter or just looking for people to have fun with,
+find players who play the way you do.
+</p>
+
+<div class="search-box">
+
+<input
+type="text"
+placeholder="Search for a game or player..."
+>
+
+<button class="button">
+Find Players
+</button>
+
+</div>
+
+</section>
+
+
+<section id="games">
+
+<div class="section-title">
+
+<h2>🎮 Popular Games</h2>
+
+<p>Find players for the games you love.</p>
+
+</div>
+
+<div class="games">
+
+<div class="game">
+<div class="game-icon">🔫</div>
+<strong>Call of Duty</strong>
+<p>Competitive • Casual • Zombies</p>
+</div>
+
+<div class="game">
+<div class="game-icon">🏆</div>
+<strong>Fortnite</strong>
+<p>Ranked • Casual • Creative</p>
+</div>
+
+<div class="game">
+<div class="game-icon">⚽</div>
+<strong>EA Sports FC</strong>
+<p>Clubs • Ultimate Team</p>
+</div>
+
+<div class="game">
+<div class="game-icon">🏎️</div>
+<strong>Racing Games</strong>
+<p>Competitive • Casual</p>
+</div>
+
+<div class="game">
+<div class="game-icon">⛏️</div>
+<strong>Minecraft</strong>
+<p>Survival • Creative • SMP</p>
+</div>
+
+<div class="game">
+<div class="game-icon">🎯</div>
+<strong>Apex Legends</strong>
+<p>Ranked • Casual</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="players">
+
+<div class="section-title">
+
+<h2>👥 Players Looking For People</h2>
+
+<p>Different games. Different play styles. Find your match.</p>
+
+</div>
+
+<div class="players">
+
+<div class="player">
+
+<div class="player-top">
+
+<div class="avatar">J</div>
+
+<div>
+<h3>JaxGaming</h3>
+<small>Online now</small>
+</div>
+
+</div>
+
+<div class="tags">
+<span class="tag">COD</span>
+<span class="tag">Competitive</span>
+<span class="tag">Ranked</span>
+</div>
+
+<div class="reputation">
+⭐ 4.9 Reputation
+</div>
+
+<button class="button">
+View Profile
+</button>
+
+</div>
+
+
+<div class="player">
+
+<div class="player-top">
+
+<div class="avatar">M</div>
+
+<div>
+<h3>MeganPlays</h3>
+<small>Looking for players</small>
+</div>
+
+</div>
+
+<div class="tags">
+<span class="tag">Minecraft</span>
+<span class="tag">Casual</span>
+<span class="tag">18+</span>
+</div>
+
+<div class="reputation">
+⭐ 4.8 Reputation
+</div>
+
+<button class="button">
+View Profile
+</button>
+
+</div>
+
+
+<div class="player">
+
+<div class="player-top">
+
+<div class="avatar">R</div>
+
+<div>
+<h3>RogueR</h3>
+<small>Online now</small>
+</div>
+
+</div>
+
+<div class="tags">
+<span class="tag">Apex</span>
+<span class="tag">Competitive</span>
+<span class="tag">Ranked</span>
+</div>
+
+<div class="reputation">
+⭐ 4.7 Reputation
+</div>
+
+<button class="button">
+View Profile
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="clips">
+
+<div class="section-title">
+
+<h2>🎥 Gaming Clips</h2>
+
+<p>Show the community what you can do.</p>
+
+</div>
+
+<div class="clip-grid">
+
+<div class="clip">
+
+<div class="clip-image">
+▶️
+</div>
+
+<div class="clip-info">
+<strong>1v4 Clutch!</strong>
+<p>Call of Duty • JaxGaming</p>
+</div>
+
+</div>
+
+
+<div class="clip">
+
+<div class="clip-image">
+▶️
+</div>
+
+<div class="clip-info">
+<strong>Insane Victory</strong>
+<p>Fortnite • MeganPlays</p>
+</div>
+
+</div>
+
+
+<div class="clip">
+
+<div class="clip-image">
+▶️
+</div>
+
+<div class="clip-info">
+<strong>Perfect Sniper Shot</strong>
+<p>Apex Legends • RogueR</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section>
+
+<div class="section-title">
+
+<h2>🤝 Your Gaming History</h2>
+
+<p>See if you've played with someone before.</p>
+
+</div>
+
+<div class="history">
+
+<div class="history-row">
+<strong>Player</strong>
+<strong>Game</strong>
+<strong>Played</strong>
+</div>
+
+<div class="history-row">
+<strong>JaxGaming</strong>
+<span>Call of Duty</span>
+<span>Yesterday</span>
+</div>
+
+<div class="history-row">
+<strong>RogueR</strong>
+<span>Apex Legends</span>
+<span>12 Aug 2026</span>
+</div>
+
+<div class="history-row">
+<strong>MeganPlays</strong>
+<span>Minecraft</span>
+<span>03 Aug 2026</span>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="forums">
+
+<div class="section-title">
+
+<h2>💬 Community Forums & Groups</h2>
+
+<p>Talk about games, find teammates and create groups.</p>
+
+</div>
+
+<div class="forums">
+
+<div class="forum">
+<h3>🔫 Call of Duty LFG</h3>
+<p>Looking for competitive players for ranked tonight.</p>
+</div>
+
+<div class="forum">
+<h3>⛏️ Minecraft Community</h3>
+<p>Find people to join your survival world.</p>
+</div>
+
+<div class="forum">
+<h3>🎮 Casual Gamers</h3>
+<p>No pressure. Just looking for people to have fun with.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section id="reputation">
+
+<div class="section-title">
+
+<h2>⭐ Reputation & Safety</h2>
+
+<p>Help the community know who they are playing with.</p>
+
+</div>
+
+<div class="report">
+
+<h3>🚨 Report Bad Behaviour</h3>
+
+<p>
+Players will be able to report serious behaviour and provide
+evidence such as screenshots, images or gaming clips.
+Reports can then be reviewed before affecting another player's
+reputation.
+</p>
+
+<br>
+
+<button class="button">
+Report a Player
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+<p>🎮 Players Find Players</p>
+
+<p>Find people. Play together. Build your gaming community.</p>
+
+</footer>
+
+</body>
+</html>
