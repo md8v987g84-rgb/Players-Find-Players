@@ -7,6 +7,7 @@
 <title>Players Find Players</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -165,12 +166,20 @@ section {
     margin-bottom: 25px;
 }
 
-select {
+select,
+input,
+textarea {
     background: #1a1f2a;
     color: white;
     border: 1px solid #343b4a;
     border-radius: 7px;
     padding: 12px;
+    width: 100%;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
 }
 
 .players {
@@ -400,6 +409,63 @@ select {
     line-height: 1.6;
 }
 
+.create-profile {
+    background: linear-gradient(135deg, #111d31, #121620);
+    border: 1px solid #34455e;
+    border-radius: 14px;
+    padding: 25px;
+}
+
+.profile-form {
+    display: none;
+    margin-top: 25px;
+}
+
+.profile-form.show {
+    display: block;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: #cbd2df;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.form-note {
+    color: #858e9e;
+    font-size: 13px;
+    margin-top: 6px;
+}
+
+.created-profile {
+    display: none;
+    margin-top: 25px;
+    background: #141821;
+    border: 1px solid #347b59;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.created-profile.show {
+    display: block;
+}
+
 footer {
     background: #11151f;
     border-top: 1px solid #252b38;
@@ -425,11 +491,21 @@ footer {
     .history-row {
         grid-template-columns: 1fr;
     }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group.full {
+        grid-column: auto;
+    }
 }
+
 </style>
 </head>
 
 <body>
+
 
 <header>
 
@@ -443,6 +519,7 @@ footer {
 <a href="#home">Home</a>
 <a href="#games">Games</a>
 <a href="#players">Find Players</a>
+<a href="#create-profile">Create Profile</a>
 <a href="#clips">Clips</a>
 <a href="#history">History</a>
 <a href="#forums">Groups</a>
@@ -455,6 +532,9 @@ footer {
 
 
 <main>
+
+
+<!-- HOME -->
 
 <section class="hero" id="home">
 
@@ -490,6 +570,8 @@ Search complete — matching players are shown below.
 
 </section>
 
+
+<!-- GAMES -->
 
 <section id="games">
 
@@ -556,6 +638,8 @@ Search complete — matching players are shown below.
 </section>
 
 
+<!-- FIND PLAYERS -->
+
 <section id="players">
 
 <div class="section-heading">
@@ -567,6 +651,7 @@ Find people based on how they like to play.
 </p>
 
 </div>
+
 
 <div class="filters">
 
@@ -603,6 +688,7 @@ Find people based on how they like to play.
 
 </div>
 
+
 <div class="players" id="playerList">
 
 
@@ -635,7 +721,11 @@ data-name="JaxGaming">
 ⭐ 4.9 Reputation
 </div>
 
-<button class="button profile-button" data-player="JaxGaming">
+<button
+class="button profile-button"
+data-player="JaxGaming"
+type="button"
+>
 View Profile
 </button>
 
@@ -671,7 +761,11 @@ data-name="MeganPlays">
 ⭐ 4.8 Reputation
 </div>
 
-<button class="button profile-button" data-player="MeganPlays">
+<button
+class="button profile-button"
+data-player="MeganPlays"
+type="button"
+>
 View Profile
 </button>
 
@@ -707,7 +801,11 @@ data-name="RogueR">
 ⭐ 4.7 Reputation
 </div>
 
-<button class="button profile-button" data-player="RogueR">
+<button
+class="button profile-button"
+data-player="RogueR"
+type="button"
+>
 View Profile
 </button>
 
@@ -720,6 +818,215 @@ View Profile
 
 </section>
 
+
+<!-- CREATE PROFILE -->
+
+<section id="create-profile">
+
+<div class="section-heading">
+
+<h2>👤 Create Your Gaming Profile</h2>
+
+<p>
+Tell other gamers who you are and what kind of players you're looking for.
+</p>
+
+</div>
+
+
+<div class="create-profile">
+
+<p style="color:#aab2c2; line-height:1.6;">
+Create a profile to show your games, play style,
+platform, skill level and the type of gaming experience
+you're looking for.
+</p>
+
+<br>
+
+<button
+class="button"
+id="openProfileButton"
+type="button"
+>
+Create Profile
+</button>
+
+
+<div class="profile-form" id="profileForm">
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label for="gamerName">
+Gamer Name *
+</label>
+
+<input
+id="gamerName"
+type="text"
+placeholder="Example: GamingLegend"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="region">
+Region
+</label>
+
+<select id="region">
+
+<option value="UK">United Kingdom</option>
+<option value="Europe">Europe</option>
+<option value="North America">North America</option>
+<option value="South America">South America</option>
+<option value="Asia">Asia</option>
+<option value="Oceania">Oceania</option>
+<option value="Other">Other</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="profileGame">
+Main Game
+</label>
+
+<select id="profileGame">
+
+<option value="Call of Duty">Call of Duty</option>
+<option value="Fortnite">Fortnite</option>
+<option value="EA Sports FC">EA Sports FC</option>
+<option value="Minecraft">Minecraft</option>
+<option value="Apex Legends">Apex Legends</option>
+<option value="GTA">GTA</option>
+<option value="Valorant">Valorant</option>
+<option value="Other">Other</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="playStyle">
+Play Style
+</label>
+
+<select id="playStyle">
+
+<option value="Competitive">Competitive</option>
+<option value="Casual">Casual</option>
+<option value="Social">Social</option>
+<option value="Achievement Hunter">Achievement Hunter</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="platform">
+Platform
+</label>
+
+<select id="platform">
+
+<option value="PlayStation">PlayStation</option>
+<option value="Xbox">Xbox</option>
+<option value="PC">PC</option>
+<option value="Nintendo">Nintendo</option>
+<option value="Mobile">Mobile</option>
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="skillLevel">
+Skill Level
+</label>
+
+<select id="skillLevel">
+
+<option value="Beginner">Beginner</option>
+<option value="Intermediate">Intermediate</option>
+<option value="Advanced">Advanced</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group full">
+
+<label for="lookingFor">
+What are you looking for?
+</label>
+
+<input
+id="lookingFor"
+type="text"
+placeholder="Example: Ranked teammates, casual players, people to have fun with..."
+>
+
+</div>
+
+
+<div class="form-group full">
+
+<label for="bio">
+About You
+</label>
+
+<textarea
+id="bio"
+placeholder="Tell other gamers a little about yourself..."
+></textarea>
+
+</div>
+
+
+<div class="form-group full">
+
+<button
+class="button"
+id="createProfileButton"
+type="button"
+>
+Create My Profile
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+class="created-profile"
+id="createdProfile"
+>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CLIPS -->
 
 <section id="clips">
 
@@ -774,6 +1081,8 @@ groups and forums.
 </section>
 
 
+<!-- HISTORY -->
+
 <section id="history">
 
 <div class="section-heading">
@@ -817,6 +1126,8 @@ See whether you've played with another player before.
 </section>
 
 
+<!-- GROUPS -->
+
 <section id="forums">
 
 <div class="section-heading">
@@ -833,23 +1144,31 @@ Find teammates, discuss games and create communities.
 
 <div class="forum">
 <h3>🔫 Call of Duty LFG</h3>
-<p>Looking for competitive players for ranked tonight.</p>
+<p>
+Looking for competitive players for ranked tonight.
+</p>
 </div>
 
 <div class="forum">
 <h3>⛏️ Minecraft Community</h3>
-<p>Find people to join your survival world.</p>
+<p>
+Find people to join your survival world.
+</p>
 </div>
 
 <div class="forum">
 <h3>🎮 Casual Gamers</h3>
-<p>No pressure. Just looking for people to have fun with.</p>
+<p>
+No pressure. Just looking for people to have fun with.
+</p>
 </div>
 
 </div>
 
 </section>
 
+
+<!-- REPUTATION -->
 
 <section id="reputation">
 
@@ -871,10 +1190,11 @@ Reputation helps players know who they are playing with.
 ⭐ 4.8 / 5
 </div>
 
-<p>
+<p style="color:#aab2c2; line-height:1.6;">
 Reputation will eventually be based on genuine
 interactions with other players.
 </p>
+
 
 <div class="report">
 
@@ -897,9 +1217,12 @@ type="button"
 Report a Player
 </button>
 
-<div class="notice" id="reportNotice">
-The reporting system will be connected to player accounts
-and evidence uploads in a later stage.
+<div
+class="notice"
+id="reportNotice"
+>
+The reporting system will be connected to player
+accounts and evidence uploads in a later stage.
 </div>
 
 </div>
@@ -926,284 +1249,519 @@ Find people. Play together. Build your gaming community.
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    const searchButton =
-        document.getElementById("findPlayersButton");
 
-    const searchInput =
-        document.getElementById("mainSearch");
+/* FIND PLAYERS */
 
-    const searchNotice =
-        document.getElementById("searchNotice");
+const searchButton =
+document.getElementById("findPlayersButton");
 
-    const players =
-        document.querySelectorAll(".player");
+const searchInput =
+document.getElementById("mainSearch");
 
-    const gameFilter =
-        document.getElementById("gameFilter");
+const searchNotice =
+document.getElementById("searchNotice");
 
-    const styleFilter =
-        document.getElementById("styleFilter");
+const players =
+document.querySelectorAll(".player");
 
-    const platformFilter =
-        document.getElementById("platformFilter");
 
-    const skillFilter =
-        document.getElementById("skillFilter");
+function filterPlayers() {
 
+const game =
+document.getElementById("gameFilter").value;
 
-    function filterPlayers() {
+const style =
+document.getElementById("styleFilter").value;
 
-        const game = gameFilter.value;
-        const style = styleFilter.value;
-        const platform = platformFilter.value;
-        const skill = skillFilter.value;
+const platform =
+document.getElementById("platformFilter").value;
 
-        players.forEach(function(player) {
+const skill =
+document.getElementById("skillFilter").value;
 
-            const gameMatch =
-                game === "all" ||
-                player.dataset.game === game;
 
-            const styleMatch =
-                style === "all" ||
-                player.dataset.style === style;
+players.forEach(function(player) {
 
-            const platformMatch =
-                platform === "all" ||
-                player.dataset.platform === platform;
+const gameMatch =
+game === "all" ||
+player.dataset.game === game;
 
-            const skillMatch =
-                skill === "all" ||
-                player.dataset.skill === skill;
+const styleMatch =
+style === "all" ||
+player.dataset.style === style;
 
-            if (
-                gameMatch &&
-                styleMatch &&
-                platformMatch &&
-                skillMatch
-            ) {
-                player.style.display = "";
-            } else {
-                player.style.display = "none";
-            }
+const platformMatch =
+platform === "all" ||
+player.dataset.platform === platform;
 
-        });
-    }
+const skillMatch =
+skill === "all" ||
+player.dataset.skill === skill;
 
 
-    searchButton.addEventListener("click", function() {
+if (
+gameMatch &&
+styleMatch &&
+platformMatch &&
+skillMatch
+) {
+player.style.display = "";
+} else {
+player.style.display = "none";
+}
 
-        const search =
-            searchInput.value.trim().toLowerCase();
+});
 
-        players.forEach(function(player) {
+}
 
-            const name =
-                player.dataset.name.toLowerCase();
 
-            const game =
-                player.dataset.game.toLowerCase();
+searchButton.addEventListener("click", function() {
 
-            if (
-                search === "" ||
-                name.includes(search) ||
-                game.includes(search)
-            ) {
-                player.style.display = "";
-            } else {
-                player.style.display = "none";
-            }
+const search =
+searchInput.value.trim().toLowerCase();
 
-        });
 
-        searchNotice.style.display = "block";
+players.forEach(function(player) {
 
-        document
-            .getElementById("players")
-            .scrollIntoView({
-                behavior: "smooth"
-            });
+const name =
+player.dataset.name.toLowerCase();
 
-    });
+const game =
+player.dataset.game.toLowerCase();
 
 
-    searchInput.addEventListener("keydown", function(event) {
+if (
+search === "" ||
+name.includes(search) ||
+game.includes(search)
+) {
+player.style.display = "";
+} else {
+player.style.display = "none";
+}
 
-        if (event.key === "Enter") {
-            searchButton.click();
-        }
+});
 
-    });
 
+searchNotice.style.display = "block";
 
-    gameFilter.addEventListener("change", filterPlayers);
-    styleFilter.addEventListener("change", filterPlayers);
-    platformFilter.addEventListener("change", filterPlayers);
-    skillFilter.addEventListener("change", filterPlayers);
 
+document
+.getElementById("players")
+.scrollIntoView({
+behavior: "smooth"
+});
 
-    document.querySelectorAll(".game").forEach(function(game) {
+});
 
-        game.addEventListener("click", function() {
 
-            const selectedGame =
-                game.dataset.game;
+searchInput.addEventListener("keydown", function(event) {
 
-            if (selectedGame === "all") {
-                gameFilter.value = "all";
-            } else {
-                gameFilter.value = selectedGame;
-            }
+if (event.key === "Enter") {
+searchButton.click();
+}
 
-            filterPlayers();
+});
 
-            document
-                .getElementById("players")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
 
-        });
+document
+.getElementById("gameFilter")
+.addEventListener("change", filterPlayers);
 
-    });
+document
+.getElementById("styleFilter")
+.addEventListener("change", filterPlayers);
 
+document
+.getElementById("platformFilter")
+.addEventListener("change", filterPlayers);
 
-    document.querySelectorAll(".profile-button")
-        .forEach(function(button) {
+document
+.getElementById("skillFilter")
+.addEventListener("change", filterPlayers);
 
-        button.addEventListener("click", function() {
 
-            const player =
-                button.dataset.player;
+/* GAME BUTTONS */
 
-            const profile =
-                document.getElementById("profileBox");
+document.querySelectorAll(".game")
+.forEach(function(game) {
 
-            if (player === "JaxGaming") {
+game.addEventListener("click", function() {
 
-                profile.innerHTML = `
-                    <div class="profile-header">
-                        <div class="avatar">J</div>
-                        <div>
-                            <h3>JaxGaming</h3>
-                            <div class="online">● Online now</div>
-                        </div>
-                    </div>
+const selectedGame =
+game.dataset.game;
 
-                    <p>
-                        Competitive Call of Duty player
-                        looking for ranked teammates.
-                    </p>
+document
+.getElementById("gameFilter")
+.value = selectedGame;
 
-                    <br>
+filterPlayers();
 
-                    <strong>Games:</strong>
-                    <p>Call of Duty • Apex Legends</p>
+document
+.getElementById("players")
+.scrollIntoView({
+behavior: "smooth"
+});
 
-                    <br>
+});
 
-                    <strong>Play style:</strong>
-                    <p>Competitive • Ranked</p>
+});
 
-                    <br>
 
-                    <strong>Reputation:</strong>
-                    <p>⭐ 4.9 / 5</p>
-                `;
+/* PLAYER PROFILES */
 
-            }
+document
+.querySelectorAll(".profile-button")
+.forEach(function(button) {
 
-            if (player === "MeganPlays") {
+button.addEventListener("click", function() {
 
-                profile.innerHTML = `
-                    <div class="profile-header">
-                        <div class="avatar">M</div>
-                        <div>
-                            <h3>MeganPlays</h3>
-                            <div class="online">
-                                ● Looking for players
-                            </div>
-                        </div>
-                    </div>
+const player =
+button.dataset.player;
 
-                    <p>
-                        Casual Minecraft player looking
-                        for friendly people to build
-                        and explore with.
-                    </p>
+const profile =
+document.getElementById("profileBox");
 
-                    <br>
 
-                    <strong>Games:</strong>
-                    <p>Minecraft • Fortnite</p>
+if (player === "JaxGaming") {
 
-                    <br>
+profile.innerHTML = `
 
-                    <strong>Play style:</strong>
-                    <p>Casual • Social</p>
+<div class="profile-header">
 
-                    <br>
+<div class="avatar">J</div>
 
-                    <strong>Reputation:</strong>
-                    <p>⭐ 4.8 / 5</p>
-                `;
+<div>
+<h3>JaxGaming</h3>
+<div class="online">● Online now</div>
+</div>
 
-            }
+</div>
 
-            if (player === "RogueR") {
+<p>
+Competitive Call of Duty player looking
+for ranked teammates.
+</p>
 
-                profile.innerHTML = `
-                    <div class="profile-header">
-                        <div class="avatar">R</div>
-                        <div>
-                            <h3>RogueR</h3>
-                            <div class="online">● Online now</div>
-                        </div>
-                    </div>
+<br>
 
-                    <p>
-                        Competitive Apex Legends player
-                        looking for ranked teammates.
-                    </p>
+<strong>Games:</strong>
+<p>Call of Duty • Apex Legends</p>
 
-                    <br>
+<br>
 
-                    <strong>Games:</strong>
-                    <p>Apex Legends • Call of Duty</p>
+<strong>Play Style:</strong>
+<p>Competitive • Ranked</p>
 
-                    <br>
+<br>
 
-                    <strong>Play style:</strong>
-                    <p>Competitive • Ranked</p>
+<strong>Platform:</strong>
+<p>PlayStation</p>
 
-                    <br>
+<br>
 
-                    <strong>Reputation:</strong>
-                    <p>⭐ 4.7 / 5</p>
-                `;
+<strong>Reputation:</strong>
+<p>⭐ 4.9 / 5</p>
 
-            }
+`;
 
-            profile.classList.add("show");
+}
 
-            profile.scrollIntoView({
-                behavior: "smooth"
-            });
 
-        });
+if (player === "MeganPlays") {
 
-    });
+profile.innerHTML = `
 
+<div class="profile-header">
 
-    document
-        .getElementById("reportButton")
-        .addEventListener("click", function() {
+<div class="avatar">M</div>
 
-            document
-                .getElementById("reportNotice")
-                .style.display = "block";
+<div>
+<h3>MeganPlays</h3>
+<div class="online">
+● Looking for players
+</div>
+</div>
 
-        });
+</div>
+
+<p>
+Casual Minecraft player looking for
+friendly people to build and explore with.
+</p>
+
+<br>
+
+<strong>Games:</strong>
+<p>Minecraft • Fortnite</p>
+
+<br>
+
+<strong>Play Style:</strong>
+<p>Casual • Social</p>
+
+<br>
+
+<strong>Platform:</strong>
+<p>PC</p>
+
+<br>
+
+<strong>Reputation:</strong>
+<p>⭐ 4.8 / 5</p>
+
+`;
+
+}
+
+
+if (player === "RogueR") {
+
+profile.innerHTML = `
+
+<div class="profile-header">
+
+<div class="avatar">R</div>
+
+<div>
+<h3>RogueR</h3>
+<div class="online">● Online now</div>
+</div>
+
+</div>
+
+<p>
+Competitive Apex Legends player looking
+for ranked teammates.
+</p>
+
+<br>
+
+<strong>Games:</strong>
+<p>Apex Legends • Call of Duty</p>
+
+<br>
+
+<strong>Play Style:</strong>
+<p>Competitive • Ranked</p>
+
+<br>
+
+<strong>Platform:</strong>
+<p>Xbox</p>
+
+<br>
+
+<strong>Reputation:</strong>
+<p>⭐ 4.7 / 5</p>
+
+`;
+
+}
+
+
+profile.classList.add("show");
+
+profile.scrollIntoView({
+behavior: "smooth"
+});
+
+});
+
+});
+
+
+/* CREATE PROFILE */
+
+const openProfileButton =
+document.getElementById("openProfileButton");
+
+const profileForm =
+document.getElementById("profileForm");
+
+
+openProfileButton.addEventListener("click", function() {
+
+profileForm.classList.toggle("show");
+
+if (profileForm.classList.contains("show")) {
+
+openProfileButton.textContent =
+"Close Profile Form";
+
+} else {
+
+openProfileButton.textContent =
+"Create Profile";
+
+}
+
+});
+
+
+const createProfileButton =
+document.getElementById("createProfileButton");
+
+
+createProfileButton.addEventListener("click", function() {
+
+const gamerName =
+document.getElementById("gamerName")
+.value.trim();
+
+const region =
+document.getElementById("region")
+.value;
+
+const game =
+document.getElementById("profileGame")
+.value;
+
+const style =
+document.getElementById("playStyle")
+.value;
+
+const platform =
+document.getElementById("platform")
+.value;
+
+const skill =
+document.getElementById("skillLevel")
+.value;
+
+const lookingFor =
+document.getElementById("lookingFor")
+.value.trim();
+
+const bio =
+document.getElementById("bio")
+.value.trim();
+
+
+if (gamerName === "") {
+
+alert("Please enter your gamer name.");
+
+return;
+
+}
+
+
+const firstLetter =
+gamerName.charAt(0).toUpperCase();
+
+
+const createdProfile =
+document.getElementById("createdProfile");
+
+
+createdProfile.innerHTML = `
+
+<div class="profile-header">
+
+<div class="avatar">
+${firstLetter}
+</div>
+
+<div>
+
+<h3>${escapeHTML(gamerName)}</h3>
+
+<div class="online">
+● New Player Profile
+</div>
+
+</div>
+
+</div>
+
+
+<p>
+${escapeHTML(
+bio ||
+"Welcome to my Players Find Players profile!"
+)}
+</p>
+
+<br>
+
+<strong>Game:</strong>
+<p>${escapeHTML(game)}</p>
+
+<br>
+
+<strong>Play Style:</strong>
+<p>${escapeHTML(style)}</p>
+
+<br>
+
+<strong>Skill Level:</strong>
+<p>${escapeHTML(skill)}</p>
+
+<br>
+
+<strong>Platform:</strong>
+<p>${escapeHTML(platform)}</p>
+
+<br>
+
+<strong>Region:</strong>
+<p>${escapeHTML(region)}</p>
+
+<br>
+
+<strong>Looking For:</strong>
+<p>
+${escapeHTML(
+lookingFor ||
+"Looking for other gamers to play with."
+)}
+</p>
+
+<br>
+
+<div class="rating">
+⭐ New Profile — Reputation not yet established
+</div>
+
+`;
+
+
+createdProfile.classList.add("show");
+
+
+createdProfile.scrollIntoView({
+behavior: "smooth"
+});
+
+});
+
+
+/* REPORT */
+
+document
+.getElementById("reportButton")
+.addEventListener("click", function() {
+
+document
+.getElementById("reportNotice")
+.style.display = "block";
+
+});
+
+
+/* SAFELY DISPLAY USER TEXT */
+
+function escapeHTML(text) {
+
+const div =
+document.createElement("div");
+
+div.textContent = text;
+
+return div.innerHTML;
+
+}
 
 });
 
