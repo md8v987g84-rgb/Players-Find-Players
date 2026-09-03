@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Players Find Players</title>
 
 <style>
@@ -19,7 +20,7 @@ html {
 body {
     font-family: Arial, Helvetica, sans-serif;
     background: #090b10;
-    color: #fff;
+    color: white;
 }
 
 header {
@@ -65,8 +66,7 @@ nav a:hover {
 }
 
 .hero {
-    background:
-        radial-gradient(circle at top, #182642 0%, #090b10 65%);
+    background: radial-gradient(circle at top, #182642 0%, #090b10 65%);
     text-align: center;
     padding: 80px 20px;
 }
@@ -141,6 +141,17 @@ section {
 .section-heading p {
     color: #9099aa;
     margin-top: 8px;
+}
+
+.notice {
+    display: none;
+    max-width: 700px;
+    margin: 15px auto 0;
+    padding: 14px;
+    border-radius: 8px;
+    background: #183b2b;
+    border: 1px solid #347b59;
+    color: #b9f5d3;
 }
 
 .filters {
@@ -389,16 +400,6 @@ select {
     line-height: 1.6;
 }
 
-.notice {
-    display: none;
-    background: #183b2b;
-    border: 1px solid #347b59;
-    color: #b9f5d3;
-    padding: 14px;
-    border-radius: 8px;
-    margin-top: 15px;
-}
-
 footer {
     background: #11151f;
     border-top: 1px solid #252b38;
@@ -408,6 +409,7 @@ footer {
 }
 
 @media(max-width: 750px) {
+
     .header-inner {
         flex-direction: column;
     }
@@ -430,460 +432,479 @@ footer {
 <body>
 
 <header>
-    <div class="header-inner">
 
-        <div class="logo">🎮 Players Find Players</div>
+<div class="header-inner">
 
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#games">Games</a>
-            <a href="#players">Find Players</a>
-            <a href="#clips">Clips</a>
-            <a href="#forums">Groups</a>
-            <a href="#reputation">Reputation</a>
-        </nav>
+<div class="logo">
+🎮 Players Find Players
+</div>
 
-    </div>
+<nav>
+<a href="#home">Home</a>
+<a href="#games">Games</a>
+<a href="#players">Find Players</a>
+<a href="#clips">Clips</a>
+<a href="#history">History</a>
+<a href="#forums">Groups</a>
+<a href="#reputation">Reputation</a>
+</nav>
+
+</div>
+
 </header>
+
 
 <main>
 
-<!-- HOME -->
-
 <section class="hero" id="home">
 
-    <h1>Find Your <span>Gaming Squad</span></h1>
+<h1>Find Your <span>Gaming Squad</span></h1>
 
-    <p>
-        Find gamers who play the games you love,
-        whether you're competitive, casual, social,
-        achievement hunting or just looking for people to have fun with.
-    </p>
+<p>
+Find gamers who play the games you love,
+whether you're competitive, casual, social,
+achievement hunting or just looking for people to have fun with.
+</p>
 
-    <div class="search">
+<div class="search">
 
-        <input
-            id="mainSearch"
-            type="text"
-            placeholder="Search for a game or player..."
-        >
+<input
+id="mainSearch"
+type="text"
+placeholder="Search for a game or player..."
+>
 
-        <button class="button" onclick="searchPlayers()">
-            Find Players
-        </button>
+<button
+class="button"
+id="findPlayersButton"
+type="button"
+>
+Find Players
+</button>
 
-    </div>
+</div>
 
-    <div class="notice" id="searchNotice">
-        Showing players matching your search.
-    </div>
+<div class="notice" id="searchNotice">
+Search complete — matching players are shown below.
+</div>
 
 </section>
 
-
-<!-- GAMES -->
 
 <section id="games">
 
-    <div class="section-heading">
-        <h2>🎮 Games</h2>
-        <p>Choose a game and find people who play it.</p>
-    </div>
+<div class="section-heading">
 
-    <div class="games">
+<h2>🎮 Games</h2>
 
-        <div class="game" onclick="chooseGame('Call of Duty')">
-            <div class="game-icon">🔫</div>
-            <strong>Call of Duty</strong>
-            <small>Competitive • Casual • Zombies</small>
-        </div>
+<p>Choose a game and find people who play it.</p>
 
-        <div class="game" onclick="chooseGame('Fortnite')">
-            <div class="game-icon">🏆</div>
-            <strong>Fortnite</strong>
-            <small>Ranked • Casual • Creative</small>
-        </div>
+</div>
 
-        <div class="game" onclick="chooseGame('EA Sports FC')">
-            <div class="game-icon">⚽</div>
-            <strong>EA Sports FC</strong>
-            <small>Clubs • Ultimate Team</small>
-        </div>
+<div class="games">
 
-        <div class="game" onclick="chooseGame('Minecraft')">
-            <div class="game-icon">⛏️</div>
-            <strong>Minecraft</strong>
-            <small>Survival • Creative • SMP</small>
-        </div>
+<div class="game" data-game="Call of Duty">
+<div class="game-icon">🔫</div>
+<strong>Call of Duty</strong>
+<small>Competitive • Casual • Zombies</small>
+</div>
 
-        <div class="game" onclick="chooseGame('Apex Legends')">
-            <div class="game-icon">🎯</div>
-            <strong>Apex Legends</strong>
-            <small>Ranked • Casual</small>
-        </div>
+<div class="game" data-game="Fortnite">
+<div class="game-icon">🏆</div>
+<strong>Fortnite</strong>
+<small>Ranked • Casual • Creative</small>
+</div>
 
-        <div class="game" onclick="chooseGame('GTA')">
-            <div class="game-icon">🚗</div>
-            <strong>GTA</strong>
-            <small>Online • Roleplay • Casual</small>
-        </div>
+<div class="game" data-game="EA Sports FC">
+<div class="game-icon">⚽</div>
+<strong>EA Sports FC</strong>
+<small>Clubs • Ultimate Team</small>
+</div>
 
-        <div class="game" onclick="chooseGame('Valorant')">
-            <div class="game-icon">🎯</div>
-            <strong>Valorant</strong>
-            <small>Competitive • Ranked</small>
-        </div>
+<div class="game" data-game="Minecraft">
+<div class="game-icon">⛏️</div>
+<strong>Minecraft</strong>
+<small>Survival • Creative • SMP</small>
+</div>
 
-        <div class="game" onclick="chooseGame('Other')">
-            <div class="game-icon">➕</div>
-            <strong>More Games</strong>
-            <small>Discover more</small>
-        </div>
+<div class="game" data-game="Apex Legends">
+<div class="game-icon">🎯</div>
+<strong>Apex Legends</strong>
+<small>Ranked • Casual</small>
+</div>
 
-    </div>
+<div class="game" data-game="GTA">
+<div class="game-icon">🚗</div>
+<strong>GTA</strong>
+<small>Online • Roleplay • Casual</small>
+</div>
+
+<div class="game" data-game="Valorant">
+<div class="game-icon">🎯</div>
+<strong>Valorant</strong>
+<small>Competitive • Ranked</small>
+</div>
+
+<div class="game" data-game="all">
+<div class="game-icon">➕</div>
+<strong>More Games</strong>
+<small>Discover more</small>
+</div>
+
+</div>
 
 </section>
 
-
-<!-- FIND PLAYERS -->
 
 <section id="players">
 
-    <div class="section-heading">
+<div class="section-heading">
 
-        <h2>🔎 Find Players</h2>
+<h2>🔎 Find Players</h2>
 
-        <p>
-            Find people based on how they like to play.
-        </p>
+<p>
+Find people based on how they like to play.
+</p>
 
-    </div>
+</div>
 
-    <div class="filters">
+<div class="filters">
 
-        <select id="gameFilter" onchange="filterPlayers()">
-            <option value="all">All Games</option>
-            <option value="Call of Duty">Call of Duty</option>
-            <option value="Fortnite">Fortnite</option>
-            <option value="Minecraft">Minecraft</option>
-            <option value="Apex Legends">Apex Legends</option>
-            <option value="EA Sports FC">EA Sports FC</option>
-        </select>
+<select id="gameFilter">
+<option value="all">All Games</option>
+<option value="Call of Duty">Call of Duty</option>
+<option value="Fortnite">Fortnite</option>
+<option value="Minecraft">Minecraft</option>
+<option value="Apex Legends">Apex Legends</option>
+<option value="EA Sports FC">EA Sports FC</option>
+</select>
 
-        <select id="styleFilter" onchange="filterPlayers()">
-            <option value="all">All Play Styles</option>
-            <option value="Competitive">Competitive</option>
-            <option value="Casual">Casual</option>
-            <option value="Social">Social</option>
-            <option value="Achievement Hunter">Achievement Hunter</option>
-        </select>
+<select id="styleFilter">
+<option value="all">All Play Styles</option>
+<option value="Competitive">Competitive</option>
+<option value="Casual">Casual</option>
+<option value="Social">Social</option>
+<option value="Achievement Hunter">Achievement Hunter</option>
+</select>
 
-        <select id="platformFilter" onchange="filterPlayers()">
-            <option value="all">All Platforms</option>
-            <option value="PlayStation">PlayStation</option>
-            <option value="Xbox">Xbox</option>
-            <option value="PC">PC</option>
-        </select>
+<select id="platformFilter">
+<option value="all">All Platforms</option>
+<option value="PlayStation">PlayStation</option>
+<option value="Xbox">Xbox</option>
+<option value="PC">PC</option>
+</select>
 
-        <select id="skillFilter" onchange="filterPlayers()">
-            <option value="all">All Skill Levels</option>
-            <option value="Beginner">Beginner</option>
-            <option value="Intermediate">Intermediate</option>
-            <option value="Advanced">Advanced</option>
-        </select>
+<select id="skillFilter">
+<option value="all">All Skill Levels</option>
+<option value="Beginner">Beginner</option>
+<option value="Intermediate">Intermediate</option>
+<option value="Advanced">Advanced</option>
+</select>
 
-    </div>
+</div>
 
-    <div class="players" id="playerList">
-
-        <div class="player"
-             data-game="Call of Duty"
-             data-style="Competitive"
-             data-platform="PlayStation"
-             data-skill="Advanced"
-             data-name="JaxGaming">
-
-            <div class="player-top">
-                <div class="avatar">J</div>
-                <div>
-                    <h3>JaxGaming</h3>
-                    <div class="online">● Online now</div>
-                </div>
-            </div>
-
-            <div class="tags">
-                <span class="tag">Call of Duty</span>
-                <span class="tag">Competitive</span>
-                <span class="tag">PlayStation</span>
-                <span class="tag">Advanced</span>
-            </div>
-
-            <div class="rating">⭐ 4.9 Reputation</div>
-
-            <button class="button" onclick="viewProfile('JaxGaming')">
-                View Profile
-            </button>
-
-        </div>
+<div class="players" id="playerList">
 
 
-        <div class="player"
-             data-game="Minecraft"
-             data-style="Casual"
-             data-platform="PC"
-             data-skill="Intermediate"
-             data-name="MeganPlays">
+<div class="player"
+data-game="Call of Duty"
+data-style="Competitive"
+data-platform="PlayStation"
+data-skill="Advanced"
+data-name="JaxGaming">
 
-            <div class="player-top">
-                <div class="avatar">M</div>
-                <div>
-                    <h3>MeganPlays</h3>
-                    <div class="online">● Looking for players</div>
-                </div>
-            </div>
+<div class="player-top">
 
-            <div class="tags">
-                <span class="tag">Minecraft</span>
-                <span class="tag">Casual</span>
-                <span class="tag">PC</span>
-                <span class="tag">Intermediate</span>
-            </div>
+<div class="avatar">J</div>
 
-            <div class="rating">⭐ 4.8 Reputation</div>
+<div>
+<h3>JaxGaming</h3>
+<div class="online">● Online now</div>
+</div>
 
-            <button class="button" onclick="viewProfile('MeganPlays')">
-                View Profile
-            </button>
+</div>
 
-        </div>
+<div class="tags">
+<span class="tag">Call of Duty</span>
+<span class="tag">Competitive</span>
+<span class="tag">PlayStation</span>
+<span class="tag">Advanced</span>
+</div>
+
+<div class="rating">
+⭐ 4.9 Reputation
+</div>
+
+<button class="button profile-button" data-player="JaxGaming">
+View Profile
+</button>
+
+</div>
 
 
-        <div class="player"
-             data-game="Apex Legends"
-             data-style="Competitive"
-             data-platform="Xbox"
-             data-skill="Advanced"
-             data-name="RogueR">
+<div class="player"
+data-game="Minecraft"
+data-style="Casual"
+data-platform="PC"
+data-skill="Intermediate"
+data-name="MeganPlays">
 
-            <div class="player-top">
-                <div class="avatar">R</div>
-                <div>
-                    <h3>RogueR</h3>
-                    <div class="online">● Online now</div>
-                </div>
-            </div>
+<div class="player-top">
 
-            <div class="tags">
-                <span class="tag">Apex Legends</span>
-                <span class="tag">Competitive</span>
-                <span class="tag">Xbox</span>
-                <span class="tag">Advanced</span>
-            </div>
+<div class="avatar">M</div>
 
-            <div class="rating">⭐ 4.7 Reputation</div>
+<div>
+<h3>MeganPlays</h3>
+<div class="online">● Looking for players</div>
+</div>
 
-            <button class="button" onclick="viewProfile('RogueR')">
-                View Profile
-            </button>
+</div>
 
-        </div>
+<div class="tags">
+<span class="tag">Minecraft</span>
+<span class="tag">Casual</span>
+<span class="tag">PC</span>
+<span class="tag">Intermediate</span>
+</div>
 
-    </div>
+<div class="rating">
+⭐ 4.8 Reputation
+</div>
 
-    <div class="profile" id="profileBox"></div>
+<button class="button profile-button" data-player="MeganPlays">
+View Profile
+</button>
+
+</div>
+
+
+<div class="player"
+data-game="Apex Legends"
+data-style="Competitive"
+data-platform="Xbox"
+data-skill="Advanced"
+data-name="RogueR">
+
+<div class="player-top">
+
+<div class="avatar">R</div>
+
+<div>
+<h3>RogueR</h3>
+<div class="online">● Online now</div>
+</div>
+
+</div>
+
+<div class="tags">
+<span class="tag">Apex Legends</span>
+<span class="tag">Competitive</span>
+<span class="tag">Xbox</span>
+<span class="tag">Advanced</span>
+</div>
+
+<div class="rating">
+⭐ 4.7 Reputation
+</div>
+
+<button class="button profile-button" data-player="RogueR">
+View Profile
+</button>
+
+</div>
+
+</div>
+
+
+<div class="profile" id="profileBox"></div>
 
 </section>
 
-
-<!-- CLIPS -->
 
 <section id="clips">
 
-    <div class="section-heading">
+<div class="section-heading">
 
-        <h2>🎥 Gaming Clips</h2>
+<h2>🎥 Gaming Clips</h2>
 
-        <p>
-            Share your best moments on your profile,
-            groups and forums.
-        </p>
+<p>
+Share your best moments on your profile,
+groups and forums.
+</p>
 
-    </div>
+</div>
 
-    <div class="clips">
+<div class="clips">
 
-        <div class="clip">
+<div class="clip">
 
-            <div class="clip-video">▶️</div>
+<div class="clip-video">▶️</div>
 
-            <div class="clip-info">
-                <strong>1v4 Clutch!</strong>
-                <p>Call of Duty • JaxGaming</p>
-            </div>
+<div class="clip-info">
+<strong>1v4 Clutch!</strong>
+<p>Call of Duty • JaxGaming</p>
+</div>
 
-        </div>
+</div>
 
-        <div class="clip">
+<div class="clip">
 
-            <div class="clip-video">▶️</div>
+<div class="clip-video">▶️</div>
 
-            <div class="clip-info">
-                <strong>Insane Victory</strong>
-                <p>Fortnite • MeganPlays</p>
-            </div>
+<div class="clip-info">
+<strong>Insane Victory</strong>
+<p>Fortnite • MeganPlays</p>
+</div>
 
-        </div>
+</div>
 
-        <div class="clip">
+<div class="clip">
 
-            <div class="clip-video">▶️</div>
+<div class="clip-video">▶️</div>
 
-            <div class="clip-info">
-                <strong>Perfect Sniper Shot</strong>
-                <p>Apex Legends • RogueR</p>
-            </div>
+<div class="clip-info">
+<strong>Perfect Sniper Shot</strong>
+<p>Apex Legends • RogueR</p>
+</div>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </section>
 
-
-<!-- GAMING HISTORY -->
 
 <section id="history">
 
-    <div class="section-heading">
+<div class="section-heading">
 
-        <h2>🤝 Played Together</h2>
+<h2>🤝 Played Together</h2>
 
-        <p>
-            See whether you've played with another player before.
-        </p>
+<p>
+See whether you've played with another player before.
+</p>
 
-    </div>
+</div>
 
-    <div class="history">
+<div class="history">
 
-        <div class="history-row">
-            <strong>Player</strong>
-            <strong>Game</strong>
-            <strong>When</strong>
-        </div>
+<div class="history-row">
+<strong>Player</strong>
+<strong>Game</strong>
+<strong>When</strong>
+</div>
 
-        <div class="history-row">
-            <strong>JaxGaming</strong>
-            <span>Call of Duty</span>
-            <span>Yesterday</span>
-        </div>
+<div class="history-row">
+<strong>JaxGaming</strong>
+<span>Call of Duty</span>
+<span>Yesterday</span>
+</div>
 
-        <div class="history-row">
-            <strong>RogueR</strong>
-            <span>Apex Legends</span>
-            <span>12 Aug 2026</span>
-        </div>
+<div class="history-row">
+<strong>RogueR</strong>
+<span>Apex Legends</span>
+<span>12 Aug 2026</span>
+</div>
 
-        <div class="history-row">
-            <strong>MeganPlays</strong>
-            <span>Minecraft</span>
-            <span>03 Aug 2026</span>
-        </div>
+<div class="history-row">
+<strong>MeganPlays</strong>
+<span>Minecraft</span>
+<span>03 Aug 2026</span>
+</div>
 
-    </div>
+</div>
 
 </section>
 
-
-<!-- FORUMS -->
 
 <section id="forums">
 
-    <div class="section-heading">
+<div class="section-heading">
 
-        <h2>💬 Groups & Forums</h2>
+<h2>💬 Groups & Forums</h2>
 
-        <p>
-            Find teammates, discuss games and create communities.
-        </p>
+<p>
+Find teammates, discuss games and create communities.
+</p>
 
-    </div>
+</div>
 
-    <div class="forums">
+<div class="forums">
 
-        <div class="forum">
-            <h3>🔫 Call of Duty LFG</h3>
-            <p>Looking for competitive players for ranked tonight.</p>
-        </div>
+<div class="forum">
+<h3>🔫 Call of Duty LFG</h3>
+<p>Looking for competitive players for ranked tonight.</p>
+</div>
 
-        <div class="forum">
-            <h3>⛏️ Minecraft Community</h3>
-            <p>Find people to join your survival world.</p>
-        </div>
+<div class="forum">
+<h3>⛏️ Minecraft Community</h3>
+<p>Find people to join your survival world.</p>
+</div>
 
-        <div class="forum">
-            <h3>🎮 Casual Gamers</h3>
-            <p>No pressure. Just looking for people to have fun with.</p>
-        </div>
+<div class="forum">
+<h3>🎮 Casual Gamers</h3>
+<p>No pressure. Just looking for people to have fun with.</p>
+</div>
 
-    </div>
+</div>
 
 </section>
 
 
-<!-- REPUTATION -->
-
 <section id="reputation">
 
-    <div class="section-heading">
+<div class="section-heading">
 
-        <h2>⭐ Player Reputation</h2>
+<h2>⭐ Player Reputation</h2>
 
-        <p>
-            Reputation helps players know who they are playing with.
-        </p>
+<p>
+Reputation helps players know who they are playing with.
+</p>
 
-    </div>
+</div>
 
-    <div class="reputation-box">
+<div class="reputation-box">
 
-        <strong>Example Player Reputation</strong>
+<strong>Example Player Reputation</strong>
 
-        <div class="big-rating">
-            ⭐ 4.8 / 5
-        </div>
+<div class="big-rating">
+⭐ 4.8 / 5
+</div>
 
-        <p>
-            Reputation will eventually be based on genuine
-            interactions with other players.
-        </p>
+<p>
+Reputation will eventually be based on genuine
+interactions with other players.
+</p>
 
-        <div class="report">
+<div class="report">
 
-            <h3>🚨 Report Bad Behaviour</h3>
+<h3>🚨 Report Bad Behaviour</h3>
 
-            <p>
-                Players will be able to report serious behaviour
-                and attach screenshots, images or video evidence.
-                Reports can then be reviewed before affecting
-                another player's reputation.
-            </p>
+<p>
+Players will be able to report serious behaviour
+and attach screenshots, images or video evidence.
+Reports can then be reviewed before affecting
+another player's reputation.
+</p>
 
-            <br>
+<br>
 
-            <button class="button secondary"
-                    onclick="showReportMessage()">
-                Report a Player
-            </button>
+<button
+class="button secondary"
+id="reportButton"
+type="button"
+>
+Report a Player
+</button>
 
-            <div class="notice" id="reportNotice">
-                Report system coming next. Evidence uploads will
-                be added when we build the account system.
-            </div>
+<div class="notice" id="reportNotice">
+The reporting system will be connected to player accounts
+and evidence uploads in a later stage.
+</div>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </section>
 
@@ -892,233 +913,299 @@ footer {
 
 <footer>
 
-    <strong>🎮 Players Find Players</strong>
+<strong>🎮 Players Find Players</strong>
 
-    <p style="margin-top:8px;">
-        Find people. Play together. Build your gaming community.
-    </p>
+<p style="margin-top:8px;">
+Find people. Play together. Build your gaming community.
+</p>
 
 </footer>
 
 
 <script>
 
-function searchPlayers() {
+document.addEventListener("DOMContentLoaded", function() {
 
-    const search =
-        document.getElementById("mainSearch").value
-        .toLowerCase();
+    const searchButton =
+        document.getElementById("findPlayersButton");
 
-    const players =
-        document.querySelectorAll(".player");
+    const searchInput =
+        document.getElementById("mainSearch");
 
-    players.forEach(player => {
-
-        const name =
-            player.dataset.name.toLowerCase();
-
-        const game =
-            player.dataset.game.toLowerCase();
-
-        if (
-            search === "" ||
-            name.includes(search) ||
-            game.includes(search)
-        ) {
-            player.style.display = "block";
-        } else {
-            player.style.display = "none";
-        }
-
-    });
-
-    document.getElementById("players")
-        .scrollIntoView({ behavior: "smooth" });
-
-    document.getElementById("searchNotice")
-        .style.display = "block";
-}
-
-
-function filterPlayers() {
-
-    const game =
-        document.getElementById("gameFilter").value;
-
-    const style =
-        document.getElementById("styleFilter").value;
-
-    const platform =
-        document.getElementById("platformFilter").value;
-
-    const skill =
-        document.getElementById("skillFilter").value;
+    const searchNotice =
+        document.getElementById("searchNotice");
 
     const players =
         document.querySelectorAll(".player");
 
-    players.forEach(player => {
+    const gameFilter =
+        document.getElementById("gameFilter");
 
-        const gameMatch =
-            game === "all" ||
-            player.dataset.game === game;
+    const styleFilter =
+        document.getElementById("styleFilter");
 
-        const styleMatch =
-            style === "all" ||
-            player.dataset.style === style;
+    const platformFilter =
+        document.getElementById("platformFilter");
 
-        const platformMatch =
-            platform === "all" ||
-            player.dataset.platform === platform;
-
-        const skillMatch =
-            skill === "all" ||
-            player.dataset.skill === skill;
-
-        if (
-            gameMatch &&
-            styleMatch &&
-            platformMatch &&
-            skillMatch
-        ) {
-            player.style.display = "block";
-        } else {
-            player.style.display = "none";
-        }
-
-    });
-
-}
+    const skillFilter =
+        document.getElementById("skillFilter");
 
 
-function chooseGame(game) {
+    function filterPlayers() {
 
-    document.getElementById("gameFilter").value = game;
+        const game = gameFilter.value;
+        const style = styleFilter.value;
+        const platform = platformFilter.value;
+        const skill = skillFilter.value;
 
-    document.getElementById("players")
-        .scrollIntoView({ behavior: "smooth" });
+        players.forEach(function(player) {
 
-    filterPlayers();
-}
+            const gameMatch =
+                game === "all" ||
+                player.dataset.game === game;
 
+            const styleMatch =
+                style === "all" ||
+                player.dataset.style === style;
 
-function viewProfile(name) {
+            const platformMatch =
+                platform === "all" ||
+                player.dataset.platform === platform;
 
-    const profile =
-        document.getElementById("profileBox");
+            const skillMatch =
+                skill === "all" ||
+                player.dataset.skill === skill;
 
-    let content = "";
+            if (
+                gameMatch &&
+                styleMatch &&
+                platformMatch &&
+                skillMatch
+            ) {
+                player.style.display = "";
+            } else {
+                player.style.display = "none";
+            }
 
-    if (name === "JaxGaming") {
-
-        content = `
-            <div class="profile-header">
-                <div class="avatar">J</div>
-                <div>
-                    <h3>JaxGaming</h3>
-                    <div class="online">● Online now</div>
-                </div>
-            </div>
-
-            <p>
-                Competitive Call of Duty player looking for
-                ranked teammates.
-            </p>
-
-            <br>
-
-            <strong>Games:</strong>
-            <p>Call of Duty • Apex Legends</p>
-
-            <br>
-
-            <strong>Play style:</strong>
-            <p>Competitive • Ranked</p>
-
-            <br>
-
-            <strong>Reputation:</strong>
-            <p>⭐ 4.9 / 5</p>
-        `;
-
-    } else if (name === "MeganPlays") {
-
-        content = `
-            <div class="profile-header">
-                <div class="avatar">M</div>
-                <div>
-                    <h3>MeganPlays</h3>
-                    <div class="online">● Looking for players</div>
-                </div>
-            </div>
-
-            <p>
-                Casual Minecraft player looking for friendly
-                people to build and explore with.
-            </p>
-
-            <br>
-
-            <strong>Games:</strong>
-            <p>Minecraft • Fortnite</p>
-
-            <br>
-
-            <strong>Play style:</strong>
-            <p>Casual • Social</p>
-
-            <br>
-
-            <strong>Reputation:</strong>
-            <p>⭐ 4.8 / 5</p>
-        `;
-
-    } else {
-
-        content = `
-            <div class="profile-header">
-                <div class="avatar">R</div>
-                <div>
-                    <h3>RogueR</h3>
-                    <div class="online">● Online now</div>
-                </div>
-            </div>
-
-            <p>
-                Competitive Apex Legends player looking for
-                ranked teammates.
-            </p>
-
-            <br>
-
-            <strong>Games:</strong>
-            <p>Apex Legends • Call of Duty</p>
-
-            <br>
-
-            <strong>Play style:</strong>
-            <p>Competitive • Ranked</p>
-
-            <br>
-
-            <strong>Reputation:</strong>
-            <p>⭐ 4.7 / 5</p>
-        `;
+        });
     }
 
-    profile.innerHTML = content;
-    profile.classList.add("show");
 
-    profile.scrollIntoView({ behavior: "smooth" });
-}
+    searchButton.addEventListener("click", function() {
+
+        const search =
+            searchInput.value.trim().toLowerCase();
+
+        players.forEach(function(player) {
+
+            const name =
+                player.dataset.name.toLowerCase();
+
+            const game =
+                player.dataset.game.toLowerCase();
+
+            if (
+                search === "" ||
+                name.includes(search) ||
+                game.includes(search)
+            ) {
+                player.style.display = "";
+            } else {
+                player.style.display = "none";
+            }
+
+        });
+
+        searchNotice.style.display = "block";
+
+        document
+            .getElementById("players")
+            .scrollIntoView({
+                behavior: "smooth"
+            });
+
+    });
 
 
-function showReportMessage() {
+    searchInput.addEventListener("keydown", function(event) {
 
-    document.getElementById("reportNotice")
-        .style.display = "block";
+        if (event.key === "Enter") {
+            searchButton.click();
+        }
 
-}
+    });
+
+
+    gameFilter.addEventListener("change", filterPlayers);
+    styleFilter.addEventListener("change", filterPlayers);
+    platformFilter.addEventListener("change", filterPlayers);
+    skillFilter.addEventListener("change", filterPlayers);
+
+
+    document.querySelectorAll(".game").forEach(function(game) {
+
+        game.addEventListener("click", function() {
+
+            const selectedGame =
+                game.dataset.game;
+
+            if (selectedGame === "all") {
+                gameFilter.value = "all";
+            } else {
+                gameFilter.value = selectedGame;
+            }
+
+            filterPlayers();
+
+            document
+                .getElementById("players")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        });
+
+    });
+
+
+    document.querySelectorAll(".profile-button")
+        .forEach(function(button) {
+
+        button.addEventListener("click", function() {
+
+            const player =
+                button.dataset.player;
+
+            const profile =
+                document.getElementById("profileBox");
+
+            if (player === "JaxGaming") {
+
+                profile.innerHTML = `
+                    <div class="profile-header">
+                        <div class="avatar">J</div>
+                        <div>
+                            <h3>JaxGaming</h3>
+                            <div class="online">● Online now</div>
+                        </div>
+                    </div>
+
+                    <p>
+                        Competitive Call of Duty player
+                        looking for ranked teammates.
+                    </p>
+
+                    <br>
+
+                    <strong>Games:</strong>
+                    <p>Call of Duty • Apex Legends</p>
+
+                    <br>
+
+                    <strong>Play style:</strong>
+                    <p>Competitive • Ranked</p>
+
+                    <br>
+
+                    <strong>Reputation:</strong>
+                    <p>⭐ 4.9 / 5</p>
+                `;
+
+            }
+
+            if (player === "MeganPlays") {
+
+                profile.innerHTML = `
+                    <div class="profile-header">
+                        <div class="avatar">M</div>
+                        <div>
+                            <h3>MeganPlays</h3>
+                            <div class="online">
+                                ● Looking for players
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>
+                        Casual Minecraft player looking
+                        for friendly people to build
+                        and explore with.
+                    </p>
+
+                    <br>
+
+                    <strong>Games:</strong>
+                    <p>Minecraft • Fortnite</p>
+
+                    <br>
+
+                    <strong>Play style:</strong>
+                    <p>Casual • Social</p>
+
+                    <br>
+
+                    <strong>Reputation:</strong>
+                    <p>⭐ 4.8 / 5</p>
+                `;
+
+            }
+
+            if (player === "RogueR") {
+
+                profile.innerHTML = `
+                    <div class="profile-header">
+                        <div class="avatar">R</div>
+                        <div>
+                            <h3>RogueR</h3>
+                            <div class="online">● Online now</div>
+                        </div>
+                    </div>
+
+                    <p>
+                        Competitive Apex Legends player
+                        looking for ranked teammates.
+                    </p>
+
+                    <br>
+
+                    <strong>Games:</strong>
+                    <p>Apex Legends • Call of Duty</p>
+
+                    <br>
+
+                    <strong>Play style:</strong>
+                    <p>Competitive • Ranked</p>
+
+                    <br>
+
+                    <strong>Reputation:</strong>
+                    <p>⭐ 4.7 / 5</p>
+                `;
+
+            }
+
+            profile.classList.add("show");
+
+            profile.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        });
+
+    });
+
+
+    document
+        .getElementById("reportButton")
+        .addEventListener("click", function() {
+
+            document
+                .getElementById("reportNotice")
+                .style.display = "block";
+
+        });
+
+});
 
 </script>
 
