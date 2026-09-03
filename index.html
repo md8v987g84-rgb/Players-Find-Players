@@ -4,9 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Players Find Players</title>
+<title>Players Find Players | Gaming Community</title>
 
 <style>
+
+:root{
+--bg:#070a10;
+--panel:#101620;
+--panel2:#151c28;
+--border:#263142;
+--blue:#42d9ff;
+--purple:#8b6cff;
+--green:#48e08b;
+--yellow:#ffd166;
+--red:#ff5575;
+--muted:#8e99aa;
+--white:#f4f7fb;
+}
 
 *{
 box-sizing:border-box;
@@ -20,23 +34,45 @@ scroll-behavior:smooth;
 
 body{
 font-family:Arial,Helvetica,sans-serif;
-background:#080a0f;
-color:#fff;
-line-height:1.5;
+background:
+radial-gradient(circle at 15% 0%,rgba(66,217,255,.08),transparent 30%),
+radial-gradient(circle at 90% 10%,rgba(139,108,255,.10),transparent 30%),
+var(--bg);
+color:var(--white);
+min-height:100vh;
 }
+
+button,
+input,
+select,
+textarea{
+font-family:inherit;
+}
+
+button{
+cursor:pointer;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+/* HEADER */
 
 header{
 position:sticky;
 top:0;
 z-index:1000;
-background:#11151e;
-border-bottom:1px solid #252c39;
+background:rgba(7,10,16,.92);
+backdrop-filter:blur(15px);
+border-bottom:1px solid var(--border);
 }
 
-.header-inner{
-max-width:1200px;
+.header{
+max-width:1250px;
 margin:auto;
-padding:15px 20px;
+padding:14px 20px;
 display:flex;
 align-items:center;
 justify-content:space-between;
@@ -44,280 +80,639 @@ gap:20px;
 }
 
 .logo{
-font-weight:bold;
-font-size:20px;
-color:#61dafb;
+display:flex;
+align-items:center;
+gap:9px;
+font-weight:900;
+font-size:19px;
 white-space:nowrap;
+}
+
+.logo-icon{
+width:36px;
+height:36px;
+border-radius:10px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,var(--blue),var(--purple));
+}
+
+.logo span{
+color:var(--blue);
 }
 
 nav{
 display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:14px;
+gap:18px;
+align-items:center;
+overflow:auto;
 }
 
 nav a{
-color:#cbd2df;
-text-decoration:none;
-font-size:14px;
+font-size:13px;
+color:#aeb8c8;
+white-space:nowrap;
+transition:.2s;
 }
 
 nav a:hover{
-color:#61dafb;
+color:var(--blue);
 }
 
+.header-button{
+background:linear-gradient(135deg,var(--blue),#8aeaff);
+color:#041017;
+padding:10px 15px;
+border-radius:9px;
+font-weight:800;
+border:0;
+white-space:nowrap;
+}
+
+/* HERO */
+
 .hero{
-padding:80px 20px;
-text-align:center;
-background:
-radial-gradient(circle at top,#1b3155 0%,#080a0f 65%);
+max-width:1250px;
+margin:auto;
+padding:90px 20px 70px;
+display:grid;
+grid-template-columns:1.3fr .7fr;
+gap:50px;
+align-items:center;
 }
 
 .hero h1{
-font-size:clamp(36px,7vw,62px);
-margin-bottom:15px;
+font-size:clamp(40px,6vw,72px);
+line-height:1.02;
+letter-spacing:-3px;
 }
 
 .hero h1 span{
-color:#61dafb;
+background:linear-gradient(90deg,var(--blue),#9f7bff);
+-webkit-background-clip:text;
+color:transparent;
 }
 
 .hero p{
-max-width:750px;
+color:#9ca8ba;
+font-size:17px;
+max-width:650px;
+margin-top:22px;
+line-height:1.7;
+}
+
+.hero-actions{
+display:flex;
+gap:12px;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+.btn{
+border:0;
+border-radius:9px;
+padding:12px 18px;
+font-weight:800;
+transition:.2s;
+}
+
+.btn:hover{
+transform:translateY(-2px);
+}
+
+.btn-primary{
+background:linear-gradient(135deg,var(--blue),#8beaff);
+color:#031017;
+}
+
+.btn-secondary{
+background:var(--panel2);
+color:#fff;
+border:1px solid var(--border);
+}
+
+.btn-red{
+background:var(--red);
+color:#fff;
+}
+
+.hero-panel{
+background:linear-gradient(145deg,#131c2a,#0d121a);
+border:1px solid var(--border);
+border-radius:18px;
+padding:25px;
+box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+.hero-panel h3{
+margin-bottom:20px;
+}
+
+.live-player{
+display:flex;
+align-items:center;
+gap:12px;
+padding:14px 0;
+border-bottom:1px solid var(--border);
+}
+
+.live-player:last-child{
+border-bottom:0;
+}
+
+.avatar{
+width:46px;
+height:46px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:900;
+background:linear-gradient(135deg,var(--blue),var(--purple));
+color:#061017;
+flex-shrink:0;
+}
+
+.live-dot{
+width:8px;
+height:8px;
+background:var(--green);
+border-radius:50%;
+display:inline-block;
+margin-right:5px;
+}
+
+.player-small{
+color:var(--muted);
+font-size:12px;
+margin-top:2px;
+}
+
+/* GENERAL */
+
+section{
+max-width:1250px;
 margin:auto;
-color:#aab3c2;
+padding:65px 20px;
+}
+
+.section-title{
+margin-bottom:28px;
+}
+
+.section-title h2{
+font-size:31px;
+}
+
+.section-title p{
+color:var(--muted);
+margin-top:7px;
+}
+
+.card{
+background:rgba(16,22,32,.9);
+border:1px solid var(--border);
+border-radius:14px;
+padding:20px;
+}
+
+.grid{
+display:grid;
+gap:16px;
+}
+
+.games{
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+}
+
+.game-card{
+position:relative;
+overflow:hidden;
+min-height:150px;
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+cursor:pointer;
+transition:.25s;
+}
+
+.game-card:hover{
+transform:translateY(-5px);
+border-color:var(--blue);
+}
+
+.game-art{
+position:absolute;
+inset:0;
+font-size:60px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:
+linear-gradient(180deg,rgba(20,30,45,.2),rgba(8,10,15,.95));
+}
+
+.game-info{
+position:relative;
+z-index:2;
+}
+
+.game-info h3{
 font-size:17px;
 }
 
-.search{
-max-width:720px;
-margin:30px auto 0;
-display:flex;
+.game-info p{
+color:var(--muted);
+font-size:12px;
+margin-top:4px;
+}
+
+/* SEARCH */
+
+.search-box{
+background:var(--panel);
+border:1px solid var(--border);
+border-radius:14px;
+padding:18px;
+margin-bottom:20px;
+}
+
+.search-row{
+display:grid;
+grid-template-columns:2fr 1fr 1fr 1fr auto;
 gap:10px;
 }
 
 input,
 select,
 textarea{
-width:100%;
-background:#191e28;
+background:#0b1018;
 color:#fff;
-border:1px solid #353d4d;
+border:1px solid #303b4d;
 border-radius:8px;
 padding:12px;
-font-family:inherit;
+outline:none;
 }
 
-textarea{
-min-height:120px;
-resize:vertical;
+input:focus,
+select:focus,
+textarea:focus{
+border-color:var(--blue);
 }
 
-button{
-font-family:inherit;
+/* PLAYERS */
+
+.players{
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 }
 
-.button{
-border:0;
-border-radius:8px;
-padding:12px 18px;
-background:#61dafb;
-color:#061018;
-font-weight:bold;
-cursor:pointer;
+.player-card{
+position:relative;
 }
 
-.button:hover{
-background:#3fc8eb;
-}
-
-.button.dark{
-background:#252c39;
-color:#fff;
-}
-
-.button.red{
-background:#b8334b;
-color:#fff;
-}
-
-.button.green{
-background:#2e9d68;
-color:#fff;
-}
-
-section{
-max-width:1200px;
-margin:auto;
-padding:60px 20px;
-}
-
-.heading{
-margin-bottom:25px;
-}
-
-.heading h2{
-font-size:30px;
-}
-
-.heading p{
-color:#929baa;
-margin-top:5px;
-}
-
-.card{
-background:#131821;
-border:1px solid #29313e;
-border-radius:13px;
-padding:22px;
-}
-
-.grid{
-display:grid;
-gap:18px;
-}
-
-.players-grid{
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-}
-
-.games-grid{
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-}
-
-.game{
-text-align:center;
-cursor:pointer;
-transition:.2s;
-}
-
-.game:hover{
-transform:translateY(-3px);
-border-color:#61dafb;
-}
-
-.game-icon{
-font-size:40px;
-margin-bottom:8px;
-}
-
-.game small{
-color:#858e9d;
-display:block;
-margin-top:5px;
-}
-
-.filters{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px;
-margin-bottom:25px;
-}
-
-.player-top{
+.player-header{
 display:flex;
 align-items:center;
 gap:12px;
 }
 
-.avatar{
-width:52px;
-height:52px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:20px;
-font-weight:bold;
-background:linear-gradient(135deg,#61dafb,#7167ff);
-color:#071018;
-flex-shrink:0;
+.player-header h3{
+font-size:18px;
 }
 
-.online{
+.status{
 font-size:12px;
-color:#59e391;
+color:var(--green);
+margin-top:3px;
+}
+
+.reputation{
+color:var(--yellow);
+margin:14px 0;
+font-size:14px;
 }
 
 .tags{
 display:flex;
 flex-wrap:wrap;
 gap:6px;
-margin:15px 0;
+margin:13px 0;
 }
 
 .tag{
-background:#222936;
-color:#c3cbd8;
+font-size:11px;
 padding:5px 8px;
+background:#1d2634;
+color:#bdc7d6;
 border-radius:6px;
+}
+
+.player-description{
+color:#909bad;
+font-size:13px;
+min-height:40px;
+}
+
+.card-buttons{
+display:flex;
+gap:8px;
+margin-top:16px;
+}
+
+.card-buttons button{
+flex:1;
+}
+
+/* LFG */
+
+.lfg-grid{
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
+
+.lfg-card{
+position:relative;
+overflow:hidden;
+}
+
+.lfg-live{
+color:var(--green);
+font-size:12px;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+.lfg-card h3{
+margin-bottom:5px;
+}
+
+.lfg-card p{
+color:var(--muted);
+font-size:13px;
+}
+
+.lfg-footer{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:18px;
+gap:10px;
+}
+
+/* CLIPS */
+
+.clips{
+grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+}
+
+.clip{
+padding:0;
+overflow:hidden;
+}
+
+.clip-preview{
+height:180px;
+background:
+radial-gradient(circle,#24334a,#101620);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:65px;
+}
+
+.clip-body{
+padding:17px;
+}
+
+.clip-meta{
+color:var(--muted);
+font-size:12px;
+margin-top:5px;
+}
+
+.clip-actions{
+display:flex;
+gap:8px;
+margin-top:14px;
+}
+
+.clip-actions button{
+flex:1;
+}
+
+.comments{
+display:none;
+border-top:1px solid var(--border);
+margin-top:15px;
+padding-top:13px;
+}
+
+.comment{
+font-size:12px;
+color:#aab3c1;
+margin-bottom:8px;
+}
+
+.comment strong{
+color:#fff;
+}
+
+.comment-input{
+display:flex;
+gap:6px;
+}
+
+.comment-input button{
+max-width:80px;
+}
+
+/* COMMUNITY */
+
+.community{
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
+
+.community-card{
+cursor:pointer;
+transition:.2s;
+}
+
+.community-card:hover{
+border-color:var(--blue);
+transform:translateY(-3px);
+}
+
+.community-icon{
+font-size:30px;
+margin-bottom:12px;
+}
+
+.community-card p{
+color:var(--muted);
+font-size:13px;
+margin-top:5px;
+}
+
+/* HISTORY */
+
+.history{
+overflow:auto;
+}
+
+.history table{
+width:100%;
+border-collapse:collapse;
+min-width:650px;
+}
+
+.history th,
+.history td{
+text-align:left;
+padding:15px;
+border-bottom:1px solid var(--border);
+}
+
+.history th{
+color:#9ba6b7;
 font-size:12px;
 }
 
-.rating{
-color:#ffd166;
-margin:12px 0;
+.history td{
+font-size:13px;
 }
 
-.profile-box{
-display:none;
+/* PROFILE */
+
+.profile-layout{
+display:grid;
+grid-template-columns:1fr 2fr;
+gap:18px;
+}
+
+.profile-card{
+text-align:center;
+}
+
+.profile-avatar{
+width:90px;
+height:90px;
+margin:0 auto 15px;
+border-radius:25px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:35px;
+font-weight:900;
+background:linear-gradient(135deg,var(--blue),var(--purple));
+color:#071017;
+}
+
+.profile-card p{
+color:var(--muted);
+font-size:13px;
+}
+
+.stat-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
 margin-top:20px;
 }
 
-.profile-box.show{
-display:block;
-}
-
-.profile-header{
-display:flex;
-align-items:center;
-gap:15px;
-margin-bottom:20px;
-}
-
-.profile-header h3{
-font-size:26px;
-}
-
-.profile-stat-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-gap:12px;
-margin:20px 0;
-}
-
 .stat{
-background:#1b212c;
+background:#151d29;
 border-radius:9px;
-padding:15px;
+padding:13px;
 }
 
 .stat strong{
 display:block;
-font-size:19px;
+font-size:18px;
 }
 
 .stat span{
-color:#8f98a8;
-font-size:13px;
+color:var(--muted);
+font-size:11px;
 }
 
-.form-box{
-background:#111720;
-border:1px solid #303949;
-border-radius:13px;
-padding:24px;
-}
-
-.form-grid{
+.profile-content{
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:16px;
 }
 
+.profile-content .card:first-child{
+grid-column:1/-1;
+}
+
+.badge{
+display:inline-flex;
+padding:6px 9px;
+border-radius:6px;
+background:#24321f;
+color:var(--green);
+font-size:11px;
+font-weight:bold;
+margin:4px;
+}
+
+/* REPUTATION */
+
+.reputation-grid{
+display:grid;
+grid-template-columns:.8fr 1.2fr;
+gap:18px;
+}
+
+.rating-big{
+font-size:48px;
+font-weight:900;
+color:var(--yellow);
+margin:10px 0;
+}
+
+.review{
+padding:14px;
+background:#151d28;
+border-radius:9px;
+margin-top:10px;
+}
+
+.review p{
+color:var(--muted);
+font-size:13px;
+margin-top:5px;
+}
+
+.report{
+margin-top:20px;
+padding:18px;
+border:1px solid #4b2935;
+background:#1a1015;
+border-radius:10px;
+}
+
+.report h3{
+color:#ff6c87;
+}
+
+/* FORMS */
+
+.form-box{
+background:var(--panel);
+border:1px solid var(--border);
+border-radius:14px;
+padding:23px;
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+}
+
 .form-group{
-margin-bottom:16px;
+margin-bottom:14px;
 }
 
 .form-group.full{
@@ -326,232 +721,89 @@ grid-column:1/-1;
 
 .form-group label{
 display:block;
+font-size:12px;
 font-weight:bold;
-font-size:14px;
-color:#cbd3df;
-margin-bottom:7px;
+color:#b8c2d1;
+margin-bottom:6px;
 }
 
 .form-note{
-font-size:13px;
-color:#858e9d;
-margin-top:6px;
-}
-
-#createdProfile{
-display:none;
-margin-top:20px;
-}
-
-#createdProfile.show{
-display:block;
-}
-
-.clips-grid{
-grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
-}
-
-.clip{
-overflow:hidden;
-padding:0;
-}
-
-.clip-media{
-height:170px;
-background:#202839;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.clip-media img,
-.clip-media video{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-.clip-placeholder{
-font-size:55px;
-}
-
-.clip-content{
-padding:17px;
-}
-
-.clip-content h3{
-margin-bottom:5px;
-}
-
-.clip-meta{
-font-size:13px;
-color:#8d96a6;
-}
-
-.clip-actions{
-display:flex;
-gap:8px;
-margin-top:15px;
-}
-
-.clip-actions button{
-flex:1;
-}
-
-.comments{
-margin-top:15px;
-border-top:1px solid #2a313d;
-padding-top:12px;
-}
-
-.comment{
-font-size:13px;
-color:#b8c0cd;
-padding:6px 0;
-}
-
-.comment strong{
-color:#fff;
-}
-
-.comment-form{
-display:flex;
-gap:7px;
-margin-top:10px;
-}
-
-.comment-form button{
-padding:9px 12px;
-}
-
-.empty{
-color:#858e9d;
-padding:20px 0;
-}
-
-.history{
-overflow:hidden;
-}
-
-.history-row{
-display:grid;
-grid-template-columns:1fr 1fr 1fr 1fr;
-gap:10px;
-padding:16px;
-border-bottom:1px solid #272e39;
-}
-
-.history-row:last-child{
-border-bottom:0;
-}
-
-.history-row span{
-color:#929baa;
-}
-
-.forums{
-display:grid;
-gap:13px;
-}
-
-.forum{
-cursor:pointer;
-}
-
-.forum:hover{
-border-color:#61dafb;
-}
-
-.forum p{
-color:#929baa;
+color:var(--muted);
+font-size:11px;
 margin-top:5px;
-}
-
-.lfg{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:15px;
-margin-top:20px;
-}
-
-.lfg-status{
-color:#59e391;
-font-size:13px;
-margin:7px 0;
-}
-
-.reputation{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-}
-
-.big-rating{
-font-size:42px;
-color:#ffd166;
-margin:10px 0;
-}
-
-.review{
-background:#1b202a;
-border-radius:9px;
-padding:15px;
-margin-top:12px;
-}
-
-.review p{
-color:#a6afbd;
-margin-top:5px;
-}
-
-.report-box{
-margin-top:25px;
-padding:20px;
-background:#1b1318;
-border:1px solid #54313c;
-border-radius:10px;
-}
-
-.report-box h3{
-color:#ff718a;
-margin-bottom:8px;
-}
-
-.report-evidence{
-display:none;
-margin-top:18px;
-}
-
-.report-evidence.show{
-display:block;
 }
 
 .notice{
 display:none;
-padding:13px;
+margin-top:14px;
+padding:12px;
 border-radius:8px;
-margin-top:15px;
-background:#183b2c;
-border:1px solid #327955;
-color:#bdf2d2;
+background:#163628;
+border:1px solid #276948;
+color:#a9efc5;
+font-size:13px;
 }
+
+/* FOOTER */
 
 footer{
-border-top:1px solid #252c38;
-background:#11151e;
-padding:35px 20px;
+border-top:1px solid var(--border);
+background:#090d14;
+padding:40px 20px;
 text-align:center;
-color:#788394;
+color:#778294;
 }
 
-@media(max-width:800px){
-
-.header-inner{
-flex-direction:column;
+footer strong{
+color:#fff;
 }
 
-.filters{
+footer p{
+margin-top:6px;
+font-size:12px;
+}
+
+/* MOBILE */
+
+@media(max-width:950px){
+
+.hero{
+grid-template-columns:1fr;
+}
+
+.search-row{
 grid-template-columns:1fr 1fr;
+}
+
+.profile-layout,
+.reputation-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:650px){
+
+.header{
+flex-wrap:wrap;
+}
+
+nav{
+order:3;
+width:100%;
+padding-top:5px;
+}
+
+.hero{
+padding-top:55px;
+}
+
+.hero h1{
+letter-spacing:-1.5px;
+}
+
+.search-row{
+grid-template-columns:1fr;
 }
 
 .form-grid{
@@ -562,28 +814,16 @@ grid-template-columns:1fr;
 grid-column:auto;
 }
 
-.reputation{
+.profile-content{
 grid-template-columns:1fr;
 }
 
+.profile-content .card:first-child{
+grid-column:auto;
 }
 
-@media(max-width:560px){
-
-nav{
-gap:10px;
-}
-
-.search{
-flex-direction:column;
-}
-
-.filters{
-grid-template-columns:1fr;
-}
-
-.history-row{
-grid-template-columns:1fr;
+section{
+padding:48px 15px;
 }
 
 }
@@ -595,22 +835,36 @@ grid-template-columns:1fr;
 
 <header>
 
-<div class="header-inner">
+<div class="header">
 
-<div class="logo">
-🎮 Players Find Players
+<a href="#home" class="logo">
+
+<div class="logo-icon">🎮</div>
+
+<div>
+Players <span>Find Players</span>
 </div>
 
+</a>
+
+
 <nav>
+
 <a href="#home">Home</a>
 <a href="#games">Games</a>
-<a href="#players">Find Players</a>
-<a href="#create-profile">Create Profile</a>
+<a href="#find">Find Players</a>
+<a href="#lfg">LFG</a>
 <a href="#clips">Clips</a>
+<a href="#community">Groups</a>
 <a href="#history">History</a>
-<a href="#groups">Groups</a>
-<a href="#reputation">Reputation</a>
+<a href="#profile">Profile</a>
+
 </nav>
+
+
+<a href="#profile" class="header-button">
+Join
+</a>
 
 </div>
 
@@ -620,39 +874,103 @@ grid-template-columns:1fr;
 <main>
 
 
-<!-- HOME -->
+<!-- HERO -->
 
 <section class="hero" id="home">
 
-<h1>Find Your <span>Gaming Squad</span></h1>
+<div>
+
+<h1>
+Find players.<br>
+Build your <span>squad.</span>
+</h1>
 
 <p>
-Whether you're a competitive player, casual gamer,
-achievement hunter or just looking for people to have fun with,
-find gamers who play the way you do.
+A gaming community for everyone.
+Competitive players, casual gamers, social players,
+achievement hunters and everyone in between.
 </p>
 
-<div class="search">
-
-<input
-id="mainSearch"
-placeholder="Search for a player or game..."
->
+<div class="hero-actions">
 
 <button
-class="button"
-id="searchButton"
+class="btn btn-primary"
+onclick="scrollToSection('find')"
 >
-Find Players
+🔎 Find Players
+</button>
+
+<button
+class="btn btn-secondary"
+onclick="scrollToSection('lfg')"
+>
+🤝 Find Teammates
 </button>
 
 </div>
 
-<div
-class="notice"
-id="searchNotice"
->
-Players matching your search are shown below.
+</div>
+
+
+<div class="hero-panel">
+
+<h3>🟢 Players looking now</h3>
+
+
+<div class="live-player">
+
+<div class="avatar">J</div>
+
+<div>
+
+<strong>JaxGaming</strong>
+
+<div class="player-small">
+<span class="live-dot"></span>
+Call of Duty • Ranked
+</div>
+
+</div>
+
+</div>
+
+
+<div class="live-player">
+
+<div class="avatar">M</div>
+
+<div>
+
+<strong>MeganPlays</strong>
+
+<div class="player-small">
+<span class="live-dot"></span>
+Minecraft • Casual
+</div>
+
+</div>
+
+</div>
+
+
+<div class="live-player">
+
+<div class="avatar">R</div>
+
+<div>
+
+<strong>RogueR</strong>
+
+<div class="player-small">
+<span class="live-dot"></span>
+Apex Legends • Ranked
+</div>
+
+</div>
+
+</div>
+
+
 </div>
 
 </section>
@@ -662,70 +980,135 @@ Players matching your search are shown below.
 
 <section id="games">
 
-<div class="heading">
+<div class="section-title">
 
-<h2>🎮 Games</h2>
+<h2>🎮 Popular Games</h2>
 
-<p>Choose a game to find players.</p>
+<p>Choose a game and discover its community.</p>
 
 </div>
 
-<div class="grid games-grid">
+
+<div class="grid games">
 
 
-<div class="card game" data-game="Call of Duty">
-<div class="game-icon">🔫</div>
-<strong>Call of Duty</strong>
-<small>Competitive • Casual • Zombies</small>
+<div class="card game-card" data-game="Call of Duty">
+
+<div class="game-art">🔫</div>
+
+<div class="game-info">
+
+<h3>Call of Duty</h3>
+
+<p>Ranked • Casual • Zombies</p>
+
+</div>
+
 </div>
 
 
-<div class="card game" data-game="Fortnite">
-<div class="game-icon">🏆</div>
-<strong>Fortnite</strong>
-<small>Ranked • Casual • Creative</small>
+<div class="card game-card" data-game="Fortnite">
+
+<div class="game-art">🏆</div>
+
+<div class="game-info">
+
+<h3>Fortnite</h3>
+
+<p>Ranked • Casual • Creative</p>
+
+</div>
+
 </div>
 
 
-<div class="card game" data-game="Minecraft">
-<div class="game-icon">⛏️</div>
-<strong>Minecraft</strong>
-<small>Survival • Creative</small>
+<div class="card game-card" data-game="Minecraft">
+
+<div class="game-art">⛏️</div>
+
+<div class="game-info">
+
+<h3>Minecraft</h3>
+
+<p>Survival • Creative • SMP</p>
+
+</div>
+
 </div>
 
 
-<div class="card game" data-game="Apex Legends">
-<div class="game-icon">🎯</div>
-<strong>Apex Legends</strong>
-<small>Ranked • Casual</small>
+<div class="card game-card" data-game="Apex Legends">
+
+<div class="game-art">🎯</div>
+
+<div class="game-info">
+
+<h3>Apex Legends</h3>
+
+<p>Ranked • Casual</p>
+
+</div>
+
 </div>
 
 
-<div class="card game" data-game="EA Sports FC">
-<div class="game-icon">⚽</div>
-<strong>EA Sports FC</strong>
-<small>Clubs • Ultimate Team</small>
+<div class="card game-card" data-game="EA Sports FC">
+
+<div class="game-art">⚽</div>
+
+<div class="game-info">
+
+<h3>EA Sports FC</h3>
+
+<p>Clubs • Ultimate Team</p>
+
+</div>
+
 </div>
 
 
-<div class="card game" data-game="GTA">
-<div class="game-icon">🚗</div>
-<strong>GTA</strong>
-<small>Online • Roleplay</small>
+<div class="card game-card" data-game="GTA">
+
+<div class="game-art">🚗</div>
+
+<div class="game-info">
+
+<h3>GTA</h3>
+
+<p>Online • RP • Casual</p>
+
+</div>
+
 </div>
 
 
-<div class="card game" data-game="Valorant">
-<div class="game-icon">🎯</div>
-<strong>Valorant</strong>
-<small>Competitive • Ranked</small>
+<div class="card game-card" data-game="Valorant">
+
+<div class="game-art">🎯</div>
+
+<div class="game-info">
+
+<h3>Valorant</h3>
+
+<p>Competitive • Ranked</p>
+
+</div>
+
 </div>
 
 
-<div class="card game" data-game="all">
-<div class="game-icon">➕</div>
-<strong>More Games</strong>
-<small>Discover more</small>
+<div class="card game-card">
+
+<div class="game-art">➕</div>
+
+<div class="game-info">
+
+<h3>More Games</h3>
+
+<p>More communities coming</p>
+
+</div>
+
 </div>
 
 
@@ -736,20 +1119,30 @@ Players matching your search are shown below.
 
 <!-- FIND PLAYERS -->
 
-<section id="players">
+<section id="find">
 
-<div class="heading">
+<div class="section-title">
 
 <h2>🔎 Find Players</h2>
 
-<p>Find gamers based on how they like to play.</p>
+<p>
+Find someone who plays the same way you do.
+</p>
 
 </div>
 
 
-<div class="filters">
+<div class="search-box">
 
-<select id="gameFilter">
+<div class="search-row">
+
+<input
+id="search"
+placeholder="Search player or game..."
+>
+
+<select id="filterGame">
+
 <option value="all">All Games</option>
 <option>Call of Duty</option>
 <option>Fortnite</option>
@@ -758,155 +1151,234 @@ Players matching your search are shown below.
 <option>EA Sports FC</option>
 <option>GTA</option>
 <option>Valorant</option>
+
 </select>
 
 
-<select id="styleFilter">
-<option value="all">All Play Styles</option>
+<select id="filterStyle">
+
+<option value="all">Any Style</option>
 <option>Competitive</option>
 <option>Casual</option>
 <option>Social</option>
 <option>Achievement Hunter</option>
+
 </select>
 
 
-<select id="platformFilter">
-<option value="all">All Platforms</option>
+<select id="filterPlatform">
+
+<option value="all">Any Platform</option>
 <option>PlayStation</option>
 <option>Xbox</option>
 <option>PC</option>
 <option>Nintendo</option>
-<option>Mobile</option>
+
 </select>
 
 
-<select id="skillFilter">
-<option value="all">All Skill Levels</option>
-<option>Beginner</option>
-<option>Intermediate</option>
-<option>Advanced</option>
-</select>
+<button
+class="btn btn-primary"
+id="filterButton"
+>
+Search
+</button>
+
+</div>
 
 </div>
 
 
-<div class="grid players-grid" id="playerList">
+<div class="grid players" id="players">
 
 
 <div
-class="card player"
+class="card player-card"
+data-name="JaxGaming"
 data-game="Call of Duty"
 data-style="Competitive"
 data-platform="PlayStation"
-data-skill="Advanced"
-data-name="JaxGaming"
 >
 
-<div class="player-top">
+<div class="player-header">
 
 <div class="avatar">J</div>
 
 <div>
+
 <h3>JaxGaming</h3>
-<div class="online">● Online now</div>
+
+<div class="status">
+<span class="live-dot"></span>
+Online
 </div>
 
 </div>
+
+</div>
+
+
+<div class="reputation">
+⭐ 4.9 <span style="color:var(--muted)">47 reviews</span>
+</div>
+
 
 <div class="tags">
+
 <span class="tag">Call of Duty</span>
 <span class="tag">Competitive</span>
 <span class="tag">PlayStation</span>
 <span class="tag">Advanced</span>
+
 </div>
 
-<div class="rating">⭐ 4.9</div>
+
+<p class="player-description">
+Ranked player looking for serious teammates.
+</p>
+
+
+<div class="card-buttons">
 
 <button
-class="button profile-button"
+class="btn btn-primary profile-btn"
 data-player="JaxGaming"
 >
 View Profile
 </button>
 
+<button class="btn btn-secondary">
+Invite
+</button>
+
+</div>
+
 </div>
 
 
 <div
-class="card player"
+class="card player-card"
+data-name="MeganPlays"
 data-game="Minecraft"
 data-style="Casual"
 data-platform="PC"
-data-skill="Intermediate"
-data-name="MeganPlays"
 >
 
-<div class="player-top">
+<div class="player-header">
 
 <div class="avatar">M</div>
 
 <div>
+
 <h3>MeganPlays</h3>
-<div class="online">● Looking for players</div>
+
+<div class="status">
+<span class="live-dot"></span>
+Looking for players
 </div>
 
 </div>
+
+</div>
+
+
+<div class="reputation">
+⭐ 4.8 <span style="color:var(--muted)">36 reviews</span>
+</div>
+
 
 <div class="tags">
+
 <span class="tag">Minecraft</span>
 <span class="tag">Casual</span>
 <span class="tag">PC</span>
-<span class="tag">Intermediate</span>
+
 </div>
 
-<div class="rating">⭐ 4.8</div>
+
+<p class="player-description">
+Building, survival and just having fun.
+</p>
+
+
+<div class="card-buttons">
 
 <button
-class="button profile-button"
+class="btn btn-primary profile-btn"
 data-player="MeganPlays"
 >
 View Profile
 </button>
 
+<button class="btn btn-secondary">
+Invite
+</button>
+
+</div>
+
 </div>
 
 
 <div
-class="card player"
+class="card player-card"
+data-name="RogueR"
 data-game="Apex Legends"
 data-style="Competitive"
 data-platform="Xbox"
-data-skill="Advanced"
-data-name="RogueR"
 >
 
-<div class="player-top">
+<div class="player-header">
 
 <div class="avatar">R</div>
 
 <div>
+
 <h3>RogueR</h3>
-<div class="online">● Online now</div>
+
+<div class="status">
+<span class="live-dot"></span>
+Online
 </div>
 
 </div>
+
+</div>
+
+
+<div class="reputation">
+⭐ 4.7 <span style="color:var(--muted)">29 reviews</span>
+</div>
+
 
 <div class="tags">
+
 <span class="tag">Apex Legends</span>
 <span class="tag">Competitive</span>
 <span class="tag">Xbox</span>
-<span class="tag">Advanced</span>
+
 </div>
 
-<div class="rating">⭐ 4.7</div>
+
+<p class="player-description">
+Ranked grinder looking for a consistent squad.
+</p>
+
+
+<div class="card-buttons">
 
 <button
-class="button profile-button"
+class="btn btn-primary profile-btn"
 data-player="RogueR"
 >
 View Profile
 </button>
 
+<button class="btn btn-secondary">
+Invite
+</button>
+
+</div>
+
 </div>
 
 
@@ -914,72 +1386,534 @@ View Profile
 
 
 <div
-class="card profile-box"
-id="profileBox"
->
+id="profilePreview"
+class="card"
+style="display:none;margin-top:20px;"
+></div>
+
+</section>
+
+
+<!-- LFG -->
+
+<section id="lfg">
+
+<div class="section-title">
+
+<h2>🤝 Looking For Group</h2>
+
+<p>
+Players currently looking for teammates.
+</p>
+
+</div>
+
+
+<div class="grid lfg-grid">
+
+
+<div class="card lfg-card">
+
+<div class="lfg-live">
+● LOOKING NOW
+</div>
+
+<h3>JaxGaming</h3>
+
+<p>
+Call of Duty ranked — need 2 more players.
+</p>
+
+<div class="tags">
+
+<span class="tag">Competitive</span>
+<span class="tag">PlayStation</span>
+<span class="tag">18+</span>
+
+</div>
+
+<div class="lfg-footer">
+
+<span class="player-small">
+⭐ 4.9 reputation
+</span>
+
+<button class="btn btn-primary">
+Join
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card lfg-card">
+
+<div class="lfg-live">
+● LOOKING NOW
+</div>
+
+<h3>MeganPlays</h3>
+
+<p>
+Minecraft survival world — friendly players wanted.
+</p>
+
+<div class="tags">
+
+<span class="tag">Casual</span>
+<span class="tag">PC</span>
+
+</div>
+
+<div class="lfg-footer">
+
+<span class="player-small">
+⭐ 4.8 reputation
+</span>
+
+<button class="btn btn-primary">
+Join
+</button>
+
+</div>
+
+</div>
+
+
+<div class="card lfg-card">
+
+<div class="lfg-live">
+● LOOKING NOW
+</div>
+
+<h3>RogueR</h3>
+
+<p>
+Apex ranked — looking for two consistent teammates.
+</p>
+
+<div class="tags">
+
+<span class="tag">Competitive</span>
+<span class="tag">Xbox</span>
+
+</div>
+
+<div class="lfg-footer">
+
+<span class="player-small">
+⭐ 4.7 reputation
+</span>
+
+<button class="btn btn-primary">
+Join
+</button>
+
+</div>
+
+</div>
+
+
 </div>
 
 </section>
 
 
-<!-- CREATE PROFILE -->
+<!-- CLIPS -->
 
-<section id="create-profile">
+<section id="clips">
 
-<div class="heading">
+<div class="section-title">
 
-<h2>👤 Create Your Gaming Profile</h2>
+<h2>🎥 Community Clips</h2>
 
-<p>Tell other gamers who you are.</p>
+<p>
+Show everyone what you can do.
+</p>
+
+</div>
+
+
+<div class="grid clips">
+
+
+<div class="card clip">
+
+<div class="clip-preview">
+🔥
+</div>
+
+<div class="clip-body">
+
+<h3>1v4 Clutch!</h3>
+
+<div class="clip-meta">
+Call of Duty • JaxGaming
+</div>
+
+<div class="clip-actions">
+
+<button
+class="btn btn-secondary like"
+>
+❤️ <span>24</span>
+</button>
+
+<button
+class="btn btn-secondary comment-toggle"
+>
+💬 Comments
+</button>
+
+</div>
+
+
+<div class="comments">
+
+<div class="comment">
+<strong>RogueR:</strong>
+That was insane!
+</div>
+
+<div class="comment">
+<strong>MeganPlays:</strong>
+Nice clutch 🔥
+</div>
+
+<div class="comment-input">
+
+<input placeholder="Write a comment...">
+
+<button class="btn btn-primary">
+Post
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card clip">
+
+<div class="clip-preview">
+🏆
+</div>
+
+<div class="clip-body">
+
+<h3>Victory Royale</h3>
+
+<div class="clip-meta">
+Fortnite • MeganPlays
+</div>
+
+<div class="clip-actions">
+
+<button
+class="btn btn-secondary like"
+>
+❤️ <span>18</span>
+</button>
+
+<button
+class="btn btn-secondary comment-toggle"
+>
+💬 Comments
+</button>
+
+</div>
+
+
+<div class="comments">
+
+<div class="comment">
+<strong>JaxGaming:</strong>
+Great game!
+</div>
+
+<div class="comment-input">
+
+<input placeholder="Write a comment...">
+
+<button class="btn btn-primary">
+Post
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card clip">
+
+<div class="clip-preview">
+🎯
+</div>
+
+<div class="clip-body">
+
+<h3>Perfect Aim</h3>
+
+<div class="clip-meta">
+Apex Legends • RogueR
+</div>
+
+<div class="clip-actions">
+
+<button
+class="btn btn-secondary like"
+>
+❤️ <span>31</span>
+</button>
+
+<button
+class="btn btn-secondary comment-toggle"
+>
+💬 Comments
+</button>
+
+</div>
+
+
+<div class="comments">
+
+<div class="comment">
+<strong>JaxGaming:</strong>
+How did you hit that?!
+</div>
+
+<div class="comment-input">
+
+<input placeholder="Write a comment...">
+
+<button class="btn btn-primary">
+Post
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- COMMUNITY -->
+
+<section id="community">
+
+<div class="section-title">
+
+<h2>👥 Gaming Communities</h2>
+
+<p>
+Find your people.
+</p>
+
+</div>
+
+
+<div class="grid community">
+
+
+<div class="card community-card">
+
+<div class="community-icon">
+🔫
+</div>
+
+<h3>Call of Duty LFG</h3>
+
+<p>
+Competitive players looking for ranked squads.
+</p>
+
+<br>
+
+<span class="tag">
+12,482 members
+</span>
+
+</div>
+
+
+<div class="card community-card">
+
+<div class="community-icon">
+⛏️
+</div>
+
+<h3>Minecraft Community</h3>
+
+<p>
+Builders, survival players and SMP communities.
+</p>
+
+<br>
+
+<span class="tag">
+8,921 members
+</span>
+
+</div>
+
+
+<div class="card community-card">
+
+<div class="community-icon">
+🎮
+</div>
+
+<h3>Casual Gamers</h3>
+
+<p>
+No pressure. No toxicity. Just games.
+</p>
+
+<br>
+
+<span class="tag">
+15,204 members
+</span>
+
+</div>
+
+
+<div class="card community-card">
+
+<div class="community-icon">
+🏆
+</div>
+
+<h3>Achievement Hunters</h3>
+
+<p>
+Work together to complete difficult achievements.
+</p>
+
+<br>
+
+<span class="tag">
+4,612 members
+</span>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- HISTORY -->
+
+<section id="history">
+
+<div class="section-title">
+
+<h2>🤝 Played Together</h2>
+
+<p>
+See your history with other players.
+</p>
+
+</div>
+
+
+<div class="card history">
+
+<table>
+
+<thead>
+
+<tr>
+<th>PLAYER</th>
+<th>GAME</th>
+<th>LAST PLAYED</th>
+<th>SESSIONS</th>
+<th>REPUTATION</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>JaxGaming</td>
+<td>Call of Duty</td>
+<td>Yesterday</td>
+<td>4</td>
+<td>⭐ 4.9</td>
+</tr>
+
+<tr>
+<td>RogueR</td>
+<td>Apex Legends</td>
+<td>12 Aug 2026</td>
+<td>2</td>
+<td>⭐ 4.7</td>
+</tr>
+
+<tr>
+<td>MeganPlays</td>
+<td>Minecraft</td>
+<td>03 Aug 2026</td>
+<td>7</td>
+<td>⭐ 4.8</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- PROFILE -->
+
+<section id="profile">
+
+<div class="section-title">
+
+<h2>👤 Your Gaming Profile</h2>
+
+<p>
+Create the profile other players will see.
+</p>
 
 </div>
 
 
 <div class="form-box">
 
-<button
-class="button"
-id="openProfile"
->
-Create Profile
-</button>
-
-
-<div
-id="profileForm"
-style="display:none;margin-top:25px;"
->
-
 <div class="form-grid">
 
 
 <div class="form-group">
 
-<label>Gamer Name *</label>
+<label>Gamer Name</label>
 
 <input
 id="gamerName"
-placeholder="Example: GamingLegend"
+placeholder="Your gamer name"
 >
-
-</div>
-
-
-<div class="form-group">
-
-<label>Region</label>
-
-<select id="region">
-
-<option>United Kingdom</option>
-<option>Europe</option>
-<option>North America</option>
-<option>South America</option>
-<option>Asia</option>
-<option>Oceania</option>
-<option>Other</option>
-
-</select>
 
 </div>
 
@@ -1007,7 +1941,7 @@ placeholder="Example: GamingLegend"
 
 <label>Play Style</label>
 
-<select id="playStyle">
+<select id="profileStyle">
 
 <option>Competitive</option>
 <option>Casual</option>
@@ -1023,7 +1957,7 @@ placeholder="Example: GamingLegend"
 
 <label>Platform</label>
 
-<select id="platform">
+<select id="profilePlatform">
 
 <option>PlayStation</option>
 <option>Xbox</option>
@@ -1036,39 +1970,12 @@ placeholder="Example: GamingLegend"
 </div>
 
 
-<div class="form-group">
-
-<label>Skill Level</label>
-
-<select id="skill">
-
-<option>Beginner</option>
-<option>Intermediate</option>
-<option>Advanced</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group full">
-
-<label>What are you looking for?</label>
-
-<input
-id="lookingFor"
-placeholder="Ranked teammates, casual players, people to have fun with..."
->
-
-</div>
-
-
 <div class="form-group full">
 
 <label>About You</label>
 
 <textarea
-id="bio"
+id="profileBio"
 placeholder="Tell other gamers about yourself..."
 ></textarea>
 
@@ -1077,403 +1984,45 @@ placeholder="Tell other gamers about yourself..."
 
 <div class="form-group full">
 
-<button
-class="button"
-id="createProfile"
+<label>Looking For</label>
+
+<input
+id="profileLooking"
+placeholder="Ranked teammates, casual players, people to have fun with..."
 >
-Create My Profile
+
+</div>
+
+
+<div class="form-group full">
+
+<button
+class="btn btn-primary"
+id="saveProfile"
+>
+Save Profile
 </button>
 
 </div>
 
-</div>
 
 </div>
-
-
-<div
-class="card"
-id="createdProfile"
->
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CLIPS -->
-
-<section id="clips">
-
-<div class="heading">
-
-<h2>🎥 Gaming Clips</h2>
-
-<p>Share your best gaming moments.</p>
-
-</div>
-
-
-<div class="form-box">
-
-<h3>📤 Add a Clip or Screenshot</h3>
-
-<p style="color:#929baa;margin:8px 0 18px;">
-Add a video or image from your device.
-</p>
-
-
-<div class="form-grid">
-
-<div class="form-group">
-
-<label>Clip Title</label>
-
-<input
-id="clipTitle"
-placeholder="My best clutch..."
->
-
-</div>
-
-
-<div class="form-group">
-
-<label>Game</label>
-
-<select id="clipGame">
-
-<option>Call of Duty</option>
-<option>Fortnite</option>
-<option>Minecraft</option>
-<option>Apex Legends</option>
-<option>EA Sports FC</option>
-<option>GTA</option>
-<option>Valorant</option>
-
-</select>
-
-</div>
-
-</div>
-
-
-<div class="form-group">
-
-<label>Video or Image</label>
-
-<input
-type="file"
-id="clipFile"
-accept="video/*,image/*"
->
-
-</div>
-
-
-<button
-class="button"
-id="addClip"
->
-Add Clip
-</button>
 
 
 <div
 class="notice"
-id="clipNotice"
+id="profileNotice"
 >
-Clip added successfully.
+Your profile has been saved on this device.
 </div>
 
 </div>
 
 
 <div
-class="grid clips-grid"
-id="clipList"
-style="margin-top:25px;"
->
-
-<div class="empty" id="emptyClips">
-No personal clips added yet.
-</div>
-
-
-<div class="card clip">
-
-<div class="clip-media">
-<div class="clip-placeholder">🔥</div>
-</div>
-
-<div class="clip-content">
-
-<h3>1v4 Clutch!</h3>
-
-<div class="clip-meta">
-Call of Duty • JaxGaming
-</div>
-
-<div class="clip-actions">
-
-<button
-class="button dark like-button"
->
-❤️ 24
-</button>
-
-<button
-class="button dark comment-toggle"
->
-💬 Comments
-</button>
-
-</div>
-
-<div
-class="comments"
-style="display:none;"
->
-
-<div class="comment">
-<strong>RogueR:</strong> That was insane!
-</div>
-
-<div class="comment-form">
-
-<input placeholder="Write a comment...">
-
-<button class="button">
-Post
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div class="card clip">
-
-<div class="clip-media">
-<div class="clip-placeholder">🏆</div>
-</div>
-
-<div class="clip-content">
-
-<h3>Insane Victory</h3>
-
-<div class="clip-meta">
-Fortnite • MeganPlays
-</div>
-
-<div class="clip-actions">
-
-<button
-class="button dark like-button"
->
-❤️ 18
-</button>
-
-<button
-class="button dark comment-toggle"
->
-💬 Comments
-</button>
-
-</div>
-
-<div
-class="comments"
-style="display:none;"
->
-
-<div class="comment">
-<strong>JaxGaming:</strong> Nice one!
-</div>
-
-<div class="comment-form">
-
-<input placeholder="Write a comment...">
-
-<button class="button">
-Post
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- LFG -->
-
-<section id="groups">
-
-<div class="heading">
-
-<h2>💬 Groups & Communities</h2>
-
-<p>Find people, start discussions and look for teammates.</p>
-
-</div>
-
-
-<div class="grid forums">
-
-
-<div class="card forum">
-
-<h3>🔫 Call of Duty LFG</h3>
-
-<p>
-Competitive players looking for ranked teammates.
-</p>
-
-</div>
-
-
-<div class="card forum">
-
-<h3>⛏️ Minecraft Community</h3>
-
-<p>
-Find players for survival worlds, builds and SMPs.
-</p>
-
-</div>
-
-
-<div class="card forum">
-
-<h3>🎮 Casual Gamers</h3>
-
-<p>
-No pressure. Just play and have fun.
-</p>
-
-</div>
-
-
-</div>
-
-
-<div style="margin-top:30px;">
-
-<h2>🤝 Looking For Players</h2>
-
-<div class="lfg">
-
-
-<div class="card">
-
-<h3>JaxGaming</h3>
-
-<div class="lfg-status">
-● Looking now
-</div>
-
-<p style="color:#929baa;">
-Call of Duty ranked. Need 2 more players.
-</p>
-
-<br>
-
-<span class="tag">Competitive</span>
-<span class="tag">PlayStation</span>
-
-</div>
-
-
-<div class="card">
-
-<h3>MeganPlays</h3>
-
-<div class="lfg-status">
-● Looking now
-</div>
-
-<p style="color:#929baa;">
-Minecraft survival. Looking for friendly players.
-</p>
-
-<br>
-
-<span class="tag">Casual</span>
-<span class="tag">PC</span>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- HISTORY -->
-
-<section id="history">
-
-<div class="heading">
-
-<h2>🤝 Played Together</h2>
-
-<p>
-See if you've played with another player before.
-</p>
-
-</div>
-
-
-<div class="card history">
-
-<div class="history-row">
-<strong>Player</strong>
-<strong>Game</strong>
-<strong>When</strong>
-<strong>Sessions</strong>
-</div>
-
-
-<div class="history-row">
-<strong>JaxGaming</strong>
-<span>Call of Duty</span>
-<span>Yesterday</span>
-<span>4</span>
-</div>
-
-
-<div class="history-row">
-<strong>RogueR</strong>
-<span>Apex Legends</span>
-<span>12 Aug 2026</span>
-<span>2</span>
-</div>
-
-
-<div class="history-row">
-<strong>MeganPlays</strong>
-<span>Minecraft</span>
-<span>03 Aug 2026</span>
-<span>7</span>
-</div>
-
-
-</div>
+id="savedProfile"
+style="margin-top:20px;"
+></div>
 
 </section>
 
@@ -1482,62 +2031,58 @@ See if you've played with another player before.
 
 <section id="reputation">
 
-<div class="heading">
+<div class="section-title">
 
 <h2>⭐ Reputation & Safety</h2>
 
 <p>
-Reputation helps gamers make informed decisions.
+Build trust through positive gaming experiences.
 </p>
 
 </div>
 
+
+<div class="reputation-grid">
+
+
+<div class="card">
+
+<h3>Example Reputation</h3>
+
+<div class="rating-big">
+4.8
+</div>
 
 <div class="reputation">
-
-
-<div class="card">
-
-<h3>Example Player</h3>
-
-<div class="big-rating">
-⭐ 4.8 / 5
+★★★★★
 </div>
 
-<p style="color:#929baa;">
-Based on 36 player reviews.
+<p style="color:var(--muted);">
+Based on 112 player interactions.
 </p>
 
 
-<div class="review">
+<div class="stat-grid">
 
-<strong>⭐ 5/5 — Great teammate</strong>
-
-<p>
-Friendly, communicated well and helped the team.
-</p>
-
+<div class="stat">
+<strong>98%</strong>
+<span>Would play again</span>
 </div>
 
-
-<div class="review">
-
-<strong>⭐ 5/5 — Would play again</strong>
-
-<p>
-Really good player and respectful.
-</p>
-
+<div class="stat">
+<strong>96%</strong>
+<span>Positive reviews</span>
 </div>
 
+<div class="stat">
+<strong>87</strong>
+<span>Games played together</span>
+</div>
 
-<div class="review">
-
-<strong>⭐ 4/5 — Good game</strong>
-
-<p>
-Played fairly and was easy to communicate with.
-</p>
+<div class="stat">
+<strong>12</strong>
+<span>Communities joined</span>
+</div>
 
 </div>
 
@@ -1546,98 +2091,95 @@ Played fairly and was easy to communicate with.
 
 <div class="card">
 
-<h3>How reputation works</h3>
+<h3>Recent Reviews</h3>
 
-<p style="color:#a4adbb;margin-top:10px;">
-Players can leave reviews after playing together.
-Repeated positive interactions can build reputation.
+
+<div class="review">
+
+<strong>⭐ ⭐ ⭐ ⭐ ⭐</strong>
+
+<p>
+Excellent teammate. Communicated well and stayed respectful.
 </p>
 
-<p style="color:#a4adbb;margin-top:15px;">
-Serious reports should include evidence whenever possible.
+</div>
+
+
+<div class="review">
+
+<strong>⭐ ⭐ ⭐ ⭐ ⭐</strong>
+
+<p>
+Would definitely play with them again.
 </p>
 
+</div>
 
-<div class="report-box">
+
+<div class="review">
+
+<strong>⭐ ⭐ ⭐ ⭐</strong>
+
+<p>
+Good player and very helpful.
+</p>
+
+</div>
+
+
+<div class="report">
 
 <h3>🚨 Report a Player</h3>
 
-<p style="color:#a4adbb;">
-Report serious behaviour and optionally attach
-a screenshot, image or video as evidence.
+<p style="color:var(--muted);font-size:13px;margin:8px 0 15px;">
+If someone behaves seriously badly, reports can include evidence.
 </p>
 
-<br>
-
-<button
-class="button red"
-id="showReport"
->
-Start Report
-</button>
-
-
-<div
-class="report-evidence"
-id="reportEvidence"
->
-
-<div class="form-group">
-
-<label>Player Name</label>
 
 <input
-id="reportedPlayer"
-placeholder="Who are you reporting?"
+id="reportPlayer"
+placeholder="Player name"
+style="margin-bottom:10px;"
 >
 
-</div>
-
-
-<div class="form-group">
-
-<label>What happened?</label>
 
 <textarea
 id="reportReason"
-placeholder="Explain what happened..."
+placeholder="What happened?"
+style="margin-bottom:10px;"
 ></textarea>
 
-</div>
-
-
-<div class="form-group">
-
-<label>Evidence</label>
 
 <input
 type="file"
-id="evidence"
+id="reportEvidence"
 accept="image/*,video/*"
 >
 
-<div class="form-note">
-Choose a screenshot, image or video showing what happened.
-</div>
 
-</div>
+<p class="form-note">
+You can attach a screenshot, image or video.
+</p>
+
+
+<br>
 
 
 <button
-class="button red"
+class="btn btn-red"
 id="submitReport"
 >
 Submit Report
 </button>
 
+
 <div
 class="notice"
 id="reportNotice"
 >
-Report recorded in this demo. Evidence selected successfully.
+Report submitted in this demo.
 </div>
 
-</div>
 
 </div>
 
@@ -1655,8 +2197,8 @@ Report recorded in this demo. Evidence selected successfully.
 
 <strong>🎮 Players Find Players</strong>
 
-<p style="margin-top:7px;">
-Find people. Play together. Build your gaming community.
+<p>
+A place for every type of gamer.
 </p>
 
 </footer>
@@ -1664,188 +2206,179 @@ Find people. Play together. Build your gaming community.
 
 <script>
 
-document.addEventListener("DOMContentLoaded",function(){
+/* NAVIGATION */
 
+function scrollToSection(id){
 
-/* STORAGE */
-
-let savedProfile=
-JSON.parse(localStorage.getItem("pfgProfile")||"null");
-
-let savedClips=
-JSON.parse(localStorage.getItem("pfgClips")||"[]");
-
-
-/* HELPERS */
-
-function escapeHTML(value){
-
-const div=document.createElement("div");
-
-div.textContent=value||"";
-
-return div.innerHTML;
+document
+.getElementById(id)
+.scrollIntoView({
+behavior:"smooth"
+});
 
 }
 
 
-/* PLAYER FILTERING */
+/* GAME FILTER FROM GAME CARDS */
 
-const players=
-document.querySelectorAll(".player");
+document
+.querySelectorAll(".game-card[data-game]")
+.forEach(function(card){
+
+card.addEventListener("click",function(){
+
+const game=
+card.dataset.game;
+
+document
+.getElementById("filterGame")
+.value=game;
+
+scrollToSection("find");
+
+filterPlayers();
+
+});
+
+});
+
+
+/* PLAYER FILTER */
 
 function filterPlayers(){
 
+const search=
+document
+.getElementById("search")
+.value
+.toLowerCase()
+.trim();
+
 const game=
-document.getElementById("gameFilter").value;
+document
+.getElementById("filterGame")
+.value;
 
 const style=
-document.getElementById("styleFilter").value;
+document
+.getElementById("filterStyle")
+.value;
 
 const platform=
-document.getElementById("platformFilter").value;
+document
+.getElementById("filterPlatform")
+.value;
 
-const skill=
-document.getElementById("skillFilter").value;
-
-
-players.forEach(function(player){
-
-const matchGame=
-game==="all"||
-player.dataset.game===game;
-
-const matchStyle=
-style==="all"||
-player.dataset.style===style;
-
-const matchPlatform=
-platform==="all"||
-player.dataset.platform===platform;
-
-const matchSkill=
-skill==="all"||
-player.dataset.skill===skill;
-
-
-player.style.display=
-matchGame&&matchStyle&&matchPlatform&&matchSkill
-?""
-:"none";
-
-});
-
-}
-
-
-["gameFilter","styleFilter","platformFilter","skillFilter"]
-.forEach(function(id){
-
-document.getElementById(id)
-.addEventListener("change",filterPlayers);
-
-});
-
-
-/* SEARCH */
 
 document
-.getElementById("searchButton")
-.addEventListener("click",function(){
-
-const search=
-document.getElementById("mainSearch")
-.value
-.trim()
-.toLowerCase();
-
-
-players.forEach(function(player){
+.querySelectorAll(".player-card")
+.forEach(function(player){
 
 const name=
 player.dataset.name.toLowerCase();
 
-const game=
-player.dataset.game.toLowerCase();
+const playerGame=
+player.dataset.game;
+
+const playerStyle=
+player.dataset.style;
+
+const playerPlatform=
+player.dataset.platform;
+
+
+const matchSearch=
+!search||
+name.includes(search)||
+playerGame.toLowerCase().includes(search);
+
+const matchGame=
+game==="all"||
+playerGame===game;
+
+const matchStyle=
+style==="all"||
+playerStyle===style;
+
+const matchPlatform=
+platform==="all"||
+playerPlatform===platform;
 
 
 player.style.display=
-!search||
-name.includes(search)||
-game.includes(search)
-?""
+matchSearch&&
+matchGame&&
+matchStyle&&
+matchPlatform
+?"block"
 :"none";
 
 });
 
-
-document
-.getElementById("searchNotice")
-.style.display="block";
+}
 
 
 document
-.getElementById("players")
-.scrollIntoView({behavior:"smooth"});
-
-});
+.getElementById("filterButton")
+.addEventListener("click",filterPlayers);
 
 
 document
-.getElementById("mainSearch")
+.getElementById("search")
 .addEventListener("keydown",function(e){
 
 if(e.key==="Enter"){
-
-document
-.getElementById("searchButton")
-.click();
-
-}
-
-});
-
-
-/* GAME SHORTCUTS */
-
-document
-.querySelectorAll(".game")
-.forEach(function(game){
-
-game.addEventListener("click",function(){
-
-const selected=
-game.dataset.game;
-
-if(selected==="all"){
-
-document
-.getElementById("gameFilter")
-.value="all";
-
-}else{
-
-document
-.getElementById("gameFilter")
-.value=selected;
-
-}
-
 filterPlayers();
-
-document
-.getElementById("players")
-.scrollIntoView({behavior:"smooth"});
-
-});
+}
 
 });
 
 
 /* PLAYER PROFILES */
 
+const profileData={
+
+JaxGaming:{
+initial:"J",
+game:"Call of Duty",
+style:"Competitive",
+platform:"PlayStation",
+skill:"Advanced",
+rating:"4.9",
+reviews:"47",
+bio:"Competitive Call of Duty player looking for serious ranked teammates.",
+looking:"Ranked teammates"
+},
+
+MeganPlays:{
+initial:"M",
+game:"Minecraft",
+style:"Casual",
+platform:"PC",
+skill:"Intermediate",
+rating:"4.8",
+reviews:"36",
+bio:"Casual Minecraft player who loves building and exploring.",
+looking:"Friendly players"
+},
+
+RogueR:{
+initial:"R",
+game:"Apex Legends",
+style:"Competitive",
+platform:"Xbox",
+skill:"Advanced",
+rating:"4.7",
+reviews:"29",
+bio:"Competitive Apex player looking for a consistent ranked squad.",
+looking:"Ranked teammates"
+}
+
+};
+
+
 document
-.querySelectorAll(".profile-button")
+.querySelectorAll(".profile-btn")
 .forEach(function(button){
 
 button.addEventListener("click",function(){
@@ -1853,73 +2386,32 @@ button.addEventListener("click",function(){
 const name=
 button.dataset.player;
 
+const p=
+profileData[name];
+
 const box=
-document.getElementById("profileBox");
-
-
-const profiles={
-
-JaxGaming:{
-initial:"J",
-style:"Competitive",
-game:"Call of Duty",
-platform:"PlayStation",
-skill:"Advanced",
-rating:"4.9",
-reviews:"47",
-about:"Competitive Call of Duty player looking for ranked teammates.",
-looking:"Ranked teammates and serious players."
-},
-
-MeganPlays:{
-initial:"M",
-style:"Casual",
-game:"Minecraft",
-platform:"PC",
-skill:"Intermediate",
-rating:"4.8",
-reviews:"36",
-about:"Casual Minecraft player who enjoys building and exploring.",
-looking:"Friendly players to build and explore with."
-},
-
-RogueR:{
-initial:"R",
-style:"Competitive",
-game:"Apex Legends",
-platform:"Xbox",
-skill:"Advanced",
-rating:"4.7",
-reviews:"29",
-about:"Competitive Apex Legends player looking for ranked teammates.",
-looking:"Ranked teammates."
-}
-
-};
-
-
-const p=profiles[name];
+document.getElementById("profilePreview");
 
 
 box.innerHTML=`
 
-<div class="profile-header">
+<div class="profile-layout">
 
-<div class="avatar">${p.initial}</div>
+<div class="card profile-card">
 
-<div>
-
-<h3>${name}</h3>
-
-<div class="online">● Player Profile</div>
-
+<div class="profile-avatar">
+${p.initial}
 </div>
 
+<h2>${name}</h2>
+
+<div class="reputation">
+⭐ ${p.rating}
 </div>
 
-<p>${p.about}</p>
+<p>${p.bio}</p>
 
-<div class="profile-stat-grid">
+<div class="stat-grid">
 
 <div class="stat">
 <strong>${p.game}</strong>
@@ -1928,7 +2420,7 @@ box.innerHTML=`
 
 <div class="stat">
 <strong>${p.style}</strong>
-<span>Play Style</span>
+<span>Style</span>
 </div>
 
 <div class="stat">
@@ -1938,43 +2430,79 @@ box.innerHTML=`
 
 <div class="stat">
 <strong>${p.skill}</strong>
-<span>Skill Level</span>
+<span>Skill</span>
 </div>
 
 </div>
 
-<strong>Looking For</strong>
-
-<p>${p.looking}</p>
-
-<div class="rating">
-⭐ ${p.rating} / 5
 </div>
 
-<p style="color:#8f98a8;">
-${p.reviews} player reviews
+
+<div class="profile-content">
+
+<div class="card">
+
+<h3>🎯 Looking For</h3>
+
+<p style="color:var(--muted);margin-top:8px;">
+${p.looking}
+</p>
+
+<br>
+
+<span class="badge">✓ Positive reputation</span>
+<span class="badge">✓ Played with community</span>
+<span class="badge">✓ Active player</span>
+
+</div>
+
+
+<div class="card">
+
+<h3>🎥 Clips</h3>
+
+<p style="color:var(--muted);margin-top:8px;">
+View this player's gaming clips.
 </p>
 
 <br>
 
 <button
-class="button dark"
-onclick="document.getElementById('clips').scrollIntoView({behavior:'smooth'})"
+class="btn btn-primary"
+onclick="scrollToSection('clips')"
 >
-🎥 View Clips
+View Clips
 </button>
 
+</div>
+
+
+<div class="card">
+
+<h3>🤝 History</h3>
+
+<p style="color:var(--muted);margin-top:8px;">
+See whether you've played together before.
+</p>
+
+<br>
+
 <button
-class="button dark"
-onclick="document.getElementById('history').scrollIntoView({behavior:'smooth'})"
+class="btn btn-secondary"
+onclick="scrollToSection('history')"
 >
-🤝 Played Together
+View History
 </button>
+
+</div>
+
+</div>
+
+</div>
 
 `;
 
-
-box.classList.add("show");
+box.style.display="block";
 
 box.scrollIntoView({behavior:"smooth"});
 
@@ -1983,120 +2511,200 @@ box.scrollIntoView({behavior:"smooth"});
 });
 
 
-/* CREATE PROFILE */
+/* CLIPS */
 
 document
-.getElementById("openProfile")
-.addEventListener("click",function(){
+.querySelectorAll(".like")
+.forEach(function(button){
 
-const form=
-document.getElementById("profileForm");
+button.addEventListener("click",function(){
 
-if(form.style.display==="none"){
+const span=
+button.querySelector("span");
 
-form.style.display="block";
+let count=
+parseInt(span.textContent);
 
-this.textContent="Close Profile Form";
+count++;
 
-}else{
+span.textContent=count;
 
-form.style.display="none";
-
-this.textContent="Create Profile";
-
-}
+});
 
 });
 
 
-function showSavedProfile(profile){
+document
+.querySelectorAll(".comment-toggle")
+.forEach(function(button){
 
-const box=
-document.getElementById("createdProfile");
+button.addEventListener("click",function(){
 
-const initial=
-profile.name.charAt(0).toUpperCase();
+const comments=
+button
+.closest(".clip")
+.querySelector(".comments");
 
+comments.style.display=
+comments.style.display==="block"
+?"none"
+:"block";
 
-box.innerHTML=`
+});
 
-<div class="profile-header">
-
-<div class="avatar">${initial}</div>
-
-<div>
-
-<h3>${escapeHTML(profile.name)}</h3>
-
-<div class="online">● Your Local Profile</div>
-
-</div>
-
-</div>
-
-<p>${escapeHTML(profile.bio||"Welcome to my gaming profile.")}</p>
-
-<div class="profile-stat-grid">
-
-<div class="stat">
-<strong>${escapeHTML(profile.game)}</strong>
-<span>Main Game</span>
-</div>
-
-<div class="stat">
-<strong>${escapeHTML(profile.style)}</strong>
-<span>Play Style</span>
-</div>
-
-<div class="stat">
-<strong>${escapeHTML(profile.platform)}</strong>
-<span>Platform</span>
-</div>
-
-<div class="stat">
-<strong>${escapeHTML(profile.skill)}</strong>
-<span>Skill Level</span>
-</div>
-
-</div>
-
-<strong>Region</strong>
-
-<p>${escapeHTML(profile.region)}</p>
-
-<br>
-
-<strong>Looking For</strong>
-
-<p>${escapeHTML(profile.looking||"Other gamers to play with.")}</p>
-
-<br>
-
-<div class="rating">
-⭐ New Profile — No reputation yet
-</div>
-
-`;
+});
 
 
-box.classList.add("show");
+document
+.querySelectorAll(".comment-input button")
+.forEach(function(button){
+
+button.addEventListener("click",function(){
+
+const input=
+button
+.parentElement
+.querySelector("input");
+
+const text=
+input.value.trim();
+
+if(!text)return;
+
+
+const comment=
+document.createElement("div");
+
+comment.className="comment";
+
+comment.innerHTML=
+"<strong>You:</strong> "+
+text;
+
+button
+.closest(".comments")
+.insertBefore(
+comment,
+button.parentElement
+);
+
+input.value="";
+
+});
+
+});
+
+
+/* PROFILE STORAGE */
+
+function loadProfile(){
+
+const saved=
+localStorage.getItem("pfgUserProfile");
+
+if(!saved)return;
+
+const p=
+JSON.parse(saved);
+
+document
+.getElementById("gamerName")
+.value=p.name||"";
+
+document
+.getElementById("profileGame")
+.value=p.game||"Call of Duty";
+
+document
+.getElementById("profileStyle")
+.value=p.style||"Competitive";
+
+document
+.getElementById("profilePlatform")
+.value=p.platform||"PlayStation";
+
+document
+.getElementById("profileBio")
+.value=p.bio||"";
+
+document
+.getElementById("profileLooking")
+.value=p.looking||"";
+
+showSavedProfile(p);
 
 }
 
 
-if(savedProfile){
+function showSavedProfile(p){
 
-showSavedProfile(savedProfile);
+const box=
+document.getElementById("savedProfile");
+
+const initial=
+(p.name||"G").charAt(0).toUpperCase();
+
+
+box.innerHTML=`
+
+<div class="profile-layout">
+
+<div class="card profile-card">
+
+<div class="profile-avatar">
+${initial}
+</div>
+
+<h2>${p.name}</h2>
+
+<div class="reputation">
+⭐ New Player
+</div>
+
+<p>${p.bio||"No bio added yet."}</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>Gaming Details</h3>
+
+<div class="tags">
+
+<span class="tag">${p.game}</span>
+<span class="tag">${p.style}</span>
+<span class="tag">${p.platform}</span>
+
+</div>
+
+<h3 style="margin-top:20px;">
+Looking For
+</h3>
+
+<p style="color:var(--muted);margin-top:6px;">
+${p.looking||"Other gamers"}
+</p>
+
+</div>
+
+</div>
+
+`;
 
 }
 
 
 document
-.getElementById("createProfile")
+.getElementById("saveProfile")
 .addEventListener("click",function(){
 
 const name=
-document.getElementById("gamerName").value.trim();
+document
+.getElementById("gamerName")
+.value
+.trim();
+
 
 if(!name){
 
@@ -2111,25 +2719,26 @@ const profile={
 
 name:name,
 
-region:document.getElementById("region").value,
+game:
+document.getElementById("profileGame").value,
 
-game:document.getElementById("profileGame").value,
+style:
+document.getElementById("profileStyle").value,
 
-style:document.getElementById("playStyle").value,
+platform:
+document.getElementById("profilePlatform").value,
 
-platform:document.getElementById("platform").value,
+bio:
+document.getElementById("profileBio").value,
 
-skill:document.getElementById("skill").value,
-
-looking:document.getElementById("lookingFor").value,
-
-bio:document.getElementById("bio").value
+looking:
+document.getElementById("profileLooking").value
 
 };
 
 
 localStorage.setItem(
-"pfgProfile",
+"pfgUserProfile",
 JSON.stringify(profile)
 );
 
@@ -2138,327 +2747,16 @@ showSavedProfile(profile);
 
 
 document
-.getElementById("createdProfile")
-.scrollIntoView({behavior:"smooth"});
+.getElementById("profileNotice")
+.style.display="block";
 
 });
 
 
-/* CLIPS */
+loadProfile();
 
-function renderSavedClips(){
 
-savedClips.forEach(function(clip){
-
-createClipElement(clip);
-
-});
-
-}
-
-
-function createClipElement(clip){
-
-const list=
-document.getElementById("clipList");
-
-const empty=
-document.getElementById("emptyClips");
-
-if(empty){
-
-empty.style.display="none";
-
-}
-
-
-const card=
-document.createElement("div");
-
-card.className="card clip";
-
-
-let media="";
-
-if(clip.type==="image"){
-
-media=`
-<img src="${clip.url}" alt="${escapeHTML(clip.title)}">
-`;
-
-}else{
-
-media=`
-<video src="${clip.url}" controls playsinline></video>
-`;
-
-}
-
-
-card.innerHTML=`
-
-<div class="clip-media">
-${media}
-</div>
-
-<div class="clip-content">
-
-<h3>${escapeHTML(clip.title)}</h3>
-
-<div class="clip-meta">
-${escapeHTML(clip.game)} • Your Profile
-</div>
-
-<div class="clip-actions">
-
-<button class="button dark like-button">
-❤️ <span>0</span>
-</button>
-
-<button class="button dark comment-toggle">
-💬 Comments
-</button>
-
-</div>
-
-<div class="comments" style="display:none;">
-
-<div class="comment-list"></div>
-
-<div class="comment-form">
-
-<input placeholder="Write a comment...">
-
-<button class="button">
-Post
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-`;
-
-
-list.prepend(card);
-
-attachClipEvents(card);
-
-}
-
-
-document
-.getElementById("addClip")
-.addEventListener("click",function(){
-
-const file=
-document.getElementById("clipFile")
-.files[0];
-
-const title=
-document.getElementById("clipTitle")
-.value
-.trim();
-
-const game=
-document.getElementById("clipGame")
-.value;
-
-
-if(!file){
-
-alert("Please choose a video or image.");
-
-return;
-
-}
-
-if(!title){
-
-alert("Please give the clip a title.");
-
-return;
-
-}
-
-
-const reader=
-new FileReader();
-
-
-reader.onload=function(){
-
-const clip={
-
-title:title,
-
-game:game,
-
-type:file.type.startsWith("image/")
-?"image"
-:"video",
-
-url:reader.result
-
-};
-
-
-savedClips.push(clip);
-
-
-try{
-
-localStorage.setItem(
-"pfgClips",
-JSON.stringify(savedClips)
-);
-
-}catch(error){
-
-alert(
-"The file is too large for browser storage. For permanent clip uploads we will need online storage later."
-);
-
-return;
-
-}
-
-
-createClipElement(clip);
-
-
-document
-.getElementById("clipTitle")
-.value="";
-
-document
-.getElementById("clipFile")
-.value="";
-
-
-const notice=
-document.getElementById("clipNotice");
-
-notice.style.display="block";
-
-setTimeout(function(){
-
-notice.style.display="none";
-
-},3000);
-
-};
-
-
-reader.readAsDataURL(file);
-
-});
-
-
-function attachClipEvents(card){
-
-const like=
-card.querySelector(".like-button");
-
-like.addEventListener("click",function(){
-
-const span=
-like.querySelector("span");
-
-let count=
-parseInt(span.textContent)||0;
-
-count++;
-
-span.textContent=count;
-
-});
-
-
-const toggle=
-card.querySelector(".comment-toggle");
-
-const comments=
-card.querySelector(".comments");
-
-toggle.addEventListener("click",function(){
-
-comments.style.display=
-comments.style.display==="none"
-?"block"
-:"none";
-
-});
-
-
-const commentForm=
-card.querySelector(".comment-form");
-
-const commentInput=
-commentForm.querySelector("input");
-
-const commentList=
-card.querySelector(".comment-list");
-
-const postButton=
-commentForm.querySelector("button");
-
-
-postButton.addEventListener("click",function(){
-
-const text=
-commentInput.value.trim();
-
-if(!text)return;
-
-
-const comment=
-document.createElement("div");
-
-comment.className="comment";
-
-comment.innerHTML=
-"<strong>You:</strong> "+
-escapeHTML(text);
-
-
-commentList.appendChild(comment);
-
-commentInput.value="";
-
-});
-
-}
-
-
-document
-.querySelectorAll(".clip")
-.forEach(attachClipEvents);
-
-
-renderSavedClips();
-
-
-/* REPORTING */
-
-document
-.getElementById("showReport")
-.addEventListener("click",function(){
-
-const box=
-document.getElementById("reportEvidence");
-
-box.classList.toggle("show");
-
-this.textContent=
-box.classList.contains("show")
-?"Close Report"
-:"Start Report";
-
-});
-
+/* REPORT */
 
 document
 .getElementById("submitReport")
@@ -2466,7 +2764,7 @@ document
 
 const player=
 document
-.getElementById("reportedPlayer")
+.getElementById("reportPlayer")
 .value
 .trim();
 
@@ -2478,17 +2776,18 @@ document
 
 const evidence=
 document
-.getElementById("evidence")
+.getElementById("reportEvidence")
 .files[0];
 
 
 if(!player){
 
-alert("Please enter the player's name.");
+alert("Please enter the player name.");
 
 return;
 
 }
+
 
 if(!reason){
 
@@ -2500,34 +2799,21 @@ return;
 
 
 const notice=
-document.getElementById("reportNotice");
+document
+.getElementById("reportNotice");
 
 
 notice.textContent=
 evidence
-?"Report recorded in this demo with evidence attached."
-:"Report recorded in this demo.";
+?"Report submitted with evidence selected."
+:"Report submitted in this demo.";
 
 
 notice.style.display="block";
 
 
-document
-.getElementById("reportedPlayer")
-.value="";
-
-document
-.getElementById("reportReason")
-.value="";
-
-document
-.getElementById("evidence")
-.value="";
-
 });
 
-
-});
 
 </script>
 
