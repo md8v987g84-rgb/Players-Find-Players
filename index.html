@@ -8,551 +8,590 @@
 
 <style>
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+scroll-behavior:smooth;
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #090b10;
-    color: white;
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#080a0f;
+color:#fff;
+line-height:1.5;
 }
 
-header {
-    background: #11151f;
-    border-bottom: 1px solid #252b38;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+header{
+position:sticky;
+top:0;
+z-index:1000;
+background:#11151e;
+border-bottom:1px solid #252c39;
 }
 
-.header-inner {
-    max-width: 1150px;
-    margin: auto;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
+.header-inner{
+max-width:1200px;
+margin:auto;
+padding:15px 20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
 }
 
-.logo {
-    color: #61dafb;
-    font-size: 20px;
-    font-weight: bold;
-    white-space: nowrap;
+.logo{
+font-weight:bold;
+font-size:20px;
+color:#61dafb;
+white-space:nowrap;
 }
 
-nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+nav{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:14px;
 }
 
-nav a {
-    color: #cbd1dc;
-    text-decoration: none;
-    font-size: 14px;
+nav a{
+color:#cbd2df;
+text-decoration:none;
+font-size:14px;
 }
 
-nav a:hover {
-    color: #61dafb;
+nav a:hover{
+color:#61dafb;
 }
 
-.hero {
-    background: radial-gradient(circle at top, #182642 0%, #090b10 65%);
-    text-align: center;
-    padding: 80px 20px;
+.hero{
+padding:80px 20px;
+text-align:center;
+background:
+radial-gradient(circle at top,#1b3155 0%,#080a0f 65%);
 }
 
-.hero h1 {
-    font-size: clamp(34px, 7vw, 58px);
-    margin-bottom: 18px;
+.hero h1{
+font-size:clamp(36px,7vw,62px);
+margin-bottom:15px;
 }
 
-.hero h1 span {
-    color: #61dafb;
+.hero h1 span{
+color:#61dafb;
 }
 
-.hero p {
-    color: #aab2c2;
-    max-width: 700px;
-    margin: auto;
-    line-height: 1.7;
-    font-size: 17px;
+.hero p{
+max-width:750px;
+margin:auto;
+color:#aab3c2;
+font-size:17px;
 }
 
-.search {
-    max-width: 700px;
-    margin: 30px auto 0;
-    display: flex;
-    gap: 10px;
+.search{
+max-width:720px;
+margin:30px auto 0;
+display:flex;
+gap:10px;
 }
 
-.search input {
-    flex: 1;
-    padding: 15px;
-    background: #171b25;
-    color: white;
-    border: 1px solid #343b4a;
-    border-radius: 8px;
-    font-size: 16px;
-}
-
-.button {
-    background: #61dafb;
-    color: #071018;
-    border: 0;
-    border-radius: 8px;
-    padding: 14px 20px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.button:hover {
-    background: #42c7eb;
-}
-
-.button.secondary {
-    background: #252c3a;
-    color: white;
-}
-
-section {
-    max-width: 1150px;
-    margin: auto;
-    padding: 55px 20px;
-}
-
-.section-heading {
-    margin-bottom: 25px;
-}
-
-.section-heading h2 {
-    font-size: 29px;
-}
-
-.section-heading p {
-    color: #9099aa;
-    margin-top: 8px;
-}
-
-.notice {
-    display: none;
-    max-width: 700px;
-    margin: 15px auto 0;
-    padding: 14px;
-    border-radius: 8px;
-    background: #183b2b;
-    border: 1px solid #347b59;
-    color: #b9f5d3;
-}
-
-.filters {
-    background: #121620;
-    border: 1px solid #272e3b;
-    border-radius: 12px;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-bottom: 25px;
-}
-
-select,
 input,
-textarea {
-    background: #1a1f2a;
-    color: white;
-    border: 1px solid #343b4a;
-    border-radius: 7px;
-    padding: 12px;
-    width: 100%;
+select,
+textarea{
+width:100%;
+background:#191e28;
+color:#fff;
+border:1px solid #353d4d;
+border-radius:8px;
+padding:12px;
+font-family:inherit;
 }
 
-textarea {
-    min-height: 120px;
-    resize: vertical;
+textarea{
+min-height:120px;
+resize:vertical;
 }
 
-.players {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 18px;
+button{
+font-family:inherit;
 }
 
-.player {
-    background: #141821;
-    border: 1px solid #292f3d;
-    border-radius: 12px;
-    padding: 20px;
+.button{
+border:0;
+border-radius:8px;
+padding:12px 18px;
+background:#61dafb;
+color:#061018;
+font-weight:bold;
+cursor:pointer;
 }
 
-.player-top {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.button:hover{
+background:#3fc8eb;
 }
 
-.avatar {
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #61dafb, #7067ff);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    font-weight: bold;
+.button.dark{
+background:#252c39;
+color:#fff;
 }
 
-.player h3 {
-    font-size: 18px;
+.button.red{
+background:#b8334b;
+color:#fff;
 }
 
-.online {
-    color: #59e391;
-    font-size: 12px;
-    margin-top: 4px;
+.button.green{
+background:#2e9d68;
+color:#fff;
 }
 
-.tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin: 17px 0;
+section{
+max-width:1200px;
+margin:auto;
+padding:60px 20px;
 }
 
-.tag {
-    background: #222936;
-    color: #bfc7d6;
-    padding: 6px 9px;
-    border-radius: 6px;
-    font-size: 12px;
+.heading{
+margin-bottom:25px;
 }
 
-.rating {
-    color: #ffd166;
-    margin-bottom: 16px;
+.heading h2{
+font-size:30px;
 }
 
-.profile {
-    display: none;
-    background: #121620;
-    border: 1px solid #343b4a;
-    border-radius: 12px;
-    padding: 25px;
-    margin-top: 20px;
+.heading p{
+color:#929baa;
+margin-top:5px;
 }
 
-.profile.show {
-    display: block;
+.card{
+background:#131821;
+border:1px solid #29313e;
+border-radius:13px;
+padding:22px;
 }
 
-.profile-header {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 20px;
+.grid{
+display:grid;
+gap:18px;
 }
 
-.profile h3 {
-    font-size: 24px;
+.players-grid{
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 }
 
-.profile p {
-    color: #aab2c2;
-    line-height: 1.6;
+.games-grid{
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
 }
 
-.games {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 15px;
+.game{
+text-align:center;
+cursor:pointer;
+transition:.2s;
 }
 
-.game {
-    background: #141821;
-    border: 1px solid #292f3d;
-    border-radius: 12px;
-    padding: 25px 15px;
-    text-align: center;
-    cursor: pointer;
+.game:hover{
+transform:translateY(-3px);
+border-color:#61dafb;
 }
 
-.game:hover {
-    border-color: #61dafb;
+.game-icon{
+font-size:40px;
+margin-bottom:8px;
 }
 
-.game-icon {
-    font-size: 36px;
-    margin-bottom: 10px;
+.game small{
+color:#858e9d;
+display:block;
+margin-top:5px;
 }
 
-.game small {
-    display: block;
-    color: #858e9e;
-    margin-top: 6px;
+.filters{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+margin-bottom:25px;
 }
 
-.clips {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 18px;
+.player-top{
+display:flex;
+align-items:center;
+gap:12px;
 }
 
-.clip {
-    background: #141821;
-    border: 1px solid #292f3d;
-    border-radius: 12px;
-    overflow: hidden;
+.avatar{
+width:52px;
+height:52px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+font-weight:bold;
+background:linear-gradient(135deg,#61dafb,#7167ff);
+color:#071018;
+flex-shrink:0;
 }
 
-.clip-video {
-    height: 150px;
-    background: linear-gradient(135deg, #273455, #11151f);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 48px;
+.online{
+font-size:12px;
+color:#59e391;
 }
 
-.clip-video video,
-.clip-video img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.tags{
+display:flex;
+flex-wrap:wrap;
+gap:6px;
+margin:15px 0;
 }
 
-.clip-info {
-    padding: 15px;
+.tag{
+background:#222936;
+color:#c3cbd8;
+padding:5px 8px;
+border-radius:6px;
+font-size:12px;
 }
 
-.clip-info p {
-    color: #929aaa;
-    margin-top: 6px;
-    font-size: 13px;
+.rating{
+color:#ffd166;
+margin:12px 0;
 }
 
-.history {
-    background: #141821;
-    border: 1px solid #292f3d;
-    border-radius: 12px;
-    overflow: hidden;
+.profile-box{
+display:none;
+margin-top:20px;
 }
 
-.history-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    padding: 17px;
-    border-bottom: 1px solid #252b36;
+.profile-box.show{
+display:block;
 }
 
-.history-row:last-child {
-    border-bottom: 0;
+.profile-header{
+display:flex;
+align-items:center;
+gap:15px;
+margin-bottom:20px;
 }
 
-.history-row span {
-    color: #9ba4b4;
+.profile-header h3{
+font-size:26px;
 }
 
-.forums {
-    display: grid;
-    gap: 13px;
+.profile-stat-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:12px;
+margin:20px 0;
 }
 
-.forum {
-    background: #141821;
-    border: 1px solid #292f3d;
-    border-radius: 10px;
-    padding: 18px;
+.stat{
+background:#1b212c;
+border-radius:9px;
+padding:15px;
 }
 
-.forum h3 {
-    margin-bottom: 7px;
+.stat strong{
+display:block;
+font-size:19px;
 }
 
-.forum p {
-    color: #929aaa;
-    line-height: 1.5;
+.stat span{
+color:#8f98a8;
+font-size:13px;
 }
 
-.reputation-box {
-    background: #141821;
-    border: 1px solid #292f3d;
-    border-radius: 12px;
-    padding: 25px;
+.form-box{
+background:#111720;
+border:1px solid #303949;
+border-radius:13px;
+padding:24px;
 }
 
-.big-rating {
-    font-size: 34px;
-    color: #ffd166;
-    margin: 12px 0;
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:16px;
 }
 
-.report {
-    margin-top: 20px;
-    padding: 20px;
-    background: #1b1419;
-    border: 1px solid #53323d;
-    border-radius: 10px;
+.form-group{
+margin-bottom:16px;
 }
 
-.report h3 {
-    color: #ff758f;
-    margin-bottom: 8px;
+.form-group.full{
+grid-column:1/-1;
 }
 
-.report p {
-    color: #a9a1aa;
-    line-height: 1.6;
+.form-group label{
+display:block;
+font-weight:bold;
+font-size:14px;
+color:#cbd3df;
+margin-bottom:7px;
 }
 
-.create-profile {
-    background: linear-gradient(135deg, #111d31, #121620);
-    border: 1px solid #34455e;
-    border-radius: 14px;
-    padding: 25px;
+.form-note{
+font-size:13px;
+color:#858e9d;
+margin-top:6px;
 }
 
-.profile-form {
-    display: none;
-    margin-top: 25px;
+#createdProfile{
+display:none;
+margin-top:20px;
 }
 
-.profile-form.show {
-    display: block;
+#createdProfile.show{
+display:block;
 }
 
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
+.clips-grid{
+grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
 }
 
-.form-group {
-    margin-bottom: 18px;
+.clip{
+overflow:hidden;
+padding:0;
 }
 
-.form-group.full {
-    grid-column: 1 / -1;
+.clip-media{
+height:170px;
+background:#202839;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 7px;
-    color: #cbd2df;
-    font-weight: bold;
-    font-size: 14px;
+.clip-media img,
+.clip-media video{
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
-.form-note {
-    color: #858e9e;
-    font-size: 13px;
-    margin-top: 6px;
+.clip-placeholder{
+font-size:55px;
 }
 
-.created-profile {
-    display: none;
-    margin-top: 25px;
-    background: #141821;
-    border: 1px solid #347b59;
-    border-radius: 12px;
-    padding: 25px;
+.clip-content{
+padding:17px;
 }
 
-.created-profile.show {
-    display: block;
+.clip-content h3{
+margin-bottom:5px;
 }
 
-.upload-box {
-    background: #121620;
-    border: 1px dashed #465268;
-    border-radius: 12px;
-    padding: 25px;
-    margin-top: 25px;
+.clip-meta{
+font-size:13px;
+color:#8d96a6;
 }
 
-.upload-box h3 {
-    margin-bottom: 8px;
+.clip-actions{
+display:flex;
+gap:8px;
+margin-top:15px;
 }
 
-.upload-box p {
-    color: #9099aa;
-    margin-bottom: 18px;
-    line-height: 1.5;
+.clip-actions button{
+flex:1;
 }
 
-.upload-fields {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 15px;
+.comments{
+margin-top:15px;
+border-top:1px solid #2a313d;
+padding-top:12px;
 }
 
-.file-input {
-    padding: 10px;
-    cursor: pointer;
+.comment{
+font-size:13px;
+color:#b8c0cd;
+padding:6px 0;
 }
 
-#uploadedClips {
-    margin-top: 25px;
+.comment strong{
+color:#fff;
 }
 
-.empty-clips {
-    color: #858e9e;
-    padding: 20px 0;
+.comment-form{
+display:flex;
+gap:7px;
+margin-top:10px;
 }
 
-footer {
-    background: #11151f;
-    border-top: 1px solid #252b38;
-    padding: 35px 20px;
-    text-align: center;
-    color: #788294;
+.comment-form button{
+padding:9px 12px;
 }
 
-@media(max-width: 750px) {
+.empty{
+color:#858e9d;
+padding:20px 0;
+}
 
-    .header-inner {
-        flex-direction: column;
-    }
+.history{
+overflow:hidden;
+}
 
-    .filters {
-        grid-template-columns: 1fr;
-    }
+.history-row{
+display:grid;
+grid-template-columns:1fr 1fr 1fr 1fr;
+gap:10px;
+padding:16px;
+border-bottom:1px solid #272e39;
+}
 
-    .search {
-        flex-direction: column;
-    }
+.history-row:last-child{
+border-bottom:0;
+}
 
-    .history-row {
-        grid-template-columns: 1fr;
-    }
+.history-row span{
+color:#929baa;
+}
 
-    .form-grid,
-    .upload-fields {
-        grid-template-columns: 1fr;
-    }
+.forums{
+display:grid;
+gap:13px;
+}
 
-    .form-group.full {
-        grid-column: auto;
-    }
+.forum{
+cursor:pointer;
+}
+
+.forum:hover{
+border-color:#61dafb;
+}
+
+.forum p{
+color:#929baa;
+margin-top:5px;
+}
+
+.lfg{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+margin-top:20px;
+}
+
+.lfg-status{
+color:#59e391;
+font-size:13px;
+margin:7px 0;
+}
+
+.reputation{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+.big-rating{
+font-size:42px;
+color:#ffd166;
+margin:10px 0;
+}
+
+.review{
+background:#1b202a;
+border-radius:9px;
+padding:15px;
+margin-top:12px;
+}
+
+.review p{
+color:#a6afbd;
+margin-top:5px;
+}
+
+.report-box{
+margin-top:25px;
+padding:20px;
+background:#1b1318;
+border:1px solid #54313c;
+border-radius:10px;
+}
+
+.report-box h3{
+color:#ff718a;
+margin-bottom:8px;
+}
+
+.report-evidence{
+display:none;
+margin-top:18px;
+}
+
+.report-evidence.show{
+display:block;
+}
+
+.notice{
+display:none;
+padding:13px;
+border-radius:8px;
+margin-top:15px;
+background:#183b2c;
+border:1px solid #327955;
+color:#bdf2d2;
+}
+
+footer{
+border-top:1px solid #252c38;
+background:#11151e;
+padding:35px 20px;
+text-align:center;
+color:#788394;
+}
+
+@media(max-width:800px){
+
+.header-inner{
+flex-direction:column;
+}
+
+.filters{
+grid-template-columns:1fr 1fr;
+}
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.form-group.full{
+grid-column:auto;
+}
+
+.reputation{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:560px){
+
+nav{
+gap:10px;
+}
+
+.search{
+flex-direction:column;
+}
+
+.filters{
+grid-template-columns:1fr;
+}
+
+.history-row{
+grid-template-columns:1fr;
+}
+
 }
 
 </style>
 </head>
 
 <body>
-
 
 <header>
 
@@ -569,7 +608,7 @@ footer {
 <a href="#create-profile">Create Profile</a>
 <a href="#clips">Clips</a>
 <a href="#history">History</a>
-<a href="#forums">Groups</a>
+<a href="#groups">Groups</a>
 <a href="#reputation">Reputation</a>
 </nav>
 
@@ -581,115 +620,129 @@ footer {
 <main>
 
 
+<!-- HOME -->
+
 <section class="hero" id="home">
 
 <h1>Find Your <span>Gaming Squad</span></h1>
 
 <p>
-Find gamers who play the games you love,
-whether you're competitive, casual, social,
-achievement hunting or just looking for people to have fun with.
+Whether you're a competitive player, casual gamer,
+achievement hunter or just looking for people to have fun with,
+find gamers who play the way you do.
 </p>
 
 <div class="search">
 
 <input
 id="mainSearch"
-type="text"
-placeholder="Search for a game or player..."
+placeholder="Search for a player or game..."
 >
 
 <button
 class="button"
-id="findPlayersButton"
-type="button"
+id="searchButton"
 >
 Find Players
 </button>
 
 </div>
 
-<div class="notice" id="searchNotice">
-Search complete — matching players are shown below.
+<div
+class="notice"
+id="searchNotice"
+>
+Players matching your search are shown below.
 </div>
 
 </section>
 
 
+<!-- GAMES -->
+
 <section id="games">
 
-<div class="section-heading">
+<div class="heading">
 
 <h2>🎮 Games</h2>
 
-<p>Choose a game and find people who play it.</p>
+<p>Choose a game to find players.</p>
 
 </div>
 
-<div class="games">
+<div class="grid games-grid">
 
-<div class="game" data-game="Call of Duty">
+
+<div class="card game" data-game="Call of Duty">
 <div class="game-icon">🔫</div>
 <strong>Call of Duty</strong>
 <small>Competitive • Casual • Zombies</small>
 </div>
 
-<div class="game" data-game="Fortnite">
+
+<div class="card game" data-game="Fortnite">
 <div class="game-icon">🏆</div>
 <strong>Fortnite</strong>
 <small>Ranked • Casual • Creative</small>
 </div>
 
-<div class="game" data-game="EA Sports FC">
-<div class="game-icon">⚽</div>
-<strong>EA Sports FC</strong>
-<small>Clubs • Ultimate Team</small>
-</div>
 
-<div class="game" data-game="Minecraft">
+<div class="card game" data-game="Minecraft">
 <div class="game-icon">⛏️</div>
 <strong>Minecraft</strong>
-<small>Survival • Creative • SMP</small>
+<small>Survival • Creative</small>
 </div>
 
-<div class="game" data-game="Apex Legends">
+
+<div class="card game" data-game="Apex Legends">
 <div class="game-icon">🎯</div>
 <strong>Apex Legends</strong>
 <small>Ranked • Casual</small>
 </div>
 
-<div class="game" data-game="GTA">
-<div class="game-icon">🚗</div>
-<strong>GTA</strong>
-<small>Online • Roleplay • Casual</small>
+
+<div class="card game" data-game="EA Sports FC">
+<div class="game-icon">⚽</div>
+<strong>EA Sports FC</strong>
+<small>Clubs • Ultimate Team</small>
 </div>
 
-<div class="game" data-game="Valorant">
+
+<div class="card game" data-game="GTA">
+<div class="game-icon">🚗</div>
+<strong>GTA</strong>
+<small>Online • Roleplay</small>
+</div>
+
+
+<div class="card game" data-game="Valorant">
 <div class="game-icon">🎯</div>
 <strong>Valorant</strong>
 <small>Competitive • Ranked</small>
 </div>
 
-<div class="game" data-game="all">
+
+<div class="card game" data-game="all">
 <div class="game-icon">➕</div>
 <strong>More Games</strong>
 <small>Discover more</small>
 </div>
+
 
 </div>
 
 </section>
 
 
+<!-- FIND PLAYERS -->
+
 <section id="players">
 
-<div class="section-heading">
+<div class="heading">
 
 <h2>🔎 Find Players</h2>
 
-<p>
-Find people based on how they like to play.
-</p>
+<p>Find gamers based on how they like to play.</p>
 
 </div>
 
@@ -698,47 +751,56 @@ Find people based on how they like to play.
 
 <select id="gameFilter">
 <option value="all">All Games</option>
-<option value="Call of Duty">Call of Duty</option>
-<option value="Fortnite">Fortnite</option>
-<option value="Minecraft">Minecraft</option>
-<option value="Apex Legends">Apex Legends</option>
-<option value="EA Sports FC">EA Sports FC</option>
+<option>Call of Duty</option>
+<option>Fortnite</option>
+<option>Minecraft</option>
+<option>Apex Legends</option>
+<option>EA Sports FC</option>
+<option>GTA</option>
+<option>Valorant</option>
 </select>
+
 
 <select id="styleFilter">
 <option value="all">All Play Styles</option>
-<option value="Competitive">Competitive</option>
-<option value="Casual">Casual</option>
-<option value="Social">Social</option>
-<option value="Achievement Hunter">Achievement Hunter</option>
+<option>Competitive</option>
+<option>Casual</option>
+<option>Social</option>
+<option>Achievement Hunter</option>
 </select>
+
 
 <select id="platformFilter">
 <option value="all">All Platforms</option>
-<option value="PlayStation">PlayStation</option>
-<option value="Xbox">Xbox</option>
-<option value="PC">PC</option>
+<option>PlayStation</option>
+<option>Xbox</option>
+<option>PC</option>
+<option>Nintendo</option>
+<option>Mobile</option>
 </select>
+
 
 <select id="skillFilter">
 <option value="all">All Skill Levels</option>
-<option value="Beginner">Beginner</option>
-<option value="Intermediate">Intermediate</option>
-<option value="Advanced">Advanced</option>
+<option>Beginner</option>
+<option>Intermediate</option>
+<option>Advanced</option>
 </select>
 
 </div>
 
 
-<div class="players" id="playerList">
+<div class="grid players-grid" id="playerList">
 
 
-<div class="player"
+<div
+class="card player"
 data-game="Call of Duty"
 data-style="Competitive"
 data-platform="PlayStation"
 data-skill="Advanced"
-data-name="JaxGaming">
+data-name="JaxGaming"
+>
 
 <div class="player-top">
 
@@ -758,14 +820,11 @@ data-name="JaxGaming">
 <span class="tag">Advanced</span>
 </div>
 
-<div class="rating">
-⭐ 4.9 Reputation
-</div>
+<div class="rating">⭐ 4.9</div>
 
 <button
 class="button profile-button"
 data-player="JaxGaming"
-type="button"
 >
 View Profile
 </button>
@@ -773,12 +832,14 @@ View Profile
 </div>
 
 
-<div class="player"
+<div
+class="card player"
 data-game="Minecraft"
 data-style="Casual"
 data-platform="PC"
 data-skill="Intermediate"
-data-name="MeganPlays">
+data-name="MeganPlays"
+>
 
 <div class="player-top">
 
@@ -798,14 +859,11 @@ data-name="MeganPlays">
 <span class="tag">Intermediate</span>
 </div>
 
-<div class="rating">
-⭐ 4.8 Reputation
-</div>
+<div class="rating">⭐ 4.8</div>
 
 <button
 class="button profile-button"
 data-player="MeganPlays"
-type="button"
 >
 View Profile
 </button>
@@ -813,12 +871,14 @@ View Profile
 </div>
 
 
-<div class="player"
+<div
+class="card player"
 data-game="Apex Legends"
 data-style="Competitive"
 data-platform="Xbox"
 data-skill="Advanced"
-data-name="RogueR">
+data-name="RogueR"
+>
 
 <div class="player-top">
 
@@ -838,74 +898,67 @@ data-name="RogueR">
 <span class="tag">Advanced</span>
 </div>
 
-<div class="rating">
-⭐ 4.7 Reputation
-</div>
+<div class="rating">⭐ 4.7</div>
 
 <button
 class="button profile-button"
 data-player="RogueR"
-type="button"
 >
 View Profile
 </button>
 
 </div>
 
+
 </div>
 
 
-<div class="profile" id="profileBox"></div>
+<div
+class="card profile-box"
+id="profileBox"
+>
+</div>
 
 </section>
 
 
+<!-- CREATE PROFILE -->
+
 <section id="create-profile">
 
-<div class="section-heading">
+<div class="heading">
 
 <h2>👤 Create Your Gaming Profile</h2>
 
-<p>
-Tell other gamers who you are and what kind of players you're looking for.
-</p>
+<p>Tell other gamers who you are.</p>
 
 </div>
 
 
-<div class="create-profile">
-
-<p style="color:#aab2c2; line-height:1.6;">
-Create a profile to show your games, play style,
-platform, skill level and the type of gaming experience
-you're looking for.
-</p>
-
-<br>
+<div class="form-box">
 
 <button
 class="button"
-id="openProfileButton"
-type="button"
+id="openProfile"
 >
 Create Profile
 </button>
 
 
-<div class="profile-form" id="profileForm">
+<div
+id="profileForm"
+style="display:none;margin-top:25px;"
+>
 
 <div class="form-grid">
 
 
 <div class="form-group">
 
-<label for="gamerName">
-Gamer Name *
-</label>
+<label>Gamer Name *</label>
 
 <input
 id="gamerName"
-type="text"
 placeholder="Example: GamingLegend"
 >
 
@@ -914,19 +967,17 @@ placeholder="Example: GamingLegend"
 
 <div class="form-group">
 
-<label for="region">
-Region
-</label>
+<label>Region</label>
 
 <select id="region">
 
-<option value="UK">United Kingdom</option>
-<option value="Europe">Europe</option>
-<option value="North America">North America</option>
-<option value="South America">South America</option>
-<option value="Asia">Asia</option>
-<option value="Oceania">Oceania</option>
-<option value="Other">Other</option>
+<option>United Kingdom</option>
+<option>Europe</option>
+<option>North America</option>
+<option>South America</option>
+<option>Asia</option>
+<option>Oceania</option>
+<option>Other</option>
 
 </select>
 
@@ -935,20 +986,17 @@ Region
 
 <div class="form-group">
 
-<label for="profileGame">
-Main Game
-</label>
+<label>Main Game</label>
 
 <select id="profileGame">
 
-<option value="Call of Duty">Call of Duty</option>
-<option value="Fortnite">Fortnite</option>
-<option value="EA Sports FC">EA Sports FC</option>
-<option value="Minecraft">Minecraft</option>
-<option value="Apex Legends">Apex Legends</option>
-<option value="GTA">GTA</option>
-<option value="Valorant">Valorant</option>
-<option value="Other">Other</option>
+<option>Call of Duty</option>
+<option>Fortnite</option>
+<option>Minecraft</option>
+<option>Apex Legends</option>
+<option>EA Sports FC</option>
+<option>GTA</option>
+<option>Valorant</option>
 
 </select>
 
@@ -957,16 +1005,14 @@ Main Game
 
 <div class="form-group">
 
-<label for="playStyle">
-Play Style
-</label>
+<label>Play Style</label>
 
 <select id="playStyle">
 
-<option value="Competitive">Competitive</option>
-<option value="Casual">Casual</option>
-<option value="Social">Social</option>
-<option value="Achievement Hunter">Achievement Hunter</option>
+<option>Competitive</option>
+<option>Casual</option>
+<option>Social</option>
+<option>Achievement Hunter</option>
 
 </select>
 
@@ -975,17 +1021,15 @@ Play Style
 
 <div class="form-group">
 
-<label for="platform">
-Platform
-</label>
+<label>Platform</label>
 
 <select id="platform">
 
-<option value="PlayStation">PlayStation</option>
-<option value="Xbox">Xbox</option>
-<option value="PC">PC</option>
-<option value="Nintendo">Nintendo</option>
-<option value="Mobile">Mobile</option>
+<option>PlayStation</option>
+<option>Xbox</option>
+<option>PC</option>
+<option>Nintendo</option>
+<option>Mobile</option>
 
 </select>
 
@@ -994,15 +1038,13 @@ Platform
 
 <div class="form-group">
 
-<label for="skillLevel">
-Skill Level
-</label>
+<label>Skill Level</label>
 
-<select id="skillLevel">
+<select id="skill">
 
-<option value="Beginner">Beginner</option>
-<option value="Intermediate">Intermediate</option>
-<option value="Advanced">Advanced</option>
+<option>Beginner</option>
+<option>Intermediate</option>
+<option>Advanced</option>
 
 </select>
 
@@ -1011,14 +1053,11 @@ Skill Level
 
 <div class="form-group full">
 
-<label for="lookingFor">
-What are you looking for?
-</label>
+<label>What are you looking for?</label>
 
 <input
 id="lookingFor"
-type="text"
-placeholder="Example: Ranked teammates, casual players, people to have fun with..."
+placeholder="Ranked teammates, casual players, people to have fun with..."
 >
 
 </div>
@@ -1026,13 +1065,11 @@ placeholder="Example: Ranked teammates, casual players, people to have fun with.
 
 <div class="form-group full">
 
-<label for="bio">
-About You
-</label>
+<label>About You</label>
 
 <textarea
 id="bio"
-placeholder="Tell other gamers a little about yourself..."
+placeholder="Tell other gamers about yourself..."
 ></textarea>
 
 </div>
@@ -1042,8 +1079,7 @@ placeholder="Tell other gamers a little about yourself..."
 
 <button
 class="button"
-id="createProfileButton"
-type="button"
+id="createProfile"
 >
 Create My Profile
 </button>
@@ -1056,7 +1092,7 @@ Create My Profile
 
 
 <div
-class="created-profile"
+class="card"
 id="createdProfile"
 >
 </div>
@@ -1066,69 +1102,79 @@ id="createdProfile"
 </section>
 
 
+<!-- CLIPS -->
+
 <section id="clips">
 
-<div class="section-heading">
+<div class="heading">
 
 <h2>🎥 Gaming Clips</h2>
 
-<p>
-Share your best moments on your profile,
-groups and forums.
-</p>
+<p>Share your best gaming moments.</p>
 
 </div>
 
 
-<div class="upload-box">
+<div class="form-box">
 
-<h3>📤 Upload a Clip or Screenshot</h3>
+<h3>📤 Add a Clip or Screenshot</h3>
 
-<p>
-Choose a video or image from your device.
-You can give it a title and select the game.
-This demo displays the upload on this page.
+<p style="color:#929baa;margin:8px 0 18px;">
+Add a video or image from your device.
 </p>
 
 
-<div class="upload-fields">
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>Clip Title</label>
 
 <input
 id="clipTitle"
-type="text"
-placeholder="Clip title"
+placeholder="My best clutch..."
 >
 
+</div>
+
+
+<div class="form-group">
+
+<label>Game</label>
 
 <select id="clipGame">
 
-<option value="Call of Duty">Call of Duty</option>
-<option value="Fortnite">Fortnite</option>
-<option value="Minecraft">Minecraft</option>
-<option value="Apex Legends">Apex Legends</option>
-<option value="EA Sports FC">EA Sports FC</option>
-<option value="GTA">GTA</option>
-<option value="Valorant">Valorant</option>
+<option>Call of Duty</option>
+<option>Fortnite</option>
+<option>Minecraft</option>
+<option>Apex Legends</option>
+<option>EA Sports FC</option>
+<option>GTA</option>
+<option>Valorant</option>
 
 </select>
 
 </div>
 
+</div>
+
+
+<div class="form-group">
+
+<label>Video or Image</label>
 
 <input
-id="clipFile"
-class="file-input"
 type="file"
+id="clipFile"
 accept="video/*,image/*"
 >
 
+</div>
 
-br>
 
 <button
 class="button"
-id="uploadClipButton"
-type="button"
+id="addClip"
 >
 Add Clip
 </button>
@@ -1136,64 +1182,240 @@ Add Clip
 
 <div
 class="notice"
-id="uploadNotice"
+id="clipNotice"
 >
-Your clip has been added below.
+Clip added successfully.
 </div>
 
 </div>
 
 
 <div
-class="clips"
-id="uploadedClips"
+class="grid clips-grid"
+id="clipList"
+style="margin-top:25px;"
 >
 
-<div class="empty-clips" id="emptyClips">
-No clips uploaded yet. Be the first!
+<div class="empty" id="emptyClips">
+No personal clips added yet.
+</div>
+
+
+<div class="card clip">
+
+<div class="clip-media">
+<div class="clip-placeholder">🔥</div>
+</div>
+
+<div class="clip-content">
+
+<h3>1v4 Clutch!</h3>
+
+<div class="clip-meta">
+Call of Duty • JaxGaming
+</div>
+
+<div class="clip-actions">
+
+<button
+class="button dark like-button"
+>
+❤️ 24
+</button>
+
+<button
+class="button dark comment-toggle"
+>
+💬 Comments
+</button>
+
+</div>
+
+<div
+class="comments"
+style="display:none;"
+>
+
+<div class="comment">
+<strong>RogueR:</strong> That was insane!
+</div>
+
+<div class="comment-form">
+
+<input placeholder="Write a comment...">
+
+<button class="button">
+Post
+</button>
+
+</div>
+
 </div>
 
 </div>
 
+</div>
+
+
+<div class="card clip">
+
+<div class="clip-media">
+<div class="clip-placeholder">🏆</div>
+</div>
+
+<div class="clip-content">
+
+<h3>Insane Victory</h3>
+
+<div class="clip-meta">
+Fortnite • MeganPlays
+</div>
+
+<div class="clip-actions">
+
+<button
+class="button dark like-button"
+>
+❤️ 18
+</button>
+
+<button
+class="button dark comment-toggle"
+>
+💬 Comments
+</button>
+
+</div>
+
+<div
+class="comments"
+style="display:none;"
+>
+
+<div class="comment">
+<strong>JaxGaming:</strong> Nice one!
+</div>
+
+<div class="comment-form">
+
+<input placeholder="Write a comment...">
+
+<button class="button">
+Post
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- LFG -->
+
+<section id="groups">
+
+<div class="heading">
+
+<h2>💬 Groups & Communities</h2>
+
+<p>Find people, start discussions and look for teammates.</p>
+
+</div>
+
+
+<div class="grid forums">
+
+
+<div class="card forum">
+
+<h3>🔫 Call of Duty LFG</h3>
+
+<p>
+Competitive players looking for ranked teammates.
+</p>
+
+</div>
+
+
+<div class="card forum">
+
+<h3>⛏️ Minecraft Community</h3>
+
+<p>
+Find players for survival worlds, builds and SMPs.
+</p>
+
+</div>
+
+
+<div class="card forum">
+
+<h3>🎮 Casual Gamers</h3>
+
+<p>
+No pressure. Just play and have fun.
+</p>
+
+</div>
+
+
+</div>
+
+
+<div style="margin-top:30px;">
+
+<h2>🤝 Looking For Players</h2>
+
+<div class="lfg">
+
+
+<div class="card">
+
+<h3>JaxGaming</h3>
+
+<div class="lfg-status">
+● Looking now
+</div>
+
+<p style="color:#929baa;">
+Call of Duty ranked. Need 2 more players.
+</p>
 
 <br>
 
-
-<div class="clips">
-
-
-<div class="clip">
-
-<div class="clip-video">▶️</div>
-
-<div class="clip-info">
-<strong>1v4 Clutch!</strong>
-<p>Call of Duty • JaxGaming</p>
-</div>
+<span class="tag">Competitive</span>
+<span class="tag">PlayStation</span>
 
 </div>
 
 
-<div class="clip">
+<div class="card">
 
-<div class="clip-video">▶️</div>
+<h3>MeganPlays</h3>
 
-<div class="clip-info">
-<strong>Insane Victory</strong>
-<p>Fortnite • MeganPlays</p>
+<div class="lfg-status">
+● Looking now
 </div>
 
+<p style="color:#929baa;">
+Minecraft survival. Looking for friendly players.
+</p>
+
+<br>
+
+<span class="tag">Casual</span>
+<span class="tag">PC</span>
+
 </div>
 
-
-<div class="clip">
-
-<div class="clip-video">▶️</div>
-
-<div class="clip-info">
-<strong>Perfect Sniper Shot</strong>
-<p>Apex Legends • RogueR</p>
-</div>
 
 </div>
 
@@ -1202,142 +1424,221 @@ No clips uploaded yet. Be the first!
 </section>
 
 
+<!-- HISTORY -->
+
 <section id="history">
 
-<div class="section-heading">
+<div class="heading">
 
 <h2>🤝 Played Together</h2>
 
 <p>
-See whether you've played with another player before.
+See if you've played with another player before.
 </p>
 
 </div>
 
-<div class="history">
+
+<div class="card history">
 
 <div class="history-row">
 <strong>Player</strong>
 <strong>Game</strong>
 <strong>When</strong>
+<strong>Sessions</strong>
 </div>
+
 
 <div class="history-row">
 <strong>JaxGaming</strong>
 <span>Call of Duty</span>
 <span>Yesterday</span>
+<span>4</span>
 </div>
+
 
 <div class="history-row">
 <strong>RogueR</strong>
 <span>Apex Legends</span>
 <span>12 Aug 2026</span>
+<span>2</span>
 </div>
+
 
 <div class="history-row">
 <strong>MeganPlays</strong>
 <span>Minecraft</span>
 <span>03 Aug 2026</span>
+<span>7</span>
 </div>
 
-</div>
-
-</section>
-
-
-<section id="forums">
-
-<div class="section-heading">
-
-<h2>💬 Groups & Forums</h2>
-
-<p>
-Find teammates, discuss games and create communities.
-</p>
-
-</div>
-
-<div class="forums">
-
-<div class="forum">
-<h3>🔫 Call of Duty LFG</h3>
-<p>
-Looking for competitive players for ranked tonight.
-</p>
-</div>
-
-<div class="forum">
-<h3>⛏️ Minecraft Community</h3>
-<p>
-Find people to join your survival world.
-</p>
-</div>
-
-<div class="forum">
-<h3>🎮 Casual Gamers</h3>
-<p>
-No pressure. Just looking for people to have fun with.
-</p>
-</div>
 
 </div>
 
 </section>
 
+
+<!-- REPUTATION -->
 
 <section id="reputation">
 
-<div class="section-heading">
+<div class="heading">
 
-<h2>⭐ Player Reputation</h2>
+<h2>⭐ Reputation & Safety</h2>
 
 <p>
-Reputation helps players know who they are playing with.
+Reputation helps gamers make informed decisions.
 </p>
 
 </div>
 
-<div class="reputation-box">
 
-<strong>Example Player Reputation</strong>
+<div class="reputation">
+
+
+<div class="card">
+
+<h3>Example Player</h3>
 
 <div class="big-rating">
 ⭐ 4.8 / 5
 </div>
 
-<p style="color:#aab2c2; line-height:1.6;">
-Reputation will eventually be based on genuine
-interactions with other players.
+<p style="color:#929baa;">
+Based on 36 player reviews.
 </p>
 
 
-<div class="report">
+<div class="review">
 
-<h3>🚨 Report Bad Behaviour</h3>
+<strong>⭐ 5/5 — Great teammate</strong>
 
 <p>
-Players will be able to report serious behaviour
-and attach screenshots, images or video evidence.
-Reports can then be reviewed before affecting
-another player's reputation.
+Friendly, communicated well and helped the team.
+</p>
+
+</div>
+
+
+<div class="review">
+
+<strong>⭐ 5/5 — Would play again</strong>
+
+<p>
+Really good player and respectful.
+</p>
+
+</div>
+
+
+<div class="review">
+
+<strong>⭐ 4/5 — Good game</strong>
+
+<p>
+Played fairly and was easy to communicate with.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h3>How reputation works</h3>
+
+<p style="color:#a4adbb;margin-top:10px;">
+Players can leave reviews after playing together.
+Repeated positive interactions can build reputation.
+</p>
+
+<p style="color:#a4adbb;margin-top:15px;">
+Serious reports should include evidence whenever possible.
+</p>
+
+
+<div class="report-box">
+
+<h3>🚨 Report a Player</h3>
+
+<p style="color:#a4adbb;">
+Report serious behaviour and optionally attach
+a screenshot, image or video as evidence.
 </p>
 
 <br>
 
 <button
-class="button secondary"
-id="reportButton"
-type="button"
+class="button red"
+id="showReport"
 >
-Report a Player
+Start Report
+</button>
+
+
+<div
+class="report-evidence"
+id="reportEvidence"
+>
+
+<div class="form-group">
+
+<label>Player Name</label>
+
+<input
+id="reportedPlayer"
+placeholder="Who are you reporting?"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>What happened?</label>
+
+<textarea
+id="reportReason"
+placeholder="Explain what happened..."
+></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Evidence</label>
+
+<input
+type="file"
+id="evidence"
+accept="image/*,video/*"
+>
+
+<div class="form-note">
+Choose a screenshot, image or video showing what happened.
+</div>
+
+</div>
+
+
+<button
+class="button red"
+id="submitReport"
+>
+Submit Report
 </button>
 
 <div
 class="notice"
 id="reportNotice"
 >
-The reporting system will be connected to player
-accounts and evidence uploads in a later stage.
+Report recorded in this demo. Evidence selected successfully.
+</div>
+
+</div>
+
 </div>
 
 </div>
@@ -1345,6 +1646,7 @@ accounts and evidence uploads in a later stage.
 </div>
 
 </section>
+
 
 </main>
 
@@ -1353,7 +1655,7 @@ accounts and evidence uploads in a later stage.
 
 <strong>🎮 Players Find Players</strong>
 
-<p style="margin-top:8px;">
+<p style="margin-top:7px;">
 Find people. Play together. Build your gaming community.
 </p>
 
@@ -1362,171 +1664,178 @@ Find people. Play together. Build your gaming community.
 
 <script>
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded",function(){
 
 
-/* FIND PLAYERS */
+/* STORAGE */
 
-const searchButton =
-document.getElementById("findPlayersButton");
+let savedProfile=
+JSON.parse(localStorage.getItem("pfgProfile")||"null");
 
-const searchInput =
-document.getElementById("mainSearch");
+let savedClips=
+JSON.parse(localStorage.getItem("pfgClips")||"[]");
 
-const searchNotice =
-document.getElementById("searchNotice");
 
-const players =
+/* HELPERS */
+
+function escapeHTML(value){
+
+const div=document.createElement("div");
+
+div.textContent=value||"";
+
+return div.innerHTML;
+
+}
+
+
+/* PLAYER FILTERING */
+
+const players=
 document.querySelectorAll(".player");
 
+function filterPlayers(){
 
-function filterPlayers() {
-
-const game =
+const game=
 document.getElementById("gameFilter").value;
 
-const style =
+const style=
 document.getElementById("styleFilter").value;
 
-const platform =
+const platform=
 document.getElementById("platformFilter").value;
 
-const skill =
+const skill=
 document.getElementById("skillFilter").value;
 
 
-players.forEach(function(player) {
+players.forEach(function(player){
 
-const gameMatch =
-game === "all" ||
-player.dataset.game === game;
+const matchGame=
+game==="all"||
+player.dataset.game===game;
 
-const styleMatch =
-style === "all" ||
-player.dataset.style === style;
+const matchStyle=
+style==="all"||
+player.dataset.style===style;
 
-const platformMatch =
-platform === "all" ||
-player.dataset.platform === platform;
+const matchPlatform=
+platform==="all"||
+player.dataset.platform===platform;
 
-const skillMatch =
-skill === "all" ||
-player.dataset.skill === skill;
+const matchSkill=
+skill==="all"||
+player.dataset.skill===skill;
 
 
-if (
-gameMatch &&
-styleMatch &&
-platformMatch &&
-skillMatch
-) {
-
-player.style.display = "";
-
-} else {
-
-player.style.display = "none";
-
-}
+player.style.display=
+matchGame&&matchStyle&&matchPlatform&&matchSkill
+?""
+:"none";
 
 });
 
 }
 
 
-searchButton.addEventListener("click", function() {
+["gameFilter","styleFilter","platformFilter","skillFilter"]
+.forEach(function(id){
 
-const search =
-searchInput.value.trim().toLowerCase();
+document.getElementById(id)
+.addEventListener("change",filterPlayers);
+
+});
 
 
-players.forEach(function(player) {
+/* SEARCH */
 
-const name =
+document
+.getElementById("searchButton")
+.addEventListener("click",function(){
+
+const search=
+document.getElementById("mainSearch")
+.value
+.trim()
+.toLowerCase();
+
+
+players.forEach(function(player){
+
+const name=
 player.dataset.name.toLowerCase();
 
-const game =
+const game=
 player.dataset.game.toLowerCase();
 
 
-if (
-search === "" ||
-name.includes(search) ||
+player.style.display=
+!search||
+name.includes(search)||
 game.includes(search)
-) {
-
-player.style.display = "";
-
-} else {
-
-player.style.display = "none";
-
-}
+?""
+:"none";
 
 });
 
 
-searchNotice.style.display = "block";
+document
+.getElementById("searchNotice")
+.style.display="block";
 
 
 document
 .getElementById("players")
-.scrollIntoView({
-behavior: "smooth"
-});
+.scrollIntoView({behavior:"smooth"});
 
 });
 
 
-searchInput.addEventListener("keydown", function(event) {
+document
+.getElementById("mainSearch")
+.addEventListener("keydown",function(e){
 
-if (event.key === "Enter") {
+if(e.key==="Enter"){
 
-searchButton.click();
+document
+.getElementById("searchButton")
+.click();
 
 }
 
 });
 
 
-document
-.getElementById("gameFilter")
-.addEventListener("change", filterPlayers);
+/* GAME SHORTCUTS */
 
 document
-.getElementById("styleFilter")
-.addEventListener("change", filterPlayers);
+.querySelectorAll(".game")
+.forEach(function(game){
 
-document
-.getElementById("platformFilter")
-.addEventListener("change", filterPlayers);
+game.addEventListener("click",function(){
 
-document
-.getElementById("skillFilter")
-.addEventListener("change", filterPlayers);
-
-
-/* GAME BUTTONS */
-
-document.querySelectorAll(".game")
-.forEach(function(game) {
-
-game.addEventListener("click", function() {
-
-const selectedGame =
+const selected=
 game.dataset.game;
 
+if(selected==="all"){
+
 document
 .getElementById("gameFilter")
-.value = selectedGame;
+.value="all";
+
+}else{
+
+document
+.getElementById("gameFilter")
+.value=selected;
+
+}
 
 filterPlayers();
 
 document
 .getElementById("players")
-.scrollIntoView({
-behavior: "smooth"
-});
+.scrollIntoView({behavior:"smooth"});
 
 });
 
@@ -1537,159 +1846,137 @@ behavior: "smooth"
 
 document
 .querySelectorAll(".profile-button")
-.forEach(function(button) {
+.forEach(function(button){
 
-button.addEventListener("click", function() {
+button.addEventListener("click",function(){
 
-const player =
+const name=
 button.dataset.player;
 
-const profile =
+const box=
 document.getElementById("profileBox");
 
 
-if (player === "JaxGaming") {
+const profiles={
 
-profile.innerHTML = `
+JaxGaming:{
+initial:"J",
+style:"Competitive",
+game:"Call of Duty",
+platform:"PlayStation",
+skill:"Advanced",
+rating:"4.9",
+reviews:"47",
+about:"Competitive Call of Duty player looking for ranked teammates.",
+looking:"Ranked teammates and serious players."
+},
+
+MeganPlays:{
+initial:"M",
+style:"Casual",
+game:"Minecraft",
+platform:"PC",
+skill:"Intermediate",
+rating:"4.8",
+reviews:"36",
+about:"Casual Minecraft player who enjoys building and exploring.",
+looking:"Friendly players to build and explore with."
+},
+
+RogueR:{
+initial:"R",
+style:"Competitive",
+game:"Apex Legends",
+platform:"Xbox",
+skill:"Advanced",
+rating:"4.7",
+reviews:"29",
+about:"Competitive Apex Legends player looking for ranked teammates.",
+looking:"Ranked teammates."
+}
+
+};
+
+
+const p=profiles[name];
+
+
+box.innerHTML=`
 
 <div class="profile-header">
 
-<div class="avatar">J</div>
+<div class="avatar">${p.initial}</div>
 
 <div>
-<h3>JaxGaming</h3>
-<div class="online">● Online now</div>
+
+<h3>${name}</h3>
+
+<div class="online">● Player Profile</div>
+
+</div>
+
+</div>
+
+<p>${p.about}</p>
+
+<div class="profile-stat-grid">
+
+<div class="stat">
+<strong>${p.game}</strong>
+<span>Main Game</span>
+</div>
+
+<div class="stat">
+<strong>${p.style}</strong>
+<span>Play Style</span>
+</div>
+
+<div class="stat">
+<strong>${p.platform}</strong>
+<span>Platform</span>
+</div>
+
+<div class="stat">
+<strong>${p.skill}</strong>
+<span>Skill Level</span>
 </div>
 
 </div>
 
-<p>
-Competitive Call of Duty player looking
-for ranked teammates.
+<strong>Looking For</strong>
+
+<p>${p.looking}</p>
+
+<div class="rating">
+⭐ ${p.rating} / 5
+</div>
+
+<p style="color:#8f98a8;">
+${p.reviews} player reviews
 </p>
 
 <br>
 
-<strong>Games:</strong>
-<p>Call of Duty • Apex Legends</p>
+<button
+class="button dark"
+onclick="document.getElementById('clips').scrollIntoView({behavior:'smooth'})"
+>
+🎥 View Clips
+</button>
 
-<br>
-
-<strong>Play Style:</strong>
-<p>Competitive • Ranked</p>
-
-<br>
-
-<strong>Platform:</strong>
-<p>PlayStation</p>
-
-<br>
-
-<strong>Reputation:</strong>
-<p>⭐ 4.9 / 5</p>
+<button
+class="button dark"
+onclick="document.getElementById('history').scrollIntoView({behavior:'smooth'})"
+>
+🤝 Played Together
+</button>
 
 `;
 
-}
 
+box.classList.add("show");
 
-if (player === "MeganPlays") {
-
-profile.innerHTML = `
-
-<div class="profile-header">
-
-<div class="avatar">M</div>
-
-<div>
-<h3>MeganPlays</h3>
-<div class="online">
-● Looking for players
-</div>
-</div>
-
-</div>
-
-<p>
-Casual Minecraft player looking for
-friendly people to build and explore with.
-</p>
-
-<br>
-
-<strong>Games:</strong>
-<p>Minecraft • Fortnite</p>
-
-<br>
-
-<strong>Play Style:</strong>
-<p>Casual • Social</p>
-
-<br>
-
-<strong>Platform:</strong>
-<p>PC</p>
-
-<br>
-
-<strong>Reputation:</strong>
-<p>⭐ 4.8 / 5</p>
-
-`;
-
-}
-
-
-if (player === "RogueR") {
-
-profile.innerHTML = `
-
-<div class="profile-header">
-
-<div class="avatar">R</div>
-
-<div>
-<h3>RogueR</h3>
-<div class="online">● Online now</div>
-</div>
-
-</div>
-
-<p>
-Competitive Apex Legends player looking
-for ranked teammates.
-</p>
-
-<br>
-
-<strong>Games:</strong>
-<p>Apex Legends • Call of Duty</p>
-
-<br>
-
-<strong>Play Style:</strong>
-<p>Competitive • Ranked</p>
-
-<br>
-
-<strong>Platform:</strong>
-<p>Xbox</p>
-
-<br>
-
-<strong>Reputation:</strong>
-<p>⭐ 4.7 / 5</p>
-
-`;
-
-}
-
-
-profile.classList.add("show");
-
-profile.scrollIntoView({
-behavior: "smooth"
-});
+box.scrollIntoView({behavior:"smooth"});
 
 });
 
@@ -1698,64 +1985,120 @@ behavior: "smooth"
 
 /* CREATE PROFILE */
 
-const openProfileButton =
-document.getElementById("openProfileButton");
+document
+.getElementById("openProfile")
+.addEventListener("click",function(){
 
-const profileForm =
+const form=
 document.getElementById("profileForm");
 
+if(form.style.display==="none"){
 
-openProfileButton.addEventListener("click", function() {
+form.style.display="block";
 
-profileForm.classList.toggle("show");
+this.textContent="Close Profile Form";
 
-if (profileForm.classList.contains("show")) {
+}else{
 
-openProfileButton.textContent =
-"Close Profile Form";
+form.style.display="none";
 
-} else {
-
-openProfileButton.textContent =
-"Create Profile";
+this.textContent="Create Profile";
 
 }
 
 });
 
 
-const createProfileButton =
-document.getElementById("createProfileButton");
+function showSavedProfile(profile){
+
+const box=
+document.getElementById("createdProfile");
+
+const initial=
+profile.name.charAt(0).toUpperCase();
 
 
-createProfileButton.addEventListener("click", function() {
+box.innerHTML=`
 
-const gamerName =
+<div class="profile-header">
+
+<div class="avatar">${initial}</div>
+
+<div>
+
+<h3>${escapeHTML(profile.name)}</h3>
+
+<div class="online">● Your Local Profile</div>
+
+</div>
+
+</div>
+
+<p>${escapeHTML(profile.bio||"Welcome to my gaming profile.")}</p>
+
+<div class="profile-stat-grid">
+
+<div class="stat">
+<strong>${escapeHTML(profile.game)}</strong>
+<span>Main Game</span>
+</div>
+
+<div class="stat">
+<strong>${escapeHTML(profile.style)}</strong>
+<span>Play Style</span>
+</div>
+
+<div class="stat">
+<strong>${escapeHTML(profile.platform)}</strong>
+<span>Platform</span>
+</div>
+
+<div class="stat">
+<strong>${escapeHTML(profile.skill)}</strong>
+<span>Skill Level</span>
+</div>
+
+</div>
+
+<strong>Region</strong>
+
+<p>${escapeHTML(profile.region)}</p>
+
+<br>
+
+<strong>Looking For</strong>
+
+<p>${escapeHTML(profile.looking||"Other gamers to play with.")}</p>
+
+<br>
+
+<div class="rating">
+⭐ New Profile — No reputation yet
+</div>
+
+`;
+
+
+box.classList.add("show");
+
+}
+
+
+if(savedProfile){
+
+showSavedProfile(savedProfile);
+
+}
+
+
+document
+.getElementById("createProfile")
+.addEventListener("click",function(){
+
+const name=
 document.getElementById("gamerName").value.trim();
 
-const region =
-document.getElementById("region").value;
-
-const game =
-document.getElementById("profileGame").value;
-
-const style =
-document.getElementById("playStyle").value;
-
-const platform =
-document.getElementById("platform").value;
-
-const skill =
-document.getElementById("skillLevel").value;
-
-const lookingFor =
-document.getElementById("lookingFor").value.trim();
-
-const bio =
-document.getElementById("bio").value.trim();
-
-
-if (gamerName === "") {
+if(!name){
 
 alert("Please enter your gamer name.");
 
@@ -1764,264 +2107,425 @@ return;
 }
 
 
-const firstLetter =
-gamerName.charAt(0).toUpperCase();
+const profile={
+
+name:name,
+
+region:document.getElementById("region").value,
+
+game:document.getElementById("profileGame").value,
+
+style:document.getElementById("playStyle").value,
+
+platform:document.getElementById("platform").value,
+
+skill:document.getElementById("skill").value,
+
+looking:document.getElementById("lookingFor").value,
+
+bio:document.getElementById("bio").value
+
+};
 
 
-const createdProfile =
-document.getElementById("createdProfile");
+localStorage.setItem(
+"pfgProfile",
+JSON.stringify(profile)
+);
 
 
-createdProfile.innerHTML = `
-
-<div class="profile-header">
-
-<div class="avatar">
-${firstLetter}
-</div>
-
-<div>
-
-<h3>${escapeHTML(gamerName)}</h3>
-
-<div class="online">
-● New Player Profile
-</div>
-
-</div>
-
-</div>
+showSavedProfile(profile);
 
 
-<p>
-${escapeHTML(
-bio ||
-"Welcome to my Players Find Players profile!"
-)}
-</p>
-
-<br>
-
-<strong>Game:</strong>
-<p>${escapeHTML(game)}</p>
-
-<br>
-
-<strong>Play Style:</strong>
-<p>${escapeHTML(style)}</p>
-
-<br>
-
-<strong>Skill Level:</strong>
-<p>${escapeHTML(skill)}</p>
-
-<br>
-
-<strong>Platform:</strong>
-<p>${escapeHTML(platform)}</p>
-
-<br>
-
-<strong>Region:</strong>
-<p>${escapeHTML(region)}</p>
-
-<br>
-
-<strong>Looking For:</strong>
-<p>
-${escapeHTML(
-lookingFor ||
-"Looking for other gamers to play with."
-)}
-</p>
-
-<br>
-
-<div class="rating">
-⭐ New Profile — Reputation not yet established
-</div>
-
-`;
-
-
-createdProfile.classList.add("show");
-
-
-createdProfile.scrollIntoView({
-behavior: "smooth"
-});
+document
+.getElementById("createdProfile")
+.scrollIntoView({behavior:"smooth"});
 
 });
 
 
-/* CLIP UPLOAD */
+/* CLIPS */
 
-const uploadClipButton =
-document.getElementById("uploadClipButton");
+function renderSavedClips(){
 
-const clipFile =
-document.getElementById("clipFile");
+savedClips.forEach(function(clip){
 
-const clipTitle =
-document.getElementById("clipTitle");
+createClipElement(clip);
 
-const clipGame =
-document.getElementById("clipGame");
+});
 
-const uploadedClips =
-document.getElementById("uploadedClips");
+}
 
-const emptyClips =
+
+function createClipElement(clip){
+
+const list=
+document.getElementById("clipList");
+
+const empty=
 document.getElementById("emptyClips");
 
-const uploadNotice =
-document.getElementById("uploadNotice");
+if(empty){
 
-
-uploadClipButton.addEventListener("click", function() {
-
-const file =
-clipFile.files[0];
-
-const title =
-clipTitle.value.trim();
-
-const game =
-clipGame.value;
-
-
-if (!file) {
-
-alert("Please choose a video or image first.");
-
-return;
+empty.style.display="none";
 
 }
 
 
-if (title === "") {
-
-alert("Please give your clip a title.");
-
-return;
-
-}
-
-
-if (emptyClips) {
-
-emptyClips.style.display = "none";
-
-}
-
-
-const fileURL =
-URL.createObjectURL(file);
-
-const clip =
+const card=
 document.createElement("div");
 
-clip.className = "clip";
+card.className="card clip";
 
 
-let mediaHTML = "";
+let media="";
 
+if(clip.type==="image"){
 
-if (file.type.startsWith("video/")) {
-
-mediaHTML = `
-
-<video
-src="${fileURL}"
-controls
-playsinline
->
-</video>
-
+media=`
+<img src="${clip.url}" alt="${escapeHTML(clip.title)}">
 `;
 
-} else {
+}else{
 
-mediaHTML = `
-
-<img
-src="${fileURL}"
-alt="${escapeHTML(title)}"
->
-
+media=`
+<video src="${clip.url}" controls playsinline></video>
 `;
 
 }
 
 
-clip.innerHTML = `
+card.innerHTML=`
 
-<div class="clip-video">
+<div class="clip-media">
+${media}
+</div>
 
-${mediaHTML}
+<div class="clip-content">
+
+<h3>${escapeHTML(clip.title)}</h3>
+
+<div class="clip-meta">
+${escapeHTML(clip.game)} • Your Profile
+</div>
+
+<div class="clip-actions">
+
+<button class="button dark like-button">
+❤️ <span>0</span>
+</button>
+
+<button class="button dark comment-toggle">
+💬 Comments
+</button>
 
 </div>
 
-<div class="clip-info">
+<div class="comments" style="display:none;">
 
-<strong>
-${escapeHTML(title)}
-</strong>
+<div class="comment-list"></div>
 
-<p>
-${escapeHTML(game)} • Your Profile
-</p>
+<div class="comment-form">
+
+<input placeholder="Write a comment...">
+
+<button class="button">
+Post
+</button>
+
+</div>
+
+</div>
 
 </div>
 
 `;
 
 
-uploadedClips.prepend(clip);
+list.prepend(card);
 
-
-uploadNotice.style.display = "block";
-
-
-clipTitle.value = "";
-
-clipFile.value = "";
-
-
-setTimeout(function() {
-
-uploadNotice.style.display = "none";
-
-}, 3000);
-
-});
-
-
-/* REPORT */
-
-document
-.getElementById("reportButton")
-.addEventListener("click", function() {
-
-document
-.getElementById("reportNotice")
-.style.display = "block";
-
-});
-
-
-/* PROTECT USER TEXT */
-
-function escapeHTML(text) {
-
-const div =
-document.createElement("div");
-
-div.textContent = text;
-
-return div.innerHTML;
+attachClipEvents(card);
 
 }
+
+
+document
+.getElementById("addClip")
+.addEventListener("click",function(){
+
+const file=
+document.getElementById("clipFile")
+.files[0];
+
+const title=
+document.getElementById("clipTitle")
+.value
+.trim();
+
+const game=
+document.getElementById("clipGame")
+.value;
+
+
+if(!file){
+
+alert("Please choose a video or image.");
+
+return;
+
+}
+
+if(!title){
+
+alert("Please give the clip a title.");
+
+return;
+
+}
+
+
+const reader=
+new FileReader();
+
+
+reader.onload=function(){
+
+const clip={
+
+title:title,
+
+game:game,
+
+type:file.type.startsWith("image/")
+?"image"
+:"video",
+
+url:reader.result
+
+};
+
+
+savedClips.push(clip);
+
+
+try{
+
+localStorage.setItem(
+"pfgClips",
+JSON.stringify(savedClips)
+);
+
+}catch(error){
+
+alert(
+"The file is too large for browser storage. For permanent clip uploads we will need online storage later."
+);
+
+return;
+
+}
+
+
+createClipElement(clip);
+
+
+document
+.getElementById("clipTitle")
+.value="";
+
+document
+.getElementById("clipFile")
+.value="";
+
+
+const notice=
+document.getElementById("clipNotice");
+
+notice.style.display="block";
+
+setTimeout(function(){
+
+notice.style.display="none";
+
+},3000);
+
+};
+
+
+reader.readAsDataURL(file);
+
+});
+
+
+function attachClipEvents(card){
+
+const like=
+card.querySelector(".like-button");
+
+like.addEventListener("click",function(){
+
+const span=
+like.querySelector("span");
+
+let count=
+parseInt(span.textContent)||0;
+
+count++;
+
+span.textContent=count;
+
+});
+
+
+const toggle=
+card.querySelector(".comment-toggle");
+
+const comments=
+card.querySelector(".comments");
+
+toggle.addEventListener("click",function(){
+
+comments.style.display=
+comments.style.display==="none"
+?"block"
+:"none";
+
+});
+
+
+const commentForm=
+card.querySelector(".comment-form");
+
+const commentInput=
+commentForm.querySelector("input");
+
+const commentList=
+card.querySelector(".comment-list");
+
+const postButton=
+commentForm.querySelector("button");
+
+
+postButton.addEventListener("click",function(){
+
+const text=
+commentInput.value.trim();
+
+if(!text)return;
+
+
+const comment=
+document.createElement("div");
+
+comment.className="comment";
+
+comment.innerHTML=
+"<strong>You:</strong> "+
+escapeHTML(text);
+
+
+commentList.appendChild(comment);
+
+commentInput.value="";
+
+});
+
+}
+
+
+document
+.querySelectorAll(".clip")
+.forEach(attachClipEvents);
+
+
+renderSavedClips();
+
+
+/* REPORTING */
+
+document
+.getElementById("showReport")
+.addEventListener("click",function(){
+
+const box=
+document.getElementById("reportEvidence");
+
+box.classList.toggle("show");
+
+this.textContent=
+box.classList.contains("show")
+?"Close Report"
+:"Start Report";
+
+});
+
+
+document
+.getElementById("submitReport")
+.addEventListener("click",function(){
+
+const player=
+document
+.getElementById("reportedPlayer")
+.value
+.trim();
+
+const reason=
+document
+.getElementById("reportReason")
+.value
+.trim();
+
+const evidence=
+document
+.getElementById("evidence")
+.files[0];
+
+
+if(!player){
+
+alert("Please enter the player's name.");
+
+return;
+
+}
+
+if(!reason){
+
+alert("Please explain what happened.");
+
+return;
+
+}
+
+
+const notice=
+document.getElementById("reportNotice");
+
+
+notice.textContent=
+evidence
+?"Report recorded in this demo with evidence attached."
+:"Report recorded in this demo.";
+
+
+notice.style.display="block";
+
+
+document
+.getElementById("reportedPlayer")
+.value="";
+
+document
+.getElementById("reportReason")
+.value="";
+
+document
+.getElementById("evidence")
+.value="";
+
+});
+
 
 });
 
